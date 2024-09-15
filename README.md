@@ -3,16 +3,16 @@ Startup application for BYU CS260
 ###[notes](https://github.com/jaredjaimes/startup/blob/main/notes.md)
 
 ## Elevator Pitch
-Have you ever been stuck trying to complete the same life goal over and over for years? Maybe you've tried to save a certain amount of money. Maybe you've tried to be in better shape, or have a better social life,, but time and time again you forgot, or just lost motivation. Well how about if I told you theree was an app that made completeing tasks addicting like playing video games or learning languages on duolingo. Well welcome to Life.io, this app alows user to create a virtual avatar that receives in app rewards when you complete a task, and lets you see your goal progress, so you actually see benefits immeadiatley after completeing a task. Making completing goals absolutely satisffying. 
+Have you ever been stuck trying to complete the same life goal for years? Maybe you've tried getting in better shape, or have a better romantical life, but time and time again you lsot motivation and gave up. Well how about if I told you there was an app that made completeing tasks and reaching goals as addicting as video games, or learning languages on duolingo. Well introducing Life.io, this app allows users to create a virtual avatar that receives in app rewards when you complete a task, and lets you see your goal progress, so you actually see benefits immeadiatley after completeing a task. Making completing goals absolutely addicting.
 
 
 ## Key Features
-- Secure login over HTTPS
-- Option to customize and create your own avatar
-- Option to choose which goals to focus on
+- Secure login.
+- Ability to customize and create your own avatar
+- Ability to personalize goals and tasks to focus on
 - Recieve rewards and items for avatar based on reaching goals
 - ability to change goals and track progress.
-- ABility to share progress and view progress of friends using the app.
+- Ability to share progress and view progress of friends using the app.
 - goals and progress are stored
 - goal history and task completion is stored.
 - Avatar rewards are stored.
