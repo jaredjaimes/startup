@@ -83,3 +83,6 @@ or
 |body| define the main content structure of a web page, including text, images, links, and other HTML elements|
 |main| specifies the main content of a document|
 |h1 - h6| H1 tags are used to indicate the primary topic of your webpage to visitors and search engines. HTML heading tags, H1 to H6, are used to format the text on a page with H1 defining the most important and visually prominent heading on the page.|
+|form|The <form> tag in HTML is used to create form for user input. There are many elements which are used within form tag. For example: <input>, <textarea>, <button>, <select>, <option>, <optgroup>, <fieldset>, <label>. ... input: It is used to specify the input field for user.|
+|fieldset|The <fieldset> tag is used to group related elements in a form. The <fieldset> tag draws a box around the related elements.|
+
