@@ -1,6 +1,6 @@
 # Startup
 Startup application for BYU CS260
-###[notes](https://github.com/jaredjaimes/startup/blob/main/notes.md)
+### [notes](https://github.com/jaredjaimes/startup/blob/main/notes.md)
 
 # Remember:
 - Be simple: Do not start by implementing mutiple features. This project is about focusing on a core feature well.
