@@ -39,20 +39,7 @@ You can obtain, and renew, a web certificate by enabling the ACME protocol for y
     -<a href="https://byu.edu">Go to the Y</a>
 ```
 -**NOTE:** By default a web server will display the HTML file named **index.html**. So it is very common to name the main HTML file for your web application **index.html**.
--**Images:** When putting an image in html, you don't need and end </img>, you just need the attributes src= "URL" and alt = "name your image"
-  - src - Specifies the path to the image
-  - alt - Specifies an alternate text for the image (just so you know what the image is from code}
-```
-<img src="url" alt="alternatetext">
-```
-- But you can also use width and height attributes or just style attribute to edit it.
-```
-<img src="img_girl.jpg" alt="Girl in a jacket" width="500" height="600">
-```
-or
-```
-<img src="img_girl.jpg" alt="Girl in a jacket" style="width:500px;height:600px;">
-```
+
 -**TABLES:** This is how you do it:
 ```
 <table>
@@ -73,6 +60,63 @@ or
   </tr>
 </table>
 ```
+### External media:
+- When ever using tags that reference external media you will always take a URL as an attribute with **src**.
+  
+-**Images:** When putting an image in html, you don't need and end </img>, you just need the attributes src= "URL" and alt = "name your image"
+  - src - Specifies the path to the image
+  - alt - Specifies an alternate text for the image (just so you know what the image is from code}
+```
+<img src="url" alt="alternatetext">
+```
+- But you can also use width and height attributes or just style attribute to edit it.
+```
+<img src="img_girl.jpg" alt="Girl in a jacket" width="500" height="600">
+```
+or
+```
+<img src="img_girl.jpg" alt="Girl in a jacket" style="width:500px;height:600px;">
+```
+
+-**Audio**:
+  - When using the audio element specify url with src, then include controls attribute if you want user to control the audio playback. If you do not display the controls then there is no visual representation of the audio in the rendered page. The autoplay attribute starts the audio playing as soon as the audio file is loaded, and the loop attribute keeps it playing over and over.
+```
+<audio controls src="testAudio.mp3"></audio>
+```
+
+-**Video**: 
+  - specify url with src.
+  - like audio you can include the control, autoplay attributes.
+  - *Note that you may need to include the crossorigin="anonymous" attribute if you are requesting files from a different domain than the one serving your content.*
+```
+<video controls width="300" crossorigin="anonymous">
+  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" />
+</video>
+```
+Also: There is a github account with public videos to url from.
+
+-**Internal Media**:
+- The internal media elements svg and canvas allow you to actually create images directly within your HTML.
+  - **SVG**: is an extremely powerful and widely supported way to render graphics inline in your HTML. An example SVG graphic that draws a black border and a red circle looks like this:
+    ```
+    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" stroke="red" fill="red" style="border: 1px solid #000000">
+    <circle cx="150" cy="100" r="50" />
+    </svg>
+    ```
+  - **Canvas**: element was introduced to HTML in order to facilitate 2D drawing and animation. The HTML for the canvas element is fairly simple, but actually drawing on the canvas requires JavaScript support. Here again, is our simple red dot example.
+    ```
+    <canvas id="canvasDemo" width="300" height="200" style="border: 1px solid #000000"></canvas>
+    <script>
+      const ctx = document.getElementById('canvasDemo').getContext('2d');
+      ctx.beginPath();
+      ctx.arc(150, 100, 50, 0, 2 * Math.PI);
+      ctx.fillStyle = 'red';
+      ctx.strokeStyle = 'red';
+      ctx.fill();
+      ctx.stroke();
+    </script>
+    ```
+
 
 ### HTML Glossary:
 |Element | Meaning     |
