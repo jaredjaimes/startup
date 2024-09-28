@@ -66,6 +66,3 @@ For this deliverable I built out the structure of my application using HTML.
 - [x] **WebSocket** - The leaderboards display realtime leaders.
 - [x] **3rd party placeholder** - authenticate login, and email. 
 
-
-Note: The placeholder for the database and websocket is in the ranking html page. The leaderboards, get the data from database, and it is updated in realtime.
-Also, uses placeholder for 3rd party service calls to authenticate login with emails. 
