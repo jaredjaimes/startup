@@ -150,5 +150,68 @@ p {
 }
 ```
 The selector p selects all paragraph elements in the HTML document. The four specified declarations then: 1) change the font to use a sans-serif font, 2) increase the font size to be twice as big as the default font, 3) change the text color to be navy, and 4) create a gray shadow for the text. The result looks like this.
-[image of what code above does](https://raw.githubusercontent.com/webprogramming260/.github/main/profile/css/introduction/cssSimpleRule.jpg)
+![cssSimpleRule](https://github.com/user-attachments/assets/321557b9-fe82-4080-90ca-4ec67f1a4def)
+
+
+### 3 ways to use CSS with HTML
+The first way is to use the style attribute of an HTML element and explicitly assign one or more declarations.
+```
+<p style="color:green">CSS</p>
+```
+The next way to associate CSS is to use the HTML style element to define CSS rules within the HTML document. The style element should appear in the head element of the document so that the rules apply to all elements of the document.
+```
+<head>
+  <style>
+    p {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <p>CSS</p>
+</body>
+```
+The final way to associate CSS is to use the HTML link element to create a hyperlink reference to an external file containing CSS rules. The link element must appear in the head element of the document.
+```
+<link rel="stylesheet" href="styles.css" />
+```
+styles.css
+```
+p {
+  color: green;
+}
+```
+All of the above examples are equivalent, but using the link element usually is the preferred way to define CSS.
+
+### The box model:
+CSS defines everything as boxes. When you apply styles, you are applying them to a region of the display that is a rectangular box. Within an element's box there are several internal boxes. The innermost box holds the element's content. This is where things like the text or image of an element is displayed. Next comes the padding. The padding will inherit things like the background color. After padding is the border, which has properties like color, thickness and line style. The final box is the margin. The margin is considered external to the actual styling of the box and therefore only represents whitespace. It is important to understand each of these boxes so that you can achieve the desired visual result by applying the proper CSS declaration.
+![cssBoxModel](https://github.com/user-attachments/assets/dec87aed-0604-4406-baa2-249ec9156705)
+the width and height of an element is defined by the width and height of the content box.
+
+### CSS Selectors:
+An example of what they do are the following: 
+Here is the base HTML:
+```
+<body>
+  <h1>Departments</h1>
+  <p>welcome message</p>
+  <section id="physics">
+    <h2>Physics</h2>
+    <p class="introduction">Introduction</p>
+    <p>Text</p>
+    <p class="summary">Summary</p>
+  </section>
+  <section id="chemistry">
+    <h2>Chemistry</h2>
+    <p class="introduction">Introduction</p>
+    <p>Text</p>
+    <p class="summary">Summary</p>
+  </section>
+</body>
+```
+![cssSelectorBase](https://github.com/user-attachments/assets/73b0fd63-5cb0-4ec8-8b79-754a32837106)
+
+
+
+
 
