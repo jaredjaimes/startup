@@ -66,3 +66,4 @@ Each user has goals that they are tracking and can share their progress, as well
 - [ ] WebSocket data placeholder showing where realtime communication will go
 
 Note: The placeholder for the database and websocket is in the ranking html page. The leaderboards, get the data from database, and it is updated in realtime.
+Also, uses placeholder for 3rd party service calls to authenticate login with emails. 
