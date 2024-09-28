@@ -64,3 +64,5 @@ Each user has goals that they are tracking and can share their progress, as well
 - [x] Login placeholder, including user name display
 - [ ] Database data placeholder showing content stored in the database
 - [ ] WebSocket data placeholder showing where realtime communication will go
+
+Note: The placeholder for the database and websocket is in the ranking html page. The leaderboards, get the data from database, and it is updated in realtime.
