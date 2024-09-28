@@ -136,3 +136,6 @@ Also: There is a github account with public videos to url from.
 |meta name="viewport" content="width=device-width, initial-scale=1.0" |sets the initial zoom level when the page is first loaded by the browser|
 |nav| The <nav> element in HTML is used to represent a section of a page that contains navigation links. These links can be to other pages or to different parts of the same page |
 |attribute= placeholder| 
+
+## CSS:
+- 
