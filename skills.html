@@ -29,26 +29,66 @@
         <h2 id="rank-lvl">Level: 1</h2>
         <form>
             <hr />
-            <h3>Daily Quests</h3>
-            <button onclick="addItem()">New Quest</button>
-            <input type="text" id="newItem" placeholder="input quest">
+            <h3>Spiritual</h3>
+            <button>Add Quest</button>
+            <input type="text" id="newQuest" placeholder="input quest">
             <ul>
               <li>
                 <label>
-                  <input type="checkbox" name="Exercise: 30 mins" value="Item 1">
-                  Exercise: 30 mins
+                  <input type="checkbox" name="studyScriptures" value="Quest 1">
+                  Study Scriptures
                 </label>
               </li>
               <li>
                 <label>
-                  <input type="checkbox" name="Study for 1 hour" value="Item 2">
-                  Study for 1 hour
+                  <input type="checkbox" name="conveyWithTheLord" value="Quest 2">
+                  Convey with the Lord
+                </label>
+              </li>
+            </ul>
+        </form>
+
+        <form>
+            <hr />
+            <h3>Finance</h3>
+            <button>Add Quest</button>
+            <input type="text" id="newQuest" placeholder="input quest">
+            <ul>
+              <li>
+                <label>
+                  <input type="checkbox" name="budget" value="Quest 1">
+                  Look at budget
+                </label>
+              </li>
+            </ul>
+          </form>
+
+
+          <hr />
+          <button>Add Skill</button>
+            <input type="text" id="newSkill" placeholder="Ex: Strength, Knowledge">
+
+          <form>
+            <hr />
+            <h3>Quests Board</h3>
+            <p>Select quests to embark on for extra exp points</p>
+            <ul>
+              <li>
+                <label>
+                  <input type="checkbox" name="Exercise" value="Quest 1">
+                  Exercise for 30 mins: +50xp
                 </label>
               </li>
               <li>
                 <label>
-                  <input type="checkbox" name="Clean car" value="Item 3">
-                  Clean car
+                  <input type="checkbox" name="cleanCar" value="Quest 2">
+                  Clean car: +20xp
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="goForAWalk" value="Quest 3">
+                  Go for a walk: +10xp
                 </label>
               </li>
             </ul>
