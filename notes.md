@@ -129,4 +129,9 @@ Also: There is a github account with public videos to url from.
 |h1 - h6| H1 tags are used to indicate the primary topic of your webpage to visitors and search engines. HTML heading tags, H1 to H6, are used to format the text on a page with H1 defining the most important and visually prominent heading on the page.|
 |form|The <form> tag in HTML is used to create form for user input. There are many elements which are used within form tag. For example: <input>, <textarea>, <button>, <select>, <option>, <optgroup>, <fieldset>, <label>. ... input: It is used to specify the input field for user.|
 |fieldset|The <fieldset> tag is used to group related elements in a form. The <fieldset> tag draws a box around the related elements.|
-
+|!DOCTYPE html| All html documents must start with this|
+|html lang="en"|This represent root of HTML document. The container for all html elements. Always include html lang attribute inside html taf to declare language of web page. To assit search engines.|
+|Metadata| Metadata is not displayed. Defines the document title,character set, style, and other meta info|
+|<meta charset=" UTF-8"/> | makes it possible to use emojis and other characters that aren't in the traditional ASCII character set on your webpage. If you don't use the tag, then you will need to look up HTML entities to manually insert an emoji or other character.|
+|<meta name="viewport" content="width=device-width, initial-scale=1.0" /> |sets the initial zoom level when the page is first loaded by the browser|
+|nav| The <nav> element in HTML is used to represent a section of a page that contains navigation links. These links can be to other pages or to different parts of the same page |
