@@ -132,6 +132,6 @@ Also: There is a github account with public videos to url from.
 |!DOCTYPE html| All html documents must start with this|
 |html lang="en"|This represent root of HTML document. The container for all html elements. Always include html lang attribute inside html taf to declare language of web page. To assit search engines.|
 |Metadata| Metadata is not displayed. Defines the document title,character set, style, and other meta info|
-|<meta charset=" UTF-8"/> | makes it possible to use emojis and other characters that aren't in the traditional ASCII character set on your webpage. If you don't use the tag, then you will need to look up HTML entities to manually insert an emoji or other character.|
-|<meta name="viewport" content="width=device-width, initial-scale=1.0" /> |sets the initial zoom level when the page is first loaded by the browser|
+|meta charset=" UTF-8" | makes it possible to use emojis and other characters that aren't in the traditional ASCII character set on your webpage. If you don't use the tag, then you will need to look up HTML entities to manually insert an emoji or other character.|
+|meta name="viewport" content="width=device-width, initial-scale=1.0" |sets the initial zoom level when the page is first loaded by the browser|
 |nav| The <nav> element in HTML is used to represent a section of a page that contains navigation links. These links can be to other pages or to different parts of the same page |
