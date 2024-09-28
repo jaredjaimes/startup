@@ -59,11 +59,11 @@ Each user has goals that they are tracking and can share their progress, as well
 - [x] Proper use of HTML tags including BODY, NAV, MAIN, HEADER, FOOTER
 - [x] Links between pages as necessary
 - [x] Application textual content
-- [ ] Placeholder for 3rd party service calls
-- [ ] Application images
+- [x] Placeholder for 3rd party service calls
+- [x] Application images
 - [x] Login placeholder, including user name display
-- [ ] Database data placeholder showing content stored in the database
-- [ ] WebSocket data placeholder showing where realtime communication will go
+- [x] Database data placeholder showing content stored in the database
+- [x] WebSocket data placeholder showing where realtime communication will go
 
 Note: The placeholder for the database and websocket is in the ranking html page. The leaderboards, get the data from database, and it is updated in realtime.
 Also, uses placeholder for 3rd party service calls to authenticate login with emails. 
