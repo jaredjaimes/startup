@@ -26,8 +26,33 @@
     </header>
 
     <main> <!--specifies the main content of a document. The content inside the <main> element should be unique to the document. It should not contain any content that is repeated across documents such as sidebars, navigation links, copyright information, site logos, and search forms.-->
-       
-        
+        <h2 id="rank-lvl">Level: 1</h2>
+        <form>
+            <hr />
+            <h3>Daily Quests</h3>
+            <button onclick="addItem()">New Quest</button>
+            <input type="text" id="newItem" placeholder="input quest">
+            <ul>
+              <li>
+                <label>
+                  <input type="checkbox" name="Exercise: 30 mins" value="Item 1">
+                  Exercise: 30 mins
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="Study for 1 hour" value="Item 2">
+                  Study for 1 hour
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="Clean car" value="Item 3">
+                  Clean car
+                </label>
+              </li>
+            </ul>
+          </form>
     </main>
 
       <footer>
