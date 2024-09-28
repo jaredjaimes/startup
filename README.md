@@ -52,3 +52,15 @@ Each user has goals that they are tracking and can share their progress, as well
 ## Sketch
 ![IMG_5687, Sketch of app design.](https://github.com/user-attachments/assets/401e004e-a216-4d06-af00-a9df5fd98df9)
 ![IMG_5691](https://github.com/user-attachments/assets/2b884d9c-1ca2-46b9-be01-523c034e38dc)
+
+
+##HTML Deliverables:
+- [x] HTML pages for each component of your application.
+- [x] Proper use of HTML tags including BODY, NAV, MAIN, HEADER, FOOTER
+- [x] Links between pages as necessary
+- [x] Application textual content
+- [ ] Placeholder for 3rd party service calls
+- [ ] Application images
+- [x] Login placeholder, including user name display
+- [ ] Database data placeholder showing content stored in the database
+- [ ] WebSocket data placeholder showing where realtime communication will go
