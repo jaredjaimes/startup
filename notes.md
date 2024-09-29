@@ -198,6 +198,16 @@ the width and height of an element is defined by the width and height of the con
 An example of how to use HTML w/ css is can be found using this linnk:
 [code pen](https://codepen.io/leesjensen/pen/NWzByav)
 
+### CSS Declerations:
+This [Codepen](https://codepen.io/leesjensen/pen/rNKrgKQ) demonstrates the use of many of the above declarations. Take some time to experiment with it. Make sure you try modifying different selectors and declarations. Try different unit representations.
+
+### CSS Fonts:
+[CodePen](https://codepen.io/leesjensen/pen/zYaLgVW)
+
+### CSS Animations:
+[CodePen](https://codepen.io/leesjensen/pen/LYrJEwX)
+
+
 
 
 
