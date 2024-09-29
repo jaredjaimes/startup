@@ -118,7 +118,7 @@ Also: There is a github account with public videos to url from.
     ```
 
 
-### HTML Glossary:
+## HTML Glossary:
 |Element | Meaning     |
 |------|-------------|
 |html| top-level page structure, or page container|
@@ -206,6 +206,19 @@ This [Codepen](https://codepen.io/leesjensen/pen/rNKrgKQ) demonstrates the use o
 
 ### CSS Animations:
 [CodePen](https://codepen.io/leesjensen/pen/LYrJEwX)
+
+## CSS GLossary:
+|Element | Meaning     |
+|------|-------------|
+|*| This selects all the HTML elements on the page.|
+|body| elements surrounds all of a page's content that will actually be rendereed on the web page|
+|padding| used to create space around an element's content, inside of any defined borders.|
+|padding: lem| This applies to all 4 sides.|
+|font-weight| changes how bulky the font looks, how bold it is in a way.|
+|td|used for table data cells|
+|th|used for table header cells|
+
+
 
 
 
