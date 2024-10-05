@@ -418,6 +418,8 @@ We turn this into a responsive grid by including a CSS display property with the
 - The flex display layout is useful when you want to partition your application into areas that responsively move around as the window resizes or the orientation changes.
 
 justify-content: center; this centers content in relation to what is the box it is in. SO its not just centerd at the top of the box but in the middle of the entire box it is in.
+flex: 1; this makes sure the page can expand or grow. If you don't have your main part of your page set to that then it will always stay small.
+Also, need to have the html set to 100% so it can grow that length.
 
 
 ## CSS GLossary:
