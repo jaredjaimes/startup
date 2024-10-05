@@ -421,6 +421,9 @@ justify-content: center; this centers content in relation to what is the box it 
 flex: 1; this makes sure the page can expand or grow. If you don't have your main part of your page set to that then it will always stay small.
 Also, need to have the html set to 100% so it can grow that length.
 
+### Bootstrap:
+
+
 
 ## CSS GLossary:
 |Element | Meaning     |
