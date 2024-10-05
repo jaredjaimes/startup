@@ -341,6 +341,85 @@ Ex:
   ```
 To try more stuff here is [CodePen](https://codepen.io/leesjensen/pen/LYrJEwX)
 
+### Responsive Design:
+-  This ability to reconfigure the interface so the application accommodates and takes advantage of the screen's size and orientation is called responsive design
+
+|Value|	Meaning|
+|-----|--------|
+|none|	Don't display this element. The element still exists, but the browser will not render it.|
+|block|	Display this element with a width that fills its parent element. A p or div element has block display by default.|
+|inline|	Display this element with a width that is only as big as its content. A b or span element has inline display by default.|
+|flex	|Display this element's children in a flexible orientation.|
+|grid	|Display this element's children in a grid orientation.|
+
+- include a meta tag in the head element of all your HTML pages. This tells the browser to not scale the page.
+  ```
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  ```
+  
+- The float css property moves an element to the left or right of its container element and allows inline elements to wrap around it. For example, if we had an aside element followed by a large paragraph of text, we could create the following CSS rule in order to cause the text to wrap around the aside.
+  ```
+  aside {
+    float: right;
+    padding: 3em;
+    margin: 0.5em;
+    border: black solid thin;
+  }
+  ```
+![cssFloat](https://github.com/user-attachments/assets/f75302ca-3e05-4d51-a604-f1945d7a46fa)
+
+- When the browser resizes, the text will flow around the floating element. You can use this CodePen to experiment with float. Try changing the descriptor value to none or left and see what happens.
+
+
+- One of the main CSS features for creating responsive applications is the @media selector. This selector dynamically detects the size and orientation of the device and applies CSS rules to represent the structure of the HTML in a way that accommodates the change.
+- We can use the @media selector to tell us which side of the screen (technically the viewport) is the longest. A media query takes one or more predicates separated by boolean operators. In our case we simply want to know if the screen is oriented in portrait mode (short side on top) or not. If it is then we transform all of our div elements by rotating them 270 degrees.
+  ```
+  @media (orientation: portrait) {
+    div {
+      transform: rotate(270deg);
+    }
+  }
+  ```
+- You can also use media queries to make entire pieces of your application disappear, or move to a different location. For example, if we had an aside that was helpful when the screen is wide, but took up too much room when the screen got narrow, we could use the following media query to make it disappear.
+  ```
+  @media (orientation: portrait) {
+    aside {
+      display: none;
+    }
+  }
+  ```
+### Grid:
+- The grid display layout is useful when you want to display a group of child elements in a responsive grid. We start with a container element that has a bunch of child elements.
+  ```
+  <div class="container">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+  ```
+We turn this into a responsive grid by including a CSS display property with the value of grid on the container element. This tells the browser that all of the children of this element are to be displayed in a grid flow. The grid-template-columns property specifies the layout of the grid columns. We set this to repeatedly define each column to auto-fill the parent element's width with children that are resized to a minimum of 300 pixels and a maximum of one equal fractional unit (1fr) of the parents total width. A fractional unit is dynamically computed by splitting up the parent element's width into equal parts. Next, we fix the height of the rows to be exactly 300 pixels by specifying the grid-auto-rows property. Finally, we finish off the grid configuration by setting the grid-gap property to have a gap of at least 1 em between each grid item.
+  ```
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 300px;
+    grid-gap: 1em;
+  }
+  ```
+![cssGrid](https://github.com/user-attachments/assets/23176d90-03f2-4a32-9bce-d237fa6ba003)
+
+### Flex:
+- The flex display layout is useful when you want to partition your application into areas that responsively move around as the window resizes or the orientation changes.
+
+justify-content: center; this centers content in relation to what is the box it is in. SO its not just centerd at the top of the box but in the middle of the entire box it is in.
+
+
 ## CSS GLossary:
 |Element | Meaning     |
 |------|-------------|
