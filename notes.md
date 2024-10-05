@@ -195,17 +195,151 @@ CSS defines everything as boxes. When you apply styles, you are applying them to
 the width and height of an element is defined by the width and height of the content box.
 
 ### CSS Selectors:
-An example of how to use HTML w/ css is can be found using this linnk:
-[code pen](https://codepen.io/leesjensen/pen/NWzByav)
+Example: This is the html code: 
+```
+<body>
+  <h1>Departments</h1>
+  <p>welcome message</p>
+  <section id="physics">
+    <h2>Physics</h2>
+    <p class="introduction">Introduction</p>
+    <p>Text</p>
+    <p class="summary">Summary</p>
+  </section>
+  <section id="chemistry">
+    <h2>Chemistry</h2>
+    <p class="introduction">Introduction</p>
+    <p>Text</p>
+    <p class="summary">Summary</p>
+  </section>
+</body>
+```
+- In the html code, you can give certain aspects of your code classes. Like introduction and summary.
+- Then in CSS, you can specifically edit those classes by just calling them out using a period.
+  ```
+  .introduction {  }
+  ```
+- You can do the same to call specifc id's, using a hastag.
+  ```
+  #physics {  }
+  ```
+- You can do attributes.
+- And you can do something called psuedo selector. Suppose we want our purple highlight bar to appear only when the mouse hovers over the text. To accomplish this we can change our ID selector to select whenever a section is hovered over.
+  ```
+  section:hover {  }
+  ```
+This is [CodePen](https://codepen.io/leesjensen/pen/NWzByav) to look into it more.
 
 ### CSS Declerations:
+- Basically, the thingns you can say, units you can use, and ways to say color.
+**List of declerations**
+  Property	Value	Example	Discussion
+background-color	color	red	Fill the background color
+border	color width style	#fad solid medium	Sets the border using shorthand where any or all of the values may be provided
+border-radius	unit	50%	The size of the border radius
+box-shadow	x-offset y-offset blu-radius color	2px 2px 2px gray	Creates a shadow
+columns	number	3	Number of textual columns
+column-rule	color width style	solid thin black	Sets the border used between columns using border shorthand
+color	color	rgb(128, 0, 0)	Sets the text color
+cursor	type	grab	Sets the cursor to display when hovering over the element
+display	type	none	Defines how to display the element and its children
+filter	filter-function	grayscale(30%)	Applies a visual filter
+float	direction	right	Places the element to the left or right in the flow
+flex			Flex layout. Used for responsive design
+font	family size style	Arial 1.2em bold	Defines the text font using shorthand
+grid			Grid layout. Used for responsive design
+height	unit	.25em	Sets the height of the box
+margin	unit	5px 5px 0 0	Sets the margin spacing
+max-[width/height]	unit	20%	Restricts the width or height to no more than the unit
+min-[width/height]	unit	10vh	Restricts the width or height to no less than the unit
+opacity	number	.9	Sets how opaque the element is
+overflow	[visible/hidden/scroll/auto]	scroll	Defines what happens when the content does not fix in its box
+position	[static/relative/absolute/sticky]	absolute	Defines how the element is positioned in the document
+padding	unit	1em 2em	Sets the padding spacing
+left	unit	10rem	The horizontal value of a positioned element
+text-align	[start/end/center/justify]	end	Defines how the text is aligned in the element
+top	unit	50px	The vertical value of a positioned element
+transform	transform-function	rotate(0.5turn)	Applies a transformation to the element
+width	unit	25vmin	Sets the width of the box
+z-index	number	100	Controls the positioning of the element on the z axis
+
 This [Codepen](https://codepen.io/leesjensen/pen/rNKrgKQ) demonstrates the use of many of the above declarations. Take some time to experiment with it. Make sure you try modifying different selectors and declarations. Try different unit representations.
 
 ### CSS Fonts:
+- There are four major families of fonts: Serif, sans-serif, fixed, and symbol.
+- However, you can import fonts using the @font-face rule and by providing the font name and source location.
+  ```
+  @font-face {
+  font-family: 'Quicksand';
+  src: url('https://cs260.click/fonts/quicksand.ttf');
+  }
+
+  p {
+    font-family: Quicksand;
+  }
+  ```
+- If you don't want to do that you can get it from provider like google who have a large selection of open source fonts that you can use without paying any royalties. The easiest way to use Google fonts is to use a CSS import statement to reference the Google Font Service. This will automatically generate the CSS for importing the font.
+  ```
+  @import url('https://fonts.googleapis.com/css2?family=Rubik Microbe&display=swap');
+
+  p {
+    font-family: 'Rubik Microbe';
+  }
+  ```
+
 [CodePen](https://codepen.io/leesjensen/pen/zYaLgVW)
 
 ### CSS Animations:
-[CodePen](https://codepen.io/leesjensen/pen/LYrJEwX)
+-  You create CSS animations using the animation properties and defining keyframes for what the element should look like at different times in the animation.
+Ex:
+- We have a paragraph of centered text and we want it to zoom in until its size is 20% of the view height.
+  ```
+  p {
+    text-align: center;
+    font-size: 20vh;
+  }
+  ```
+- Then we select the elements by adding the animation-name property with a value of demo. This name refers to the name of the keyframes that we will specify in a minute. The keyframes tell what CSS properites should be applied at different key points in the animation sequence.
+-  We also add an animation-duration property in order to specify that the animation should last for three seconds.
+  ```
+  p {
+    text-align: center;
+    font-size: 20vh;
+  
+    animation-name: demo;
+    animation-duration: 3s;
+  }
+  ```
+- Now we are ready to create the keyframes. We need define the key points, and CSS will generate a smooth transition to move from one keyframe to another.
+- So if we want to start with text that is invisible and have it zoom into the full final size. We can do this with two frames that are designated with the keywords from and to.
+  ```
+  @keyframes demo {
+    from {
+      font-size: 0vh;
+    }
+  
+    to {
+      font-size: 20vh;
+    }
+  }
+  ```
+- It would look better if towards the end, the paragraph bounced out a little bigger than its final size. We can accommodate that by adding another key frame that happens 95 percent through the animation.
+  ```
+  @keyframes demo {
+    from {
+      font-size: 0vh;
+    }
+  
+    95% {
+      font-size: 21vh;
+    }
+  
+    to {
+      font-size: 20vh;
+    }
+  }
+  ```
+To try more stuff here is [CodePen](https://codepen.io/leesjensen/pen/LYrJEwX)
 
 ## CSS GLossary:
 |Element | Meaning     |
