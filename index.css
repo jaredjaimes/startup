@@ -1,3 +1,6 @@
+*{
+  font-family: sans-serif
+}
 
 header{
   background-color: gray;
@@ -57,7 +60,6 @@ p{
 
 form{
   display: flex;
-  justify-content: space-evenly;
   flex-direction: column;
   align-items:center;
   gap: 15px;
@@ -69,6 +71,14 @@ form{
   flex-direction: row;
 }
 
+footer{
+  background-color: grey;
+  color:white;
+}
+
+a{
+  color:white;
+}
 /*
 1. How do I make the content in form centered to the page
 2. How do I get the stuff to fil the page instead of the html file color being seen.
