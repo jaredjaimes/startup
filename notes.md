@@ -118,7 +118,7 @@ Also: There is a github account with public videos to url from.
     ```
 
 
-### HTML Glossary:
+## HTML Glossary:
 |Element | Meaning     |
 |------|-------------|
 |html| top-level page structure, or page container|
@@ -138,4 +138,309 @@ Also: There is a github account with public videos to url from.
 |attribute= placeholder| 
 
 ## CSS:
-- 
+- With CSS a web programmer can animate the page, deploy custom fonts, respond to user actions, and dynamically alter the entire layout of the page based on the size of a device and its orientation.
+- CSS is primarily concerned with defining rulesets, or simply rules. A rule is comprised of a selector that selects the elements to apply the rule to, and one or more declarations that represent the property to style with the given property value.
+Example:
+```
+p {
+  font-family: sans-serif;
+  font-size: 2em;
+  color: navy;
+  text-shadow: 3px 3px 1px #cccccc;
+}
+```
+The selector p selects all paragraph elements in the HTML document. The four specified declarations then: 1) change the font to use a sans-serif font, 2) increase the font size to be twice as big as the default font, 3) change the text color to be navy, and 4) create a gray shadow for the text. The result looks like this.
+
+
+![cssSimpleRule](https://github.com/user-attachments/assets/321557b9-fe82-4080-90ca-4ec67f1a4def)
+
+
+### 3 ways to use CSS with HTML
+The first way is to use the style attribute of an HTML element and explicitly assign one or more declarations.
+```
+<p style="color:green">CSS</p>
+```
+The next way to associate CSS is to use the HTML style element to define CSS rules within the HTML document. The style element should appear in the head element of the document so that the rules apply to all elements of the document.
+```
+<head>
+  <style>
+    p {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <p>CSS</p>
+</body>
+```
+The final way to associate CSS is to use the HTML link element to create a hyperlink reference to an external file containing CSS rules. The link element must appear in the head element of the document.
+```
+<link rel="stylesheet" href="styles.css" />
+```
+styles.css
+```
+p {
+  color: green;
+}
+```
+All of the above examples are equivalent, but using the link element usually is the preferred way to define CSS.
+
+### The box model:
+CSS defines everything as boxes. When you apply styles, you are applying them to a region of the display that is a rectangular box. Within an element's box there are several internal boxes. The innermost box holds the element's content. This is where things like the text or image of an element is displayed. Next comes the padding. The padding will inherit things like the background color. After padding is the border, which has properties like color, thickness and line style. The final box is the margin. The margin is considered external to the actual styling of the box and therefore only represents whitespace. It is important to understand each of these boxes so that you can achieve the desired visual result by applying the proper CSS declaration.
+
+
+![cssBoxModel](https://github.com/user-attachments/assets/dec87aed-0604-4406-baa2-249ec9156705)
+
+
+the width and height of an element is defined by the width and height of the content box.
+
+### CSS Selectors:
+Example: This is the html code: 
+```
+<body>
+  <h1>Departments</h1>
+  <p>welcome message</p>
+  <section id="physics">
+    <h2>Physics</h2>
+    <p class="introduction">Introduction</p>
+    <p>Text</p>
+    <p class="summary">Summary</p>
+  </section>
+  <section id="chemistry">
+    <h2>Chemistry</h2>
+    <p class="introduction">Introduction</p>
+    <p>Text</p>
+    <p class="summary">Summary</p>
+  </section>
+</body>
+```
+- In the html code, you can give certain aspects of your code classes. Like introduction and summary.
+- Then in CSS, you can specifically edit those classes by just calling them out using a period.
+  ```
+  .introduction {  }
+  ```
+- You can do the same to call specifc id's, using a hastag.
+  ```
+  #physics {  }
+  ```
+- You can do attributes.
+- And you can do something called psuedo selector. Suppose we want our purple highlight bar to appear only when the mouse hovers over the text. To accomplish this we can change our ID selector to select whenever a section is hovered over.
+  ```
+  section:hover {  }
+  ```
+This is [CodePen](https://codepen.io/leesjensen/pen/NWzByav) to look into it more.
+
+### CSS Declerations:
+- Basically, the thingns you can say, units you can use, and ways to say color.
+**List of declerations**
+  Property	Value	Example	Discussion
+background-color	color	red	Fill the background color
+border	color width style	#fad solid medium	Sets the border using shorthand where any or all of the values may be provided
+border-radius	unit	50%	The size of the border radius
+box-shadow	x-offset y-offset blu-radius color	2px 2px 2px gray	Creates a shadow
+columns	number	3	Number of textual columns
+column-rule	color width style	solid thin black	Sets the border used between columns using border shorthand
+color	color	rgb(128, 0, 0)	Sets the text color
+cursor	type	grab	Sets the cursor to display when hovering over the element
+display	type	none	Defines how to display the element and its children
+filter	filter-function	grayscale(30%)	Applies a visual filter
+float	direction	right	Places the element to the left or right in the flow
+flex			Flex layout. Used for responsive design
+font	family size style	Arial 1.2em bold	Defines the text font using shorthand
+grid			Grid layout. Used for responsive design
+height	unit	.25em	Sets the height of the box
+margin	unit	5px 5px 0 0	Sets the margin spacing
+max-[width/height]	unit	20%	Restricts the width or height to no more than the unit
+min-[width/height]	unit	10vh	Restricts the width or height to no less than the unit
+opacity	number	.9	Sets how opaque the element is
+overflow	[visible/hidden/scroll/auto]	scroll	Defines what happens when the content does not fix in its box
+position	[static/relative/absolute/sticky]	absolute	Defines how the element is positioned in the document
+padding	unit	1em 2em	Sets the padding spacing
+left	unit	10rem	The horizontal value of a positioned element
+text-align	[start/end/center/justify]	end	Defines how the text is aligned in the element
+top	unit	50px	The vertical value of a positioned element
+transform	transform-function	rotate(0.5turn)	Applies a transformation to the element
+width	unit	25vmin	Sets the width of the box
+z-index	number	100	Controls the positioning of the element on the z axis
+
+This [Codepen](https://codepen.io/leesjensen/pen/rNKrgKQ) demonstrates the use of many of the above declarations. Take some time to experiment with it. Make sure you try modifying different selectors and declarations. Try different unit representations.
+
+### CSS Fonts:
+- There are four major families of fonts: Serif, sans-serif, fixed, and symbol.
+- However, you can import fonts using the @font-face rule and by providing the font name and source location.
+  ```
+  @font-face {
+  font-family: 'Quicksand';
+  src: url('https://cs260.click/fonts/quicksand.ttf');
+  }
+
+  p {
+    font-family: Quicksand;
+  }
+  ```
+- If you don't want to do that you can get it from provider like google who have a large selection of open source fonts that you can use without paying any royalties. The easiest way to use Google fonts is to use a CSS import statement to reference the Google Font Service. This will automatically generate the CSS for importing the font.
+  ```
+  @import url('https://fonts.googleapis.com/css2?family=Rubik Microbe&display=swap');
+
+  p {
+    font-family: 'Rubik Microbe';
+  }
+  ```
+
+[CodePen](https://codepen.io/leesjensen/pen/zYaLgVW)
+
+### CSS Animations:
+-  You create CSS animations using the animation properties and defining keyframes for what the element should look like at different times in the animation.
+Ex:
+- We have a paragraph of centered text and we want it to zoom in until its size is 20% of the view height.
+  ```
+  p {
+    text-align: center;
+    font-size: 20vh;
+  }
+  ```
+- Then we select the elements by adding the animation-name property with a value of demo. This name refers to the name of the keyframes that we will specify in a minute. The keyframes tell what CSS properites should be applied at different key points in the animation sequence.
+-  We also add an animation-duration property in order to specify that the animation should last for three seconds.
+  ```
+  p {
+    text-align: center;
+    font-size: 20vh;
+  
+    animation-name: demo;
+    animation-duration: 3s;
+  }
+  ```
+- Now we are ready to create the keyframes. We need define the key points, and CSS will generate a smooth transition to move from one keyframe to another.
+- So if we want to start with text that is invisible and have it zoom into the full final size. We can do this with two frames that are designated with the keywords from and to.
+  ```
+  @keyframes demo {
+    from {
+      font-size: 0vh;
+    }
+  
+    to {
+      font-size: 20vh;
+    }
+  }
+  ```
+- It would look better if towards the end, the paragraph bounced out a little bigger than its final size. We can accommodate that by adding another key frame that happens 95 percent through the animation.
+  ```
+  @keyframes demo {
+    from {
+      font-size: 0vh;
+    }
+  
+    95% {
+      font-size: 21vh;
+    }
+  
+    to {
+      font-size: 20vh;
+    }
+  }
+  ```
+To try more stuff here is [CodePen](https://codepen.io/leesjensen/pen/LYrJEwX)
+
+### Responsive Design:
+-  This ability to reconfigure the interface so the application accommodates and takes advantage of the screen's size and orientation is called responsive design
+
+|Value|	Meaning|
+|-----|--------|
+|none|	Don't display this element. The element still exists, but the browser will not render it.|
+|block|	Display this element with a width that fills its parent element. A p or div element has block display by default.|
+|inline|	Display this element with a width that is only as big as its content. A b or span element has inline display by default.|
+|flex	|Display this element's children in a flexible orientation.|
+|grid	|Display this element's children in a grid orientation.|
+
+- include a meta tag in the head element of all your HTML pages. This tells the browser to not scale the page.
+  ```
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  ```
+  
+- The float css property moves an element to the left or right of its container element and allows inline elements to wrap around it. For example, if we had an aside element followed by a large paragraph of text, we could create the following CSS rule in order to cause the text to wrap around the aside.
+  ```
+  aside {
+    float: right;
+    padding: 3em;
+    margin: 0.5em;
+    border: black solid thin;
+  }
+  ```
+![cssFloat](https://github.com/user-attachments/assets/f75302ca-3e05-4d51-a604-f1945d7a46fa)
+
+- When the browser resizes, the text will flow around the floating element. You can use this CodePen to experiment with float. Try changing the descriptor value to none or left and see what happens.
+
+
+- One of the main CSS features for creating responsive applications is the @media selector. This selector dynamically detects the size and orientation of the device and applies CSS rules to represent the structure of the HTML in a way that accommodates the change.
+- We can use the @media selector to tell us which side of the screen (technically the viewport) is the longest. A media query takes one or more predicates separated by boolean operators. In our case we simply want to know if the screen is oriented in portrait mode (short side on top) or not. If it is then we transform all of our div elements by rotating them 270 degrees.
+  ```
+  @media (orientation: portrait) {
+    div {
+      transform: rotate(270deg);
+    }
+  }
+  ```
+- You can also use media queries to make entire pieces of your application disappear, or move to a different location. For example, if we had an aside that was helpful when the screen is wide, but took up too much room when the screen got narrow, we could use the following media query to make it disappear.
+  ```
+  @media (orientation: portrait) {
+    aside {
+      display: none;
+    }
+  }
+  ```
+### Grid:
+- The grid display layout is useful when you want to display a group of child elements in a responsive grid. We start with a container element that has a bunch of child elements.
+  ```
+  <div class="container">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+  ```
+We turn this into a responsive grid by including a CSS display property with the value of grid on the container element. This tells the browser that all of the children of this element are to be displayed in a grid flow. The grid-template-columns property specifies the layout of the grid columns. We set this to repeatedly define each column to auto-fill the parent element's width with children that are resized to a minimum of 300 pixels and a maximum of one equal fractional unit (1fr) of the parents total width. A fractional unit is dynamically computed by splitting up the parent element's width into equal parts. Next, we fix the height of the rows to be exactly 300 pixels by specifying the grid-auto-rows property. Finally, we finish off the grid configuration by setting the grid-gap property to have a gap of at least 1 em between each grid item.
+  ```
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 300px;
+    grid-gap: 1em;
+  }
+  ```
+![cssGrid](https://github.com/user-attachments/assets/23176d90-03f2-4a32-9bce-d237fa6ba003)
+
+### Flex:
+- The flex display layout is useful when you want to partition your application into areas that responsively move around as the window resizes or the orientation changes.
+
+justify-content: center; this centers content in relation to what is the box it is in. SO its not just centerd at the top of the box but in the middle of the entire box it is in.
+flex: 1; this makes sure the page can expand or grow. If you don't have your main part of your page set to that then it will always stay small.
+Also, need to have the html set to 100% so it can grow that length.
+
+### Bootstrap:
+
+
+
+## CSS GLossary:
+|Element | Meaning     |
+|------|-------------|
+|*| This selects all the HTML elements on the page.|
+|body| elements surrounds all of a page's content that will actually be rendereed on the web page|
+|padding| used to create space around an element's content, inside of any defined borders.|
+|padding: lem| This applies to all 4 sides.|
+|font-weight| changes how bulky the font looks, how bold it is in a way.|
+|td|used for table data cells|
+|th|used for table header cells|
+
+
+
+
+
+
+
+
+

@@ -64,8 +64,17 @@ For this deliverable I built out the structure of my application using HTML.
 - [x] **Database** - The rankings, leaderrboards and the friend progress represent data pulled from the database.
 - [x] **Login**- Login in the index page, and username displayed on avatar.html page
 - [x] **WebSocket** - The leaderboards display realtime leaders.
-- [x] **3rd party placeholder** - authenticate login, and email. 
+- [x] **3rd party placeholder** - authenticate login, and email.
 
 
-Note: The placeholder for the database and websocket is in the ranking html page. The leaderboards, get the data from database, and it is updated in realtime.
-Also, uses placeholder for 3rd party service calls to authenticate login with emails. 
+## CSS deliverable
+
+For this deliverable I properly styled the application into its final appearance.
+
+- [ ] **Header, footer, and main content body**
+- [ ] **Navigation elements** - I dropped the underlines and changed the color for anchor elements.
+- [ ] **Responsive to window resizing** - My app looks great on all window sizes and devices
+- [ ] **Application elements** - Used good contrast and whitespace
+- [ ] **Application text content** - Consistent fonts
+- [ ] **Application images** - Still don't have images and so no styling here. 😔
+
