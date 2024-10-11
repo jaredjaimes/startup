@@ -78,6 +78,8 @@ footer{
 
 a{
   color:white;
+  text-decoration: none; /*this removes the underlines in the links*/
+  
 }
 /*
 1. How do I make the content in form centered to the page
