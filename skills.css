@@ -1,45 +1,51 @@
 *{
     font-family: sans-serif
-  }
-  
-  header{
+}
+
+a{
+    color:white;
+    text-decoration: none; /*this removes the underlines in the links*/
+
+}
+
+header{
     background-color: gray;
     top: 0;
-    
-  }
-  
-  
-  body{
+
+}
+
+
+body{
     margin: 0;
-  }
-  
-  h1{
+}
+
+h1{
     color:white;
     display: flex;
     justify-content: center;
-    
-  }
-  
-  menu{
+    margin:0;
+
+}
+
+menu{
     display: flex;
     justify-content: center;
     justify-content: space-evenly;
     align-items: center;
-  
-  }
-  
-  .nav-button{
+    flex-wrap: wrap;
+
+}
+
+.nav-button{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     color: white;
     margin: 0px 15px;
-  
-  }
-  
-  button {
+
+}
+
+button {
     background-color: darkgrey;
     padding: 10px 40px;
-  }
-  
-  
+}

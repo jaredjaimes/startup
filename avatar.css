@@ -2,6 +2,12 @@
     font-family: sans-serif
   }
   
+  a{
+    color:white;
+    text-decoration: none; /*this removes the underlines in the links*/
+    
+  }
+  
   header{
     background-color: gray;
     top: 0;
@@ -17,6 +23,7 @@
     color:white;
     display: flex;
     justify-content: center;
+    margin:0;
     
   }
   
@@ -25,6 +32,7 @@
     justify-content: center;
     justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
   
   }
   
