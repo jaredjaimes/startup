@@ -535,6 +535,8 @@ Type:
 |String|	A textual sequence of characters.|
 |Symbol|	A unique value.|
 
+NOte: You assign a null to a variable if you want it to be not assigned anything. Like setting character color o null if not selected anything, etc.
+
 Type	Use	Example
 Object	A collection of properties represented by name-value pairs. Values can be of any type.	{a:3, b:'fish'}
 Function	An object that has the ability to be called.	function a() {}
