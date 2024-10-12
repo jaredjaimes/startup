@@ -1,5 +1,5 @@
 *{
-    font-family: sans-serif
+    font-family: sans-serif;
 }
 
 a{
@@ -55,6 +55,24 @@ button {
 }
 
 
+table, th, td{
+    border: 1px solid;
+     
+}
+
+table{
+    background-color: grey;
+}
+
+th, td{
+    background-color: darkgrey;
+}
+
+  
+footer{
+    background-color: grey;
+    color:white;
+}
   
 
  
