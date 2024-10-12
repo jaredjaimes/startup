@@ -17,6 +17,7 @@ header{
 
 body{
     margin: 0;
+    background-color: lightblue;
 }
 
 h1{
@@ -57,6 +58,8 @@ button {
 
 table, th, td{
     border: 1px solid;
+    width: 100%;
+    padding: 15px;
      
 }
 
@@ -65,7 +68,7 @@ table{
 }
 
 th, td{
-    background-color: darkgrey;
+    background-color: white;
 }
 
   

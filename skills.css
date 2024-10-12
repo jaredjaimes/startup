@@ -17,6 +17,7 @@ header{
 
 body{
     margin: 0;
+    background-color: lightblue;
 }
 
 h1{
@@ -48,6 +49,7 @@ menu{
 button {
     background-color: darkgrey;
     padding: 10px 40px;
+    color: white;
 }
 
 footer{
