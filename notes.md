@@ -2,7 +2,7 @@
 [olaga.link](https://olaga.link/)
 
 ## questions to ask the TA.
-Can you demonstrate what it looks like to need to merge and then, how to do it exactly.
+...
 
 ## Console:
 - When ever you use the **"vi"** command in the console. There are certain command that you can type in for it to work the way you need it to. You can find all those commands here: [vim cheat sheet](https://vim.rtorr.com/)
@@ -729,15 +729,16 @@ console.log(s.toLowerCase());
 In JavaScript functions are first class objects. That means that they can be assigned a name, passed as a parameter, returned as a result, and referenced from an object or array just like any other variable.
 
 The basic syntax of a function begins with the function keyword followed by zero or more parameters and a body that may contain zero or more return statements. The return statement may return a single value. Note that there are no type declarations, as the type is always inferred by the assignment of the value to the parameter.
-
+```
 function hello(who) {
   return 'hello ' + who;
 }
 
 console.log(hello('world'));
 // OUTPUT: hello world
+```
 A function without a return value usually exists to produce some side effect like modifying a parameter or interacting with an external program. In the following example the side effect of the function is to output text to the debugger console.
-
+```
 function hello(who) {
   who.count++;
   console.log('hello ' + who.name);
@@ -745,11 +746,12 @@ function hello(who) {
 
 hello({ name: 'world', count: 0 });
 // OUTPUT: hello world
+```
 Function parameters
 When a function is called, the caller may choose what parameters to provide. If a parameter is not provided then the value of the parameter is undefined when the function executes.
 
 In addition to explicitly passing the value of a parameter to a function, the function can define a default value. This is done by assigning a value to the parameter in the function declaration.
-
+```
 function labeler(value, title = 'title') {
   console.log(`${title}=${value}`);
 }
@@ -762,9 +764,10 @@ labeler('fish');
 
 labeler('fish', 'animal');
 // OUTPUT: animal=fish
+```
 Anonymous functions
 Functions in JavaScript are commonly assigned to a variable so that they can be passed as a parameter to some other function or stored as an object property. To easily support this common use you can define a function anonymously and assign it to a variable.
-
+```
 // Function that takes a function as a parameter
 function doMath(operation, a, b) {
   return operation(a, b);
@@ -789,9 +792,10 @@ console.log(
   )
 );
 // OUTPUT: 2
+```
 Creating, passing, and returning functions
 Here are examples of assigning functions to variables, as well as using functions as parameters and return values.
-
+```
 // Anonymous declaration of the function that is later assigned to a variable
 const add = function (a, b) {
   return a + b;
@@ -824,9 +828,10 @@ const nameLabeler = labelMaker('name');
 // Calling the returned function
 nameLabeler('value');
 // OUTPUT: name=value
+```
 Inner functions
 Functions can also be declared inside other functions. This allows you to modularize your code without always exposing private details.
-
+```
 function labeler(value) {
   function stringLabeler(value) {
     console.log('string=' + value);
@@ -847,15 +852,16 @@ labeler(5);
 
 labeler('fish');
 // OUTPUT: string=fish
-
+```
 #### JavaScript arrow function:
 Because functions are first order objects in JavaScript they can be declared anywhere and passed as parameters. This results in code with lots of anonymous functions cluttering things up. To make the code more compact the arrow syntax was created. This syntax replaces the need for the function keyword with the symbols => placed after the parameter declaration. The enclosing curly braces are also optional.
 
 This is a function in arrow syntax that takes no parameters and always returns 3.
-
+```
 () => 3;
+```
 The following two invocations of sort are equivalent.
-
+```
 const a = [1, 2, 3, 4];
 
 // standard function syntax
@@ -865,11 +871,12 @@ a.sort(function (v1, v2) {
 
 // arrow function syntax
 a.sort((v1, v2) => v1 - v2);
+```
 Besides being compact, the arrow function syntax has some important semantic differences from the standard function syntax. This includes restrictions that arrow functions cannot be used for constructors or iterator generators.
 
 Return values
 Arrow functions also have special rules for the return keyword. The return keyword is optional if no curly braces are provided for the function and it contains a single expression. In that case the result of the expression is automatically returned. If curly braces are provided then the arrow function behaves just like a standard function.
-
+```
 () => 3;
 // RETURNS: 3
 
@@ -882,29 +889,33 @@ Arrow functions also have special rules for the return keyword. The return keywo
   return 3;
 };
 // RETURNS: 3
+```
 This pointer
 Next, arrow functions inherit the this pointer from the scope in which they are created. This makes what is known as a closure. A closure allows a function to continue referencing its creation scope, even after it has passed out of that scope. This can be tricky to wrap your head around, and we discuss it in detail when we later talk about JavaScript scope. For now consider the following example.
 
 The function makeClosure returns an anonymous function using the arrow syntax. Notice that the a parameter is overridden, a new b variable is created, and both a and b are referenced in the arrow function. Because of that reference, they are both part of the closure for the returned function.
-
+```
 function makeClosure(a) {
   a = 'a2';
   const b = 'b2';
   return () => [a, b];
 }
+```
 Next, we declare the variables a and b at the top level scope, and call makeClosure with a.
-
+```
 const a = 'a';
 const b = 'b';
 
 const closure = makeClosure(a);
+```
 Now, when we call the closure function, it will output the values contained in the scope in which it was created, instead of the current values of the variables.
-
+```
 console.log(closure());
 // OUTPUT: ['a2', 'b2']
 
 console.log(a, b);
 // OUTPUT: 'a' 'b'
+```
 Closures provide a valuable property when we do things like execute JavaScript within the scope of an HTML page, because it can remember the values of variables when the function was created instead of what they are when they are executed.
 
 Putting it all together
@@ -915,15 +926,16 @@ The point of a debounce function is to only execute a specified function once wi
 The following code calls the browser's window.addEventListener function to add a callback function that is invoked whenever the user scrolls the browser's web page. The first parameter to addEventListener specifies that it wants to listen for scroll events. The second parameter provides the function to call when a scroll event happens. In this case we call a function named debounce.
 
 The debounce function takes two parameters, the time window for executing the window function, and the window function to call within that limit. In this case we will execute the arrow function at most every 500 milliseconds.
-
+```
 window.addEventListener(
   'scroll',
   debounce(500, () => {
     console.log('Executed an expensive calculation');
   })
 );
+```
 The debounce function implements the execution of windowFunc within the restricted time window by creating a closure that contains the current timeout and returning a function that will reset the timeout every time it is called. The returned function is what the scroll event will actually call when the user scrolls the page. However, instead of directly executing the windowFunc it sets a timer based on the value of windowMs. If the debounce function is called again before the window times out then it resets the timeout.
-
+```
 function debounce(windowMs, windowFunc) {
   let timeout;
   return function () {
@@ -932,34 +944,38 @@ function debounce(windowMs, windowFunc) {
     timeout = setTimeout(() => windowFunc(), windowMs);
   };
 }
+```
 You can experiment with this in CodePen. In this example, the background color will change as long as the user is scrolling. When they stop the background reverts back to white.
 
 
 #### JavaScript Arrays:
 JavaScript array objects represent a sequence of other objects and primitives. You can reference the members of the array using a zero based index. You can create an array with the Array constructor or using the array literal notation shown below.
-
+```
 const a = [1, 2, 3];
 console.log(a[1]);
 // OUTPUT: 2
 
 console.log(a.length);
 // OUTPUT: 3
+```
 Object functions
 The Array object has several interesting static functions associated with it. Here are some of the interesting ones.
 
-Function	Meaning	Example
-push	Add an item to the end of the array	a.push(4)
-pop	Remove an item from the end of the array	x = a.pop()
-slice	Return a sub-array	a.slice(1,-1)
-sort	Run a function to sort an array in place	a.sort((a,b) => b-a)
-values	Creates an iterator for use with a for of loop	for (i of a.values()) {...}
-find	Find the first item satisfied by a test function	a.find(i => i < 2)
-forEach	Run a function on each array item	a.forEach(console.log)
-reduce	Run a function to reduce each array item to a single item	a.reduce((a, c) => a + c)
-map	Run a function to map an array to a new array	a.map(i => i+i)
-filter	Run a function to remove items	a.filter(i => i%2)
-every	Run a function to test if all items match	a.every(i => i < 3)
-some	Run a function to test if any items match	a.some(i => i < 1)
+|Function|	Meaning|	Example|
+|--------|---------|---------|
+|push|	Add an item to the end of the array|	a.push(4)|
+|pop|	Remove an item from the end of the array|	x = a.pop()|
+|slice|	Return a sub-array|	a.slice(1,-1)|
+|sort|	Run a function to sort an array in place|	a.sort((a,b) => b-a)|
+|values|	Creates an iterator for use with a for of loop|	for (i of a.values()) {...}|
+|find|	Find the first item satisfied by a test function|	a.find(i => i < 2)|
+|forEach|	Run a function on each array item|	a.forEach(console.log)|
+|reduce|	Run a function to reduce each array item to a single item|	a.reduce((a, c) => a + c)|
+|map|	Run a function to map an array to a new array|	a.map(i => i+i)|
+|filter|	Run a function to remove items|	a.filter(i => i%2)|
+|every|	Run a function to test if all items match|	a.every(i => i < 3)|
+|some|	Run a function to test if any items match|	a.some(i => i < 1)|
+```
 const a = [1, 2, 3];
 
 console.log(a.map((i) => i + i));
@@ -972,7 +988,7 @@ console.log(a.sort((v1, v2) => v2 - v1));
 a.push(4);
 console.log(a.length);
 // OUTPUT: 4
-
+```
 
 
 
