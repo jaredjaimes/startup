@@ -1489,6 +1489,7 @@ Because of the complex history of modules they can be a confusing topic, but it 
 
 # Midterm Review Questions:
 In the following code, what does the link element do?
+
 In the following code,  what does a div tag do?
 In the following code, what is the difference between the #title and .grid selector?
 In the following code, what is the difference between padding and margin?
@@ -1522,6 +1523,9 @@ Is a web certificate is necessary to use HTTPS.
 Can a DNS A record can point to an IP address or another A record.
 Port 443, 80, 22 is reserved for which protocol?
 What will the following code using Promises output when executed?
+
+You can use this CSS to load fonts from google?
+
 
 
 Questions to look into:
