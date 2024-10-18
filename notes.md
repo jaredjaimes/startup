@@ -1524,8 +1524,8 @@ Can a DNS A record can point to an IP address or another A record.
 Port 443, 80, 22 is reserved for which protocol?
 What will the following code using Promises output when executed?
 
-You can use this CSS to load fonts from google?
-
+What is the HTML tag for an unordered list?
+<ul></ul>
 
 
 Questions to look into:
