@@ -1,11 +1,54 @@
-## The link to your website.
+#### The link to your website.
 [olaga.link](https://olaga.link/)
 
-## questions to ask the TA.
-...
-
 ## Console:
+- Also known as the command line, shell, or terminal, the console window is an essential web development tool. 
 - When ever you use the **"vi"** command in the console. There are certain command that you can type in for it to work the way you need it to. You can find all those commands here: [vim cheat sheet](https://vim.rtorr.com/)
+-  At any given point in time your console is located at one of the directories in the file system. You can see which directory you are in with the pwd (present working directory) command.
+  
+- echo - Output the parameters of the command
+- cd - Change directory
+- mkdir - Make directory
+- rmdir - Remove directory
+- rm - Remove file(s)
+- mv - Move file(s)
+- cp - Copy files
+- ls - List files
+- curl - Command line client URL browser
+- grep - Regular expression search
+- find - Find files
+- top - View running processes with CPU and memory usage
+- df - View disk statistics
+- cat - Output the contents of a file
+- less - Interactively output the contents of a file
+- wc - Count the words in a file
+- ps - View the currently running processes
+- kill - Kill a currently running process
+- sudo - Execute a command as a super user (admin)
+- ssh - Create a secure shell on a remote computer
+- scp - Securely copy files to a remote computer
+- history - Show the history of commands
+- ping - Check if a website is up
+- tracert - Trace the connections to a website
+- dig - Show the DNS information for a domain
+- man - Look up a command in the manual
+
+You can also chain the input and output of commands using special characters
+```
+ | - Take the output from the command on the left and pipe, or pass, it to the command on the right
+ > - Redirect output to a file. Overwrites the file if it exists
+ > - >> - Redirect output to a file. Appends if the file exists
+```
+
+For example, you can list the files in a directory, pipe it into grep to search for files created in Nov, and then pipe that into wc to count the number of files found with a date of Nov.
+```
+- ls -l | grep ' Nov ' | wc -l
+```
+
+There are also keystrokes that have special meaning in the console.
+- CTRL-R - Use type ahead to find previous commands
+- CTRL-C - Kill the currently running command
+
 
 ## Https and Tls, and web certificates
 - Https is the secure HTTP.
@@ -38,7 +81,24 @@ You can obtain, and renew, a web certificate by enabling the ACME protocol for y
 ```
     -<a href="https://byu.edu">Go to the Y</a>
 ```
--**NOTE:** By default a web server will display the HTML file named **index.html**. So it is very common to name the main HTML file for your web application **index.html**.
+HTML defines a header (<!DOCTYPE html>) that tells the browser the type and version of the document. You should always include this at the top of the HTML file. We can now add the header, some attributes, and more content to our document for a full example.
+```
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <main>
+      <h1>Hello world</h1>
+      <p class="introduction">
+        HTML welcomes you to the amazing world of
+        <span class="topic">web programming</span>.
+      </p>
+      <p class="question">What will this mean to you?</p>
+      <p class="assignment">Learn more <a href="instruction.html">here</a>.</p>
+    </main>
+  </body>
+</html>
+```
+- **NOTE:** By default a web server will display the HTML file named **index.html**. So it is very common to name the main HTML file for your web application **index.html**.
 
 -**TABLES:** This is how you do it:
 ```
@@ -116,9 +176,61 @@ Also: There is a github account with public videos to url from.
       ctx.stroke();
     </script>
     ```
+### Comments in HTML:
+```
+<!-- commented text -->
+```
 
+### Special characters:
+HTML uses several reserved characters for defining its file format. If you want to use those characters in your content then you need to escape them using the entity syntax. For example, to display a less than symbol (<) you would instead use the less than entity (&lt;). You can also use the entity syntax to represent any unicode character.
 
-## HTML Glossary:
+|Character|	Entity|
+|---------|----|
+|&|	&amp;|
+|<|	&lt;|
+|>|	&gt;|
+|"|	&quot;|
+|'|	&apos;|
+|😀|	&#128512;|
+
+### Common Elements:
+|element|	meaning|
+|-------|--------|
+|html	|The page container|
+|head	|Header information|
+|title|	Title of the page|
+|meta	|Metadata for the page such as character set or viewport settings|
+|script|	JavaScript reference. Either a external reference, or inline|
+|include|	External content reference|
+|body	|The entire content body of the page|
+|header|	Header of the main content|
+|footer	|Footer of the main content|
+|nav	|Navigational inputs|
+|main	|Main content of the page|
+|section|	A section of the main content|
+|aside	|Aside content from the main content|
+|div	|A block division of content|
+|span	|An inline span of content|
+|h<1-9>|	Text heading. From h1, the highest level, down to h9, the lowest level|
+|p	|A paragraph of text|
+|b	|Bring attention|
+|table|	Table|
+|tr	|Table row|
+|th	|Table header|
+|td	|Table data|
+|ol,ul|	Ordered or unordered list|
+|li	|List item|
+|a	|Anchor the text to a hyperlink|
+|img|	Graphical image reference|
+|dialog|	Interactive component such as a confirmation|
+|form	|A collection of user input|
+|input|	User input field|
+|audio|	Audio content|
+|video|	Video content|
+|svg	|Scalable vector graphic content|
+|iframe|	Inline frame of another HTML page|
+
+### HTML Glossary:
 |Element | Meaning     |
 |------|-------------|
 |html| top-level page structure, or page container|
