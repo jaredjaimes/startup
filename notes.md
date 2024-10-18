@@ -291,6 +291,8 @@ HTML uses several reserved characters for defining its file format. If you want 
 |nav| The <nav> element in HTML is used to represent a section of a page that contains navigation links. These links can be to other pages or to different parts of the same page |
 |attribute= placeholder| 
 
+
+
 ## CSS:
 - With CSS a web programmer can animate the page, deploy custom fonts, respond to user actions, and dynamically alter the entire layout of the page based on the size of a device and its orientation.
 - CSS is primarily concerned with defining rulesets, or simply rules. A rule is comprised of a selector that selects the elements to apply the rule to, and one or more declarations that represent the property to style with the given property value.
