@@ -890,6 +890,8 @@ Hello, world! Open the page in your browser of choice to see your Bootstrapped p
 
 # JavaScript:
 
+Java is weakly typed language made from  C, Java, and Scheme. It is by far the most used programming language in the world. The more effectively you understand JavaScript, the better web programmer you will be.
+
 To output: 
 ```
 console.log('Hello' + ' ' + 'world');
@@ -903,6 +905,7 @@ function join(a, b) {
 ```
 NOTE: Use your browser's debugger. For example, if you open Chrome and press F12 the debugger will display. Select the Console menu option. This will display a JavaScript interpreter where you can write and execute your code.
 
+### Javascrpt Console:
 The basic usage of the console object is to output a log message.
 ```
 console.log('hello');
@@ -918,7 +921,8 @@ You can even specify CSS declarations in order to style the log output.
 console.log('%c JavaScript Demo', 'font-size:1.5em; color:green;');
 // OUTPUT: JavaScript Demo //in large green text
 ```
-- Timers
+
+**Timers:**
 If you are trying to see how long a piece of code is running you can wrap it with time and timeEnd calls and it will output the duration between the time and timeEnd calls.
 ```
 console.time('demo time');
@@ -926,7 +930,8 @@ console.time('demo time');
 console.timeEnd('demo time');
 // OUTPUT: demo time: 9762.74 ms
 ```
-- Count
+
+**Count:**
 To see how many times a block of code is called you can use the count function.
 ```
 console.count('a');
@@ -936,7 +941,8 @@ console.count('a');
 console.count('b');
 // OUTPUT: b: 1
 ```
-#### Adding JavaScript to HTML:
+
+### Adding JavaScript to HTML:
 - You can insert JavaScript into HTML either by directly including it in the HTML within the content of a <script> element, or by using the src attribute of the script element to reference an external JavaScript file.
   
 index.js
@@ -960,13 +966,14 @@ index.html
   </script>
 </body>
 ```
+**Onclick**
 Notice that we call the sayHello and sayGoodbye JavaScript functions from the HTML in the onclick attribute of the button element. Special attributes like onclick automatically create event listeners for different DOM events that call the code contained in the attribute's value. The code specified by the attribute value can be a simple call to a function or any JavaScript code.
 ```
 <button onclick="let i=1;i++;console.log(i)">press me</button>
 <!-- OUTPUT: 2 -->
 ```
 
-#### JavaScript type and construct:
+### JavaScript type and construct:
 
 - Variables are declared using either the let or const keyword. let allows you to change the value of the variable while const will cause an error if you attempt to change it.
 ```
@@ -1983,5 +1990,7 @@ Questions to look into:
 1. contructurs, operators in classes?
 2. javascript object and classes?
 3. JSON
-4. 
+
+
+# TA QUESTIONS DEEPER UNDERSTANDING
 
