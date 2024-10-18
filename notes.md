@@ -176,6 +176,48 @@ Also: There is a github account with public videos to url from.
       ctx.stroke();
     </script>
     ```
+### Html input elements:
+|Element|	Meaning|	Example|
+|-------|--------|---------|
+|form|	Input container and submission|	<form action="form.html" method="post">|
+|fieldset|	Labeled input grouping|	<fieldset> ... </fieldset>|
+|input|	Multiple types of user input|	<input type="" />|
+|select|	Selection dropdown|	<select><option>1</option></select>|
+|optgroup|	Grouped selection dropdown|	<optgroup><option>1</option></optgroup>|
+|option|	Selection option|	<option selected>option2</option>|
+|textarea|	Multiline text input|	<textarea></textarea>|
+|label|	Individual input label|	<label for="range">Range: </label>|
+|output|	Output of input|	<output for="range">0</output>|
+|meter|	Display value with a known range|	<meter min="0" max="100" value="50"></meter>|
+
+Input elements types:
+|Type|	Meaning|
+|----|---------|
+|text|	Single line textual value|
+|password|	Obscured password|
+|email|	Email address|
+|tel|	Telephone number|
+|url|	URL address|
+|number|	Numerical value|
+|checkbox|	Inclusive selection|
+|radio|	Exclusive selection|
+|range|	Range limited number|
+|date|	Year, month, day|
+|datetime-local|	Date and time|
+|month|	Year, month|
+|week|	Week of year|
+|color|	Color|
+|file|	Local file|
+|submit|	button to trigger form submission|
+
+Attributes:
+|Attribute|	Meaning|
+|---------|--------|
+|name|	The name of the input. This is submitted as the name of the input if used in a form|
+|disabled|	Disables the ability for the user to interact with the input|
+|value|	The initial value of the input|
+|required|	Signifies that a value is required in order to be valid|
+
 ### Comments in HTML:
 ```
 <!-- commented text -->
