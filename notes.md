@@ -995,13 +995,13 @@ Type:
 
 NOte: You assign a null to a variable if you want it to be not assigned anything. Like setting character color o null if not selected anything, etc.
 
-Type	Use	Example
-Object	A collection of properties represented by name-value pairs. Values can be of any type.	{a:3, b:'fish'}
-Function	An object that has the ability to be called.	function a() {}
-Date	Calendar dates and times.	new Date('1995-12-17')
-Array	An ordered sequence of any type.	[3, 'fish']
-Map	A collection of key-value pairs that support efficient lookups.	new Map()
-JSON	A lightweight data-interchange format used to share information across programs.	{"a":3, "b":"fish"}
+|Type|	Use	|Example|
+|Object|	A collection of properties represented by name-value pairs. Values can be of any type.|	{a:3, b:'fish'}|
+|Function	|An object that has the ability to be called.	|function a() {}|
+|Date	|Calendar dates and times.	|new Date('1995-12-17')|
+|Array	|An ordered sequence of any type.|	[3, 'fish']|
+|Map	|A collection of key-value pairs that support efficient lookups.	|new Map()|
+|JSON	|A lightweight data-interchange format used to share information across programs.	|{"a":3, "b":"fish"}|
 
 Common Operations:
 When dealing with a number variable, JavaScript supports standard mathematical operators like + (add), - (subtract), * (multiply), / (divide), and === (equality). For string variables, JavaScript supports + (concatenation) and === (equality).
@@ -1044,7 +1044,7 @@ Here is a fun example of JavaScript's type conversion. Execute the following in 
 ```
 ('b' + 'a' + +'a' + 'a').toLowerCase();
 ```
-Conditionals
+**Conditionals:**
 JavaScript supports many common programming language conditional constructs. This includes if, else, and if else. Here are some examples.
 ```
 if (a === 1) {
@@ -1065,7 +1065,7 @@ if (true && (!false || true)) {
   //...
 }
 ```
-Loops
+**Loops:**
 JavaScript supports many common programming language looping constructs. This includes for, for in, for of, while, do while, and switch. Here are some examples.
 
 for
@@ -1139,7 +1139,7 @@ while (true) {
 // OUTPUT: 0 1
 ```
 
-#### JavaScript String:
+### JavaScript String:
 
 Strings are a primitive type in JavaScript. A string variable is specified by surrounding a sequence of characters with single quotes ('), double quotes ("), or backticks (`). The meaning of single or double quotes are equivalent, but the backtick defines a string literal that may contain JavaScript that is evaluated in place and concatenated into the string. A string literal replacement specifier is declared with a dollar sign followed by a curly brace pair. Anything inside the curly braces is evaluated as JavaScript. You can also use backticks to create multiline strings without having to explicitly escape the newline characters using \n.
 ```
@@ -1149,13 +1149,6 @@ const l = 'literal';
 console.log(`string ${l + (1 + 1)} text`);
 // OUTPUT: string literal2 text
 ```
-Unicode support
-JavaScript supports Unicode by defining a string as a sequence of 16-bit unsigned integers that represent UTF-16-encoded characters. Unicode support allows JavaScript to represent most languages spoken on the planet. This includes those that are read from right to left.
-```
-حجر
-أقول لهذا الحجر: أنا أنت. فيقول: لستَ مرناً الى هذا الحدّ. أقول: قلبي مثلك؟ فيقول:
-```
-However, there are several important steps you must take in order to make your web application fully internationalized. This includes handling of currency, time, dates, iconography, units of measure, keyboard layouts, and respecting local customs. Read this article on the W3C website to learn more about internationalization.
 
 String functions
 The string object has several interesting functions associated with it. Here are some of the commonly used ones.
@@ -1185,7 +1178,8 @@ console.log(s.endsWith('조선글'));
 console.log(s.toLowerCase());
 // OUTPUT: example:조선글
 ```
-#### Functions:
+
+### Functions:
 In JavaScript functions are first class objects. That means that they can be assigned a name, passed as a parameter, returned as a result, and referenced from an object or array just like any other variable.
 
 The basic syntax of a function begins with the function keyword followed by zero or more parameters and a body that may contain zero or more return statements. The return statement may return a single value. Note that there are no type declarations, as the type is always inferred by the assignment of the value to the parameter.
@@ -1225,7 +1219,9 @@ labeler('fish');
 labeler('fish', 'animal');
 // OUTPUT: animal=fish
 ```
-Anonymous functions
+Question: WHat the heck does the cash sign do in the function above?
+
+**Anonymous functions:**
 Functions in JavaScript are commonly assigned to a variable so that they can be passed as a parameter to some other function or stored as an object property. To easily support this common use you can define a function anonymously and assign it to a variable.
 ```
 // Function that takes a function as a parameter
@@ -1253,7 +1249,7 @@ console.log(
 );
 // OUTPUT: 2
 ```
-Creating, passing, and returning functions
+**Creating, passing, and returning functions:**
 Here are examples of assigning functions to variables, as well as using functions as parameters and return values.
 ```
 // Anonymous declaration of the function that is later assigned to a variable
@@ -1289,7 +1285,7 @@ const nameLabeler = labelMaker('name');
 nameLabeler('value');
 // OUTPUT: name=value
 ```
-Inner functions
+**Inner functions:**
 Functions can also be declared inside other functions. This allows you to modularize your code without always exposing private details.
 ```
 function labeler(value) {
@@ -1313,8 +1309,10 @@ labeler(5);
 labeler('fish');
 // OUTPUT: string=fish
 ```
-#### JavaScript arrow function:
-Because functions are first order objects in JavaScript they can be declared anywhere and passed as parameters. This results in code with lots of anonymous functions cluttering things up. To make the code more compact the arrow syntax was created. This syntax replaces the need for the function keyword with the symbols => placed after the parameter declaration. The enclosing curly braces are also optional.
+Basically, you can have functions inside functions in JavaScript.
+
+### JavaScript arrow function:
+Arrow syntax replaces the need for the function keyword with the symbols => placed after the parameter declaration. The enclosing curly braces are also optional.
 
 This is a function in arrow syntax that takes no parameters and always returns 3.
 ```
@@ -1332,7 +1330,7 @@ a.sort(function (v1, v2) {
 // arrow function syntax
 a.sort((v1, v2) => v1 - v2);
 ```
-Besides being compact, the arrow function syntax has some important semantic differences from the standard function syntax. This includes restrictions that arrow functions cannot be used for constructors or iterator generators.
+Note: arrow functions cannot be used for constructors or iterator generators.
 
 Return values
 Arrow functions also have special rules for the return keyword. The return keyword is optional if no curly braces are provided for the function and it contains a single expression. In that case the result of the expression is automatically returned. If curly braces are provided then the arrow function behaves just like a standard function.
@@ -1993,4 +1991,32 @@ Questions to look into:
 
 
 # TA QUESTIONS DEEPER UNDERSTANDING
+You can also use the ternary operator. This provides a compact if else representation.
+```
+a === 1 ? console.log(1) : console.log('not 1');
+```
 
+You can create formatted messages in the log parameter.
+```
+console.log('hello %s', 'world');
+// OUTPUT: hello world
+```
+You can even specify CSS declarations in order to style the log output.
+```
+console.log('%c JavaScript Demo', 'font-size:1.5em; color:green;');
+// OUTPUT: JavaScript Demo //in large green text
+```
+function labeler(value, title = 'title') {
+  console.log(`${title}=${value}`);
+}
+
+labeler();
+// OUTPUT: title=undefined
+
+labeler('fish');
+// OUTPUT: title=fish
+
+labeler('fish', 'animal');
+// OUTPUT: animal=fish
+```
+Question: WHat the heck does the cash sign do in the function above?
