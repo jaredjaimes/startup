@@ -2247,45 +2247,192 @@ console.log('done');
 // OUTPUT: done
 ```
 
-# Midterm Review Questions:
-In the following code, what does the link element do?
+## Midterm Questions
+1. In the following code, what does the link element do?
+- The <link> tag defines the relationship between the current document and an external resource.
+- The <link> tag is most often used to link to external style sheets or to add a favicon to your website.
+- The <link> element is an empty element, it contains attributes only.
+```
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+```
+2. In the following code,  what does a div tag do?
+- The <div> tag defines a division or a section in an HTML document. The <div> tag is used as a container for HTML elements.
 
-In the following code,  what does a div tag do?
-In the following code, what is the difference between the #title and .grid selector?
-In the following code, what is the difference between padding and margin?
-Given this HTML and this CSS how will the images be displayed using flex?
-What does the following padding CSS do?
-What does the following code using arrow syntax function declaration do?
-What does the following code using map with an array output?
-What does the following code output using getElementByID and addEventListener?
-What does the following line of Javascript do using a # selector?
-Which of the following are true? (mark all that are true about the DOM)
-By default, the HTML span element has a default CSS display property value of: 
-How would you use CSS to change all the div elements to have a background color of red?
-How would you display an image with a hyperlink in HTML?
-In the CSS box model, what is the ordering of the box layers starting at the inside and working out?
-Given the following HTML, what CSS would you use to set the text "trouble" to green and leave the "double" text unaffected?
-What will the following code output when executed using a for loop and console.log?
-How would you use JavaScript to select an element with the id of “byu” and change the text color of that element to green?
-What is the opening HTML tag for a paragraph, ordered list, unordered list, second level heading, first level heading, third level heading?
-How do you declare the document type to be html?
-What is valid javascript syntax for if, else, for, while, switch statements?
-What is the correct syntax for creating a javascript object?
-Is it possible to add new properties to javascript objects?
-If you want to include JavaScript on an HTML page, which tag do you use?
-Given the following HTML, what JavaScript could you use to set the text "animal" to "crow" and leave the "fish" text unaffected?
-Which of the following correctly describes JSON?
-What does the console command chmod, pwd, cd, ls, vim, nano, mkdir, mv, rm, man, ssh, ps, wget, sudo do?
-Which of the following console command creates a remote shell session?
-Which of the following is true when the -la parameter is specified for the ls console command?
-Which of the following is true for the domain name banana.fruit.bozo.click, which is the top level domain, which is a subdomain, which is a root domain?
-Is a web certificate is necessary to use HTTPS.
-Can a DNS A record can point to an IP address or another A record.
-Port 443, 80, 22 is reserved for which protocol?
-What will the following code using Promises output when executed?
 
-What is the HTML tag for an unordered list?
-<ul></ul>
+3. In the following code, what is the difference between padding and margin?
+- Padding: Creates space within an element, between the content and the border
+- Margin: Creates space around an element, outside of the border
+- Padding can be used to separate text boxes and images while keeping them aligned.
+- Padding can be used to adjust the size of an element.
+- Margin can be used to separate a button from other elements.
+
+4. What does the following line of Javascript do using a # selector?
+- In JavaScript, selectors can be used to select elements in the DOM. A selector can be an element ID, class, or tag name such as document. querySelector('#my-id') . Here is an example of using a selector in JavaScript to select an element with an ID of 'my-id'.
+
+5. By default, the HTML span element has a default CSS display property value of: 
+|display| Value	HTML Elements With This Default Value|
+|-------|---------------------------------------|
+|block|	div , p , table|
+|inline|	span , b , i , strong , em|
+|inline-block|	img|
+
+6. How would you use CSS to change all the div elements to have a background color of red?
+- you use the background-color property.
+7. How would you display an image with a hyperlink in HTML?
+- To display an image with a hyperlink in HTML, you can use the <img> and <a> tags, and specify the URL to link to in the <a> tag's href attribute.
+
+8. What is the opening HTML tag for a paragraph, ordered list, unordered list, second level heading, first level heading, third level heading?
+- Paragraph: <p> 
+- Ordered list: <ol> 
+- Unordered list: <ul> 
+- Second level heading: <h2> 
+- First level heading: <h1> 
+- Third level heading: <h3>
+
+
+9. How do you declare the document type to be html?
+- To declare that a document is HTML, you use the HTML document type declaration, or DOCTYPE, at the beginning of the document
+
+10. What is valid javascript syntax for if, else, for, while, switch statements?
+```
+// if statement
+if (condition) {
+  // code to execute if condition is true
+} else {
+  // code to execute if condition is false
+}
+
+// for statement
+for (initialization; condition; increment/decrement) {
+  // code to execute repeatedly as long as condition is true
+}
+
+// while statement
+while (condition) {
+  // code to execute repeatedly as long as condition is true
+}
+
+// switch statement
+switch (expression) {
+  case value1:
+    // code to execute if expression matches value1
+    break;
+  case value2:
+    // code to execute if expression matches value2
+    break;
+  default:
+    // code to execute if expression does not match any case
+}
+```
+11. What is the correct syntax for creating a javascript object?
+```
+const myObject = {
+  property1: "value1",
+  property2: 2,
+  property3: function() {
+    // function code
+  }
+};
+```
+Explanation:
+Curly braces {} define the object.
+property1, property2, and property3 are the property names (keys).
+"value1", 2, and the function are the corresponding property values.
+Commas separate the key-value pairs.
+
+Another explanation:
+With Object.create() , we can create an object with null as prototype. The equivalent syntax in object initializers would be the __proto__ key. o = Object.create(null); // Is equivalent to: o = { __proto__: null }; By default properties are not writable, enumerable or configurable.
+
+
+12.  Is it possible to add new properties to javascript objects?
+- To add a new property to an object, you can use dot notation or bracket notation in JavaScript. object['property'] = value; Replace object with the name of the object you want to add the property to, property with the name of the new property, and value with the value you want to assign to the property.
+
+Yes, it is possible to add new properties to JavaScript objects. You can do this using either dot notation or bracket notation:
+Dot notation:
+JavaScript
+```
+const myObject = {};
+
+myObject.newProperty = "Hello, world!";
+
+console.log(myObject.newProperty); // Output: Hello, world!
+```
+Bracket notation:
+JavaScript
+```
+const myObject = {};
+
+const propertyName = "newProperty";
+
+myObject[propertyName] = "Hello, world!";
+
+console.log(myObject[propertyName]); // Output: Hello, world!
+```
+
+
+13. If you want to include JavaScript on an HTML page, which tag do you use?
+- The <script> tag is what we use to includes our JavaScript. It's a lot like the <link> tag you've already been using to include your CSS files. Here's a very basic snippet of JavaScript using the script tag. This JavaScript is written directly into our HTML page.
+
+14. Which of the following correctly describes JSON?
+- a text-based format for storing and exchanging data that's both human-readable and machine-parsable. It's commonly used in web applications and API calls.
+15. What does the console command chmod, pwd, cd, ls, vim, nano, mkdir, mv, rm, man, ssh, ps, wget, sudo  do?
+Here are the functions of some Linux console commands: 
+- chmod: Changes the permissions for files and directories. The command can be used to grant or revoke read, write, and execute permissions for users, groups, and others. 
+- pwd: Prints the current working directory, starting from the root. 
+- cd: Navigates between directories. 
+- ls: Lists the contents of a folder, including files and directories. 
+- mkdir: Creates one or more directories. 
+- rmdir: Deletes empty directories. 
+- rm: Deletes files from a directory. 
+- mv: Moves or renames files. 
+- cp: Copies files. 
+- touch: Creates blank files. 
+- ln: Creates symbolic links to other files. 
+- clear: Clears the terminal display. 
+- cat: Displays file contents on the terminal. 
+- echo: Prints any text that follows the command. 
+- less: Displays paged outputs in the terminal.
+
+16. Which of the following console command creates a remote shell session?
+
+- The console command that creates a remote shell session is typically "ssh". 
+Explanation: 
+"ssh" stands for Secure Shell: and is the standard way to establish a secure connection to a remote computer, allowing you to execute commands on that machine as if you were logged in directly. 
+Example usage:
+Code
+```
+ssh username@server_address
+```
+
+17. Is a web certificate is necessary to use HTTPS.
+
+- Most crucially for businesses, an SSL certificate is necessary for an HTTPS web address. HTTPS is the secure form of HTTP, and HTTPS websites are websites that have their traffic encrypted by SSL/TLS.
+
+18. Can a DNS A record can point to an IP address or another A record.
+- A DNS A record can only point to an IP address; it cannot point to another A record. The purpose of an A record is to map a domain name directly to an IP address, so its value is always an IP address.
+
+19. Port 443, 80, 22 is reserved for which protocol?
+
+- Port 443 is reserved for the HTTPS protocol (Hypertext Transfer Protocol Secure), port 80 is for HTTP (Hypertext Transfer Protocol), and port 22 is for SSH (Secure Shell) protocol. 
+Breakdown: 
+- Port 443: HTTPS (encrypted web traffic) 
+- Port 80: HTTP (unencrypted web traffic) 
+- Port 22: SSH (secure remote access) 
+- What is a computer port? | Ports in networking - Cloudflare
+- Port 22: Secure Shell (SSH). ... Port 80: Hypertext Transfer Protocol (HTTP). ... Port 443: HTTP Secure (HTTPS). HTTPS is the secu...
+
+Cloudflare
+Common Ports for TCP & UDP Network Communication
+Oct 11, 2024 — While most networks rely on numerous ports, the most common ports used in a networking environment: * Port 80 – HTTP ...
+Netwrix Blog
+
+Port 80 (HTTP) vs. Port 443 (HTTPS): What's the Difference?
+Apr 21, 2024
+ClickSSL
+There are three main types of port numbers: Well-Known Ports (0-1023) that are reserved for reserved for standard services and protocols. They are assigned and controlled by IANA (Internet Assigned Numbers Authority). It includes things such as HTTP (80), HTTPS (443), FTP (21), SSH (22), and SMTP (25)
+
 
 
 Questions to look into:
