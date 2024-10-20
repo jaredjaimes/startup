@@ -2433,7 +2433,39 @@ Apr 21, 2024
 ClickSSL
 There are three main types of port numbers: Well-Known Ports (0-1023) that are reserved for reserved for standard services and protocols. They are assigned and controlled by IANA (Internet Assigned Numbers Authority). It includes things such as HTTP (80), HTTPS (443), FTP (21), SSH (22), and SMTP (25)
 
-
+FlashCards Kahhoot:
+1. What does the DOM textContent property do?
+   - Sets the child text for the an element.
+2. You can use CSS to load fonts from Google?
+   - true.
+3. What will the following output?
+   ```
+   const f = y => ++y;
+   console.log(f(3))
+   ```
+   - 4
+4. What does the following code ouput?
+   ```
+   let a = [1, 2, 3];
+   let e = a.map(number => {
+     return ('a' + number)
+   });
+   console.log(e);
+   ```
+   - ['a1','a22','a3']
+5. what does this do?
+   ```
+   document.querySelector('p').addEventListener('mouseover', console.log);
+   ```
+   - adds a mouseover event listener to a p element.
+6. whihc of the following is a valid javascrpt argument:
+   {n:1}
+7. which valid JSON:
+{"x":3}
+8. The following console command makes a script executable:
+   chmod +x deploy.sh
+9. 
+   
 
 Questions to look into:
 1. contructurs, operators in classes?
