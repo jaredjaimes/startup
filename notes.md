@@ -2273,12 +2273,12 @@ console.log('done');
 
 5. By default, the HTML span element has a default CSS display property value of: 
 |display| Value	HTML Elements With This Default Value|
-|-------|---------------------------------------|
+|-------|--------------------------------------------|
 |block|	div , p , table|
 |inline|	span , b , i , strong , em|
 |inline-block|	img|
 
-6. How would you use CSS to change all the div elements to have a background color of red?
+7. How would you use CSS to change all the div elements to have a background color of red?
 - you use the background-color property.
 7. How would you display an image with a hyperlink in HTML?
 - To display an image with a hyperlink in HTML, you can use the <img> and <a> tags, and specify the URL to link to in the <a> tag's href attribute.
