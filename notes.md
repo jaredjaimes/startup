@@ -1348,8 +1348,10 @@ Arrow functions also have special rules for the return keyword. The return keywo
 };
 // RETURNS: 3
 ```
-This pointer
-Next, arrow functions inherit the this pointer from the scope in which they are created. This makes what is known as a closure. A closure allows a function to continue referencing its creation scope, even after it has passed out of that scope. This can be tricky to wrap your head around, and we discuss it in detail when we later talk about JavaScript scope. For now consider the following example.
+**This pointer:**
+Next, arrow functions inherit the this pointer from the scope in which they are created. This makes what is known as a closure. 
+- A closure allows a function to continue referencing its creation scope, even after it has passed out of that scope.
+- This can be tricky to wrap your head around, and we discuss it in detail when we later talk about JavaScript scope. For now consider the following example.
 
 The function makeClosure returns an anonymous function using the arrow syntax. Notice that the a parameter is overridden, a new b variable is created, and both a and b are referenced in the arrow function. Because of that reference, they are both part of the closure for the returned function.
 ```
@@ -1406,7 +1408,7 @@ function debounce(windowMs, windowFunc) {
 You can experiment with this in CodePen. In this example, the background color will change as long as the user is scrolling. When they stop the background reverts back to white.
 
 
-#### JavaScript Arrays:
+### JavaScript Arrays:
 JavaScript array objects represent a sequence of other objects and primitives. You can reference the members of the array using a zero based index. You can create an array with the Array constructor or using the array literal notation shown below.
 ```
 const a = [1, 2, 3];
@@ -1450,16 +1452,20 @@ console.log(a.length);
 ### JSON:
 - JSON provides a simple way to share and store data. 
 - By design JSON is easily convertible to, and from, JavaScript object
-  
-Type	Example
-string	"crockford"
-number	42
-boolean	true
-array	[null,42,"crockford"]
-object	{"a":1,"b":"crockford"}
-null	null
 
-Most commonly, a JSON document contains an object. Objects contain zero or more key value pairs. The key is always a string, and the value must be one of the valid JSON data types. Key value pairs are delimited with commas. Curly braces delimit an object, square brackets and commas delimit arrays, and strings are always delimited with double quotes.
+JSON document contains one of the following data types:
+|Type	|Example|
+|-----|-------|
+|string|	"crockford"|
+|number	|42|
+|boolean|	true|
+|array	|[null,42,"crockford"]|
+|object	|{"a":1,"b":"crockford"}|
+|null|	null|
+
+- Most commonly, a JSON document contains an object.
+- Objects contain zero or more key value pairs. The key is always a string, and the value must be one of the valid JSON data types.
+- Key value pairs are delimited with commas. Curly braces delimit an object, square brackets and commas delimit arrays, and strings are always delimited with double quotes.
 
 Here is an example of a JSON document.
 ```
@@ -1473,6 +1479,9 @@ Here is an example of a JSON document.
   "end": null
 }
 ```
+JSON is always encoded with UTF-8. This allows for the representation of global data.
+
+**Converting to JAVASCRIPT:**
 You can convert JSON to, and from, JavaScript using the JSON.parse and JSON.stringify functions.
 ```
 const obj = { a: 2, b: 'crockford', c: undefined };
@@ -1492,7 +1501,7 @@ Note that in this example, JSON cannot represent the JavaScript undefined object
 A JavaScript object represents a collection of name value pairs referred to as properties. The property name must be of type String or Symbol, but the value can be of any type. Objects also have common object-oriented functionality such as constructors, a this pointer, static properties and functions, and inheritance.
 
 Objects can be created with the new operator. This causes the object's constructor to be called. Once declared you can add properties to the object by simply referencing the property name in an assignment. Any type of variable can be assigned to a property. This includes a sub-object, array, or function. The properties of an object can be referenced either with dot (obj.prop) or bracket notation (obj['prop']).
-
+```
 const obj = new Object({ a: 3 });
 obj['b'] = 'fish';
 obj.c = [1, 2, 3];
@@ -1502,38 +1511,38 @@ obj.hello = function () {
 
 console.log(obj);
 // OUTPUT: {a: 3, b: 'fish', c: [1,2,3], hello: func}
+```
 The ability to dynamically modify an object is incredibly useful when manipulating data with an indeterminate structure.
 
 ⚠ Note the different uses of the term object. Object can refer to the standard JavaScript objects (e.g. Promise, Map, Object, Function, Date, ...), or it can refer specifically to the JavaScript Object object (i.e. new Object()), or it can refer to any JavaScript object you create (e.g. {a:'a', b:2} ). This overloaded usage can be a bit confusing.
 
-Object-literals
+**Object-literals**
 You can also declare a variable of object type with the object-literal syntax. This syntax allows you to provide the initial composition of the object.
-
+```
 const obj = {
   a: 3,
   b: 'fish',
 };
-Object functions
+```
+**Object functions**
 Object has several interesting static functions associated with it. Here are some of the commonly used ones.
 
-Function	Meaning
-entries	Returns an array of key value pairs
-keys	Returns an array of keys
-values	Returns an array of values
-const obj = {
-  a: 3,
-  b: 'fish',
-};
-
+|Function|	Meaning|
+|--------|---------|
+|entries|	Returns an array of key value pairs|
+|keys	|Returns an array of keys|
+|values	|Returns an array of values|
+```
 console.log(Object.entries(obj));
 // OUTPUT: [['a', 3], ['b', 'fish']]
 console.log(Object.keys(obj));
 // OUTPUT: ['a', 'b']
 console.log(Object.values(obj));
 // OUTPUT: [3, 'fish']
-Constructor
+```
+**Constructor:**
 Any function that returns an object is considered a constructor and can be invoked with the new operator.
-
+```
 function Person(name) {
   return {
     name: name,
@@ -1543,8 +1552,10 @@ function Person(name) {
 const p = new Person('Eich');
 console.log(p);
 // OUTPUT: {name: 'Eich'}
-Because objects can have any type of property value you can create methods on the object as part of its encapsulation.
+```
 
+Because objects can have any type of property value you can create methods on the object as part of its encapsulation.
+```
 function Person(name) {
   return {
     name: name,
@@ -1557,12 +1568,17 @@ function Person(name) {
 const p = new Person('Eich');
 p.log();
 // OUTPUT: My name is Eich
-This pointer
-Notice in the last example the use of the keyword this when we referred to the name property (this.name). The meaning of this depends upon the scope of where it is used, but in the context of an object it refers to a pointer to the object. We will talk more about the this pointer in the instruction on scope.
+```
+**This pointer:**
+- Notice in the last example the use of the keyword this when we referred to the name property (this.name).
+- The meaning of this depends upon the scope of where it is used, but in the context of an object it refers to a pointer to the object. 
 
-Classes
-You can use classes to define objects. Using a class clarifies the intent to create a reusable component rather than a one-off object. Class declarations look similar to declaring an object, but classes have an explicit constructor and assumed function declarations. The person object from above would look like the following when converted to a class.
-
+**Classes:**
+- You can use classes to define objects.
+-  Using a class to create a reusable component rather than a one-off object.
+-  Class declarations look similar to declaring an object, but classes have an explicit constructor and assumed function declarations.
+-  The person object from above would look like the following when converted to a class.
+```
 class Person {
   constructor(name) {
     this.name = name;
@@ -1576,8 +1592,9 @@ class Person {
 const p = new Person('Eich');
 p.log();
 // OUTPUT: My name is Eich
+```
 You can make properties and functions of classes private by prefixing them with a #.
-
+```
 class Person {
   #name;
 
@@ -1589,9 +1606,12 @@ class Person {
 const p = new Person('Eich');
 p.#name = 'Lie';
 // OUTPUT: Uncaught SyntaxError: Private field '#name' must be declared in an enclosing class
-Inheritance
-Classes can be extended by using the extends keyword to define inheritance. Parameters that need to be passed to the parent class are delivered using the super function. Any functions defined on the child that have the same name as the parent override the parent's implementation. A parent's function can be explicitly accessed using the super keyword.
-
+```
+**Inheritance:**
+- Classes can be extended by using the **'extends'** keyword to define inheritance.
+- Parameters that need to be passed to the parent class are delivered using the **'super'** function.
+- Any functions defined on the child that have the same name as the parent override the parent's implementation. A parent's function can be explicitly accessed using the super keyword.
+```
 class Person {
   constructor(name) {
     this.name = name;
@@ -1616,6 +1636,7 @@ class Employee extends Person {
 const e = new Employee('Eich', 'programmer');
 console.log(e.print());
 // OUTPUT: My name is Eich. I am a programmer
+```
 
 ### JavaScript Regular expressions:
 Regular expression support is built right into JavaScript. If you are not familiar with regular expressions, you can think of them as textual pattern matchers. You use a regular expression to find text in a string so that you can replace it, or simply to know that it exists.
@@ -1641,8 +1662,10 @@ petRegex.test(text);
 ```
 
 ### JavaScript rest and spread:
-Sometimes you want a function to take an unknown number of parameters. For example, if you wanted to write a function that checks to see if some number in a list is equal to a given number, you could write this using an array.
-
+**Rest:**
+- Sometimes you want a function to take an unknown number of parameters.
+- For example, write a function that checks to see if some number in a list is equal to a given number, you could write this using an array.
+```
 function hasNumber(test, numbers) {
   return numbers.some((i) => i === test);
 }
@@ -1650,26 +1673,29 @@ function hasNumber(test, numbers) {
 const a = [1, 2, 3];
 hasNumber(2, a);
 // RETURNS: true
+```
 However sometimes you don't have an array to work with. In this case you could create one on the fly.
-
+```
 function hasTwo(a, b, c) {
   return hasNumber(2, [a, b, c]);
 }
+```
 But JavaScript provides the rest syntax to make this easier. Think of it as a parameter that contains the rest of the parameters. To turn the last parameter of any function into a rest parameter you prefix it with three periods. You can then call it with any number of parameters and they are all automatically combined into an array.
-
+```
 function hasNumber(test, ...numbers) {
   return numbers.some((i) => i === test);
 }
 
 hasNumber(2, 1, 2, 3);
 // RETURNS: true
+```
 Note that you can only make the last parameter a rest parameter. Otherwise JavaScript would not know which parameters to combine into the array.
 
 Technically speaking, rest allows JavaScript to provide what is called variadic functions.
 
-Spread
+**Spread**
 Spread does the opposite of rest. It take an object that is iterable (e.g. array or string) and expands it into a function's parameters. Consider the following.
-
+```
 function person(firstName, lastName) {
   return { first: firstName, last: lastName };
 }
@@ -1677,7 +1703,7 @@ function person(firstName, lastName) {
 const p = person(...['Ryan', 'Dahl']);
 console.log(p);
 // OUTPUT: {first: 'Ryan', last: 'Dahl'}
-
+```
 ### javascript exceptions:
 JavaScript supports exception handling using the try catch and throw syntax. An exception can be triggered whenever your code generates an exception using the throw keyword, or whenever an exception is generated by the JavaScript runtime, for example, when an undefined variable is used.
 
@@ -1686,7 +1712,7 @@ To catch a thrown exception, you wrap a code block with the try keyword, and fol
 In addition to a catch block, you can specify a finally block that is always called whenever the try block is exited regardless if an exception was ever thrown.
 
 The basic syntax looks like the following.
-
+```
 try {
   // normal execution code
 } catch (err) {
@@ -1694,8 +1720,9 @@ try {
 } finally {
   // always called code
 }
+```
 For example:
-
+```
 function connectDatabase() {
   throw new Error('connection error');
 }
@@ -1711,11 +1738,12 @@ try {
 
 // OUTPUT: Error: connection error
 //         always executed
+```
 ⚠ When first using exception handling it is tempting to use it as way to handle normal flows of execution. For example, throwing a file not found exception when it is common for users to request nonexistent files. Throwing exceptions should only happen when something truly exceptional occurs. For example, a file not found exception when the file is required for your code to run, such as a required configuration file. Your code will be easier to debug, and your logs more meaningful if you restrict exceptions to truly exceptional situations.
 
-Fallbacks
+**Fallbacks:**
 The fallback pattern is commonly implemented using exception handling. To implement the fallback pattern you put the normal feature path in a try block and then provide a fallback implementation in the catch block. For example, normally you would get the high scores for a game by making a network request, but if the network is not available then a locally cached version of the last available scores is used. By providing a fallback, you can always return something, even if the desired feature is temporarily unavailable.
-
+```
 function getScores() {
   try {
     const scores = scoringService.getScores();
@@ -1726,13 +1754,13 @@ function getScores() {
     return window.localStorage.getItem('scores');
   }
 }
-
+```
 
 ### Javascript destructing:
 Destructuring, not to be confused with destructing, is the process of pulling individual items out of an existing one, or removing structure. You can do this with either arrays or objects. This is helpful when you only care about a few items in the original structure.
 
 An example of destructuring arrays looks like the following.
-
+```
 const a = [1, 2, 4, 5];
 
 // destructure the first two items from a, into the new variables b and c
@@ -1740,57 +1768,68 @@ const [b, c] = a;
 
 console.log(b, c);
 // OUTPUT: 1, 2
+```
 Note that even though it looks like you are declaring an array with the syntax on the left side of the expression, it is only specifying that you want to destructure those values out of the array.
 
 You can also combine multiple items from the original object using rest syntax.
-
+```
 const [b, c, ...others] = a;
 
 console.log(b, c, others);
 // OUTPUT: 1, 2, [4,5]
-This works in a similar manner for objects, except with arrays, the assignment of the associated value was assumed by the positions in the two arrays. When destructuring objects, you explicitly specify the properties you want to pull from the source object.
-
+```
+- This works in a similar manner for objects' except with arrays, the assignment of the associated value was assumed by the positions in the two arrays.
+- When destructuring objects, you explicitly specify the properties you want to pull from the source object.
+```
 const o = { a: 1, b: 'animals', c: ['fish', 'cats'] };
 
 const { a, c } = o;
 
 console.log(a, c);
 // OUTPUT 1, ['fish', 'cats']
+```
 You can also map the names to new variables instead of just using the original property names.
-
+```
 const o = { a: 1, b: 'animals', c: ['fish', 'cats'] };
 
 const { a: count, b: type } = o;
 
 console.log(count, type);
 // OUTPUT 1, animals
+```
 Default values may also be provided for missing ones.
-
+```
 const { a, b = 22 } = {};
 const [c = 44] = [];
 
 console.log(a, b, c);
 // OUTPUT: undefined, 22, 44
+```
 Note that all of the above examples created new constant variables, but you can also use destructuring to reassign existing variables.
-
+```
 let a = 22;
 
 [a] = [1, 2, 3];
 
 console.log(a);
 // OUTPUT: 1
-
+```
 
 ### Scope:
 Understanding JavaScript scope is essential for making your programs run as you expect. Scope is defined as the variables that are visible in the current context of execution. JavaScript has four different types of scope:
 
-Global - Visible to all code
-Module - Visible to all code running in a module
-Function - Visible within a function
-Block - Visible within a block of code delimited by curly braces
-Var
-Initially JavaScript used the keyword var to declare a variable. The problem with var, unlike const or let, is that it ignores block scope. Variables declared with var are always logically hoisted to the top of the function. For example, the following code shows the same variable name being used within different enclosing scopes. However, because var ignores block scope the for loop is simply assigning a new value to x rather than declaring a new variable that has the same name.
+* Global - Visible to all code
+* Module - Visible to all code running in a module
+* Function - Visible within a function
+* Block - Visible within a block of code delimited by curly braces
 
+**Var:**
+- Initially JavaScript used the keyword var to declare a variable. 
+- The problem with var, unlike const or let, is that it ignores block scope.
+- Variables declared with var are always logically hoisted to the top of the function.
+- For example, the following code shows the same variable name being used within different enclosing scopes.
+- However, because var ignores block scope the for loop is simply assigning a new value to x rather than declaring a new variable that has the same name.
+```
 var x = 10;
 console.log('start', x);
 
@@ -1803,14 +1842,17 @@ console.log('end', x);
 // OUTPUT: start 10
 //         middle 0
 //         end 1
+```
 ⚠ There are few cases where it makes sense to use var. It is strongly suggested that you only use const and let unless you fully understand why you are using var.
 
-This
-The keyword this represents a variable that points to an object that contains the context within the scope of the currently executing line of code. The this variable is automatically declared and you can reference this anywhere in a JavaScript program. Because the value of this depends upon the context in which it is referenced, there are three different contexts to which this can refer:
+**This:**
+The keyword this represents a variable that points to an object that contains the context within the scope of the currently executing line of code. The this variable is automatically declared and you can reference this anywhere in a JavaScript program. Because the value of **this** depends upon the context in which it is referenced, there are three different contexts to which this can refer:
 
-Global - When this is referenced outside a function or object it refers to the globalThis object. The globalThis object represents the context for runtime environment. For example, when running in a browser, globalThis refers to the browser's window object.
-Function - When this is referenced in a function it refers to the object that owns the function. That is either an object you defined or globalThis if the function is defined outside of an object. Note that when running in JavaScript strict mode, a global function's this variable is undefined instead of globalThis.
-Object - When this is referenced in an object it refers to the object.
+* Global - When **this** is referenced outside a function or object it refers to the **globalThis** object. The globalThis object represents the context for runtime environment. For example, when running in a browser, globalThis refers to the browser's window object.
+* Function - When **this** is referenced in a function it refers to the object that owns the function. That is either an object you defined or globalThis if the function is defined outside of an object. Note that when running in JavaScript strict mode, a global function's this variable is undefined instead of globalThis.
+* Object - When **this** is referenced in an object it refers to the object.
+
+```
 'use strict';
 
 // global scope
@@ -1836,20 +1878,22 @@ class ScopeTest {
 }
 
 new ScopeTest().objectFunc();
+```
 Running the above code in a browser results in the following.
-
+```
 global: Window
 globalThis: Window
 globalFunctionThis: undefined
 objectThis: ScopeTest
 objectFunctionThis: ScopeTest
+```
 Note that if we were not using JavaScript strict mode then globalFunctionThis would refer to Window.
 
-Closure
+**Closure:**
 A closure is defined as a function and its surrounding state. That means whatever variables are accessible when a function is created are available inside that function. This holds true even if you pass the function outside of the scope of its original creation.
 
-Here is an example of a function that is created as part of an object. That means that function has access to the object's this pointer.
-
+Here is an example of a function that is created as part of an object. That means that function has access to the object's **this** pointer.
+```
 globalThis.x = 'global';
 
 const obj = {
@@ -1861,8 +1905,9 @@ const obj = {
 
 obj.f();
 // OUTPUT: object
-Arrow functions are a bit different because they inherit the this pointer of their creation context. So if we change our previous example to return an arrow function, then the this pointer at the time of creation will be globalThis.
-
+```
+Arrow functions are a bit different because they inherit the **this** pointer of their creation context. So if we change our previous example to return an arrow function, then the **this** pointer at the time of creation will be globalThis.
+```
 globalThis.x = 'global';
 
 const obj = {
@@ -1872,8 +1917,9 @@ const obj = {
 
 obj.f();
 // OUTPUT: global
+```
 However, if we make function in our object that returns an arrow function, then the this pointer will be the object's this pointer since that was the active context at the time the arrow function was created.
-
+```
 globalThis.x = 'global';
 
 const obj = {
@@ -1886,6 +1932,7 @@ const obj = {
 const f = obj.make();
 f();
 // OUTPUT: object
+```
 
 ### Modules javascript:
 JavaScript modules allow for the partitioning and sharing of code. Initially JavaScript had no support for modules. Node.js, a server side JavaScript execution application, introduced the concept of modules in order to support the importing of packages of JavaScript from third party providers.
@@ -1897,32 +1944,35 @@ In order to differentiate between the two implementations, Node.js modules are c
 Because modules create a file-based scope for the code they represent, you must explicitly export the objects from one file and then import them into another file. For example, here is a simple module that exports a function that displays an alert.
 
 alert.js
-
+```
 export function alertDisplay(msg) {
   alert(msg);
 }
+```
 You can import the module's exported function into another module using the import keyword.
 
 main.js
-
+```
 import { alertDisplay } from './alert.js';
 
 alertDisplay('called from main.js');
-ES Modules in the browser
+```
+**ES Modules in the browser:**
 When you use ES modules in the browser via HTML script references, things get a little complicated. The key thing to understand is that modules can only be called from other modules. You cannot access JavaScript contained in a module from the global scope that your non-module JavaScript is executing in.
 
 From your HTML, you can specify that you are using an ES module by including a type attribute with the value of module in the script element. You can then import and use other modules. This is shown in the example below.
 
 index.html
-
+```
 <script type="module">
   import { alertDisplay } from './alert.js';
   alertDisplay('module loaded');
 </script>
+```
 If we want to use a module in the global scope that our HTML or other non-module JavaScript is executing in, then we must leak it into the global scope. We do this by either attaching an event handler or explicitly adding a function to the global window object. In the example below, we expose the alertDisplay imported module function by attaching it to the global JavaScript window object so that it can then be called from the button onclick handler. We also expose the module function by attaching a keypress event.
 
 index.html
-
+```
 <html>
   <body>
     <script type="module">
@@ -1936,12 +1986,266 @@ index.html
     <button onclick="btnClick('button clicked')">Press me</button>
   </body>
 </html>
+```
 Now, if the button is pushed or a key is pressed our ES module function will be called.
 
-Modules with web frameworks
+**Modules with web frameworks**
 Fortunately, when you use a web framework bundler, discussed in later instruction, to generate your web application distribution code, you usually don't have to worry about differentiating between global scope and ES module scope. The bundler will inject all the necessary syntax to connect your HTML to your modules. Historically, this was done by removing the modules and placing all of the JavaScript in a namespaced global partition. Now that ES Modules are supported on most browsers, the bundler will expose the ES module directly.
 
 Because of the complex history of modules they can be a confusing topic, but it is well worth the time to understand how they work as they are a core piece of a web programmer's toolkit.
+
+### Local Storage:
+- -The browser's localStorage API provides the ability to persistently store and retrieve data on a user's browser across user sessions and HTML page renderings. (i.e. scores, usernames, etc.,)
+-  localStorage is also used as a cache for when data cannot be obtained from the server. For example, your frontend JavaScript could store the last high scores obtained from the service, and then display those scores in the future if the service is not available.
+
+**How to use LocalStorage**
+There are four main functions that can be used with localStorage.
+
+|Function|	Meaning|
+|--------|---------|
+|setItem(name, value)|	Sets a named item's value into local storage|
+|getItem(name)|	Gets a named item's value from local storage|
+|removeItem(name)|	Removes a named item from local storage|
+|clear()|	Clears all items in local storage|
+
+-A local storage value must be of type string, number, or boolean. If you want to store a JavaScript object or array, then you must first convert it to a JSON string with JSON.stringify() on insertion, and parse it back to JavaScript with JSON.parse() when retrieved.
+
+Open your startup website and run the following code in the browser's dev tools console window.
+```
+let user = 'Alice';
+
+let myObject = {
+  name: 'Bob',
+  info: {
+    favoriteClass: 'CS 260',
+    likesCS: true,
+  },
+};
+
+let myArray = [1, 'One', true];
+
+localStorage.setItem('user', user);
+localStorage.setItem('object', JSON.stringify(myObject));
+localStorage.setItem('array', JSON.stringify(myArray));
+
+console.log(localStorage.getItem('user'));
+console.log(JSON.parse(localStorage.getItem('object')));
+console.log(JSON.parse(localStorage.getItem('array')));
+```
+Output
+```
+Alice
+{name: 'Bob', info: {favoriteClass: 'CS 260', likesCS: true}
+[1, 'One', true]
+```
+Notice that you are able to see the round trip journey of the local storage values in the console output. If you want to see what values are currently set for your application, then open the Application tab of the dev tools and select Storage > Local Storage and then your domain name. With the dev tools you can add, view, update, and delete any local storage values.
+
+![localStorageDevTools](https://github.com/user-attachments/assets/ae06bc77-a9b3-46d0-b8aa-c9f2c4388912)
+
+### Promises:
+- The rendering process of your HTML executes on a single thread.
+- That means that you cannot take a long time processing JavaScript on the main rendering thread.
+- Long running, or blocking tasks, should be executed with the use of a JavaScript Promise.
+- The execution of a promise allows the main rendering thread to continue while some action is executed in the background.
+- You create a promise by calling the Promise object constructor and passing it an executor function that runs the asynchronous operation.
+- Executing asynchronously means that promise constructor may return before the promise executor function runs.
+- The state of the promise execution is always in one of three possible states.
+
+1. pending - Currently running asynchronously
+2. fulfilled - Completed successfully
+3. rejected - Failed to complete
+
+- We can demonstrate asynchronous execution by using the standard JavaScript setTimeout function to create a delay in the execution of the code.
+-  The setTimeout function takes the number of milliseconds to wait and a function to call after that amount of time has expired.
+-  We call the delay function in a for loop in the promise executor and also in a for loop outside the promise so that both code blocks are running in parallel.
+```
+const delay = (msg, wait) => {
+  setTimeout(() => {
+    console.log(msg, wait);
+  }, 1000 * wait);
+};
+
+new Promise((resolve, reject) => {
+  // Code executing in the promise
+  for (let i = 0; i < 3; i++) {
+    delay('In promise', i);
+  }
+});
+
+// Code executing after the promise
+for (let i = 0; i < 3; i++) {
+  delay('After promise', i);
+}
+
+// OUTPUT:
+//   In promise 0
+//   After promise 0
+//   In promise 1
+//   After promise 1
+//   In promise 2
+//   After promise 2
+```
+
+**Resolving and rejecting:**
+- Now that we know how to use a promise to execute asynchronously, we need to be able to set the state to fulfilled when things complete correctly, or to rejected when an error happens.
+- The promise executor function takes two functions as parameters, resolve and reject.
+- Calling resolve sets the promise to the fulfilled state, and calling reject sets the promise to the rejected state.
+
+Consider the following "coin toss" promise that waits ten seconds and then has a fifty percent chance of resolving or rejecting.
+```
+const coinToss = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    if (Math.random() > 0.5) {
+      resolve('success');
+    } else {
+      reject('error');
+    }
+  }, 10000);
+});
+```
+If you log the coinToss promise object to the console immediately after calling the constructor, it will display that it is in the pending state.
+```
+console.log(coinToss);
+// OUTPUT: Promise {<pending>}
+```
+If you wait ten seconds and then log the coinToss promise object again, the state will either show as fulfilled or rejected depending upon the way the coin landed.
+```
+console.log(coinToss);
+// OUTPUT: Promise {<fulfilled>}
+```
+**Then, catch, finally:**
+With the ability to asynchronously execute and set the resulting state, we now need a way to generically do something with the result of a promise after it resolves.
+- This is done with functionality similar to exception handling.
+- The promise object has three functions: then, catch, and finally.
+  - The then function is called if the promise is fulfilled.
+  - catch is called if the promise is rejected.
+  - finally is always called after all the processing is completed.
+
+We can rework our coinToss example and make it so 10 percent of the time the coin falls off the table and resolves to the rejected state. Otherwise the promise resolves to fulfilled with a result of either heads or tails.
+```
+const coinToss = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    if (Math.random() > 0.1) {
+      resolve(Math.random() > 0.5 ? 'heads' : 'tails');
+    } else {
+      reject('fell off table');
+    }
+  }, 10000);
+});
+```
+We then chain the then, catch and finally functions to the coinToss object in order to handle each of the possible results.
+```
+coinToss
+  .then((result) => console.log(`Coin toss result: ${result}`))
+  .catch((err) => console.log(`Error: ${err}`))
+  .finally(() => console.log('Toss completed'));
+
+// OUTPUT:
+//    Coin toss result: tails
+//    Toss completed
+```
+### JavaScript Async/await:
+JavaScript Promise objects are great for asynchronous execution, but as developers began to build large systems with promises they started wanting a more concise representation. 
+- This was provided with the introduction of the **async/await** syntax. The **await** keyword wraps the execution of a promise and removed the need to chain functions.
+- The await expression will block until the promise state moves to fulfilled, or throws an exception if the state moves to rejected. For example, if we have a function that returns a coin toss promise.
+```
+const coinToss = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (Math.random() > 0.1) {
+        resolve(Math.random() > 0.5 ? 'heads' : 'tails');
+      } else {
+        reject('fell off table');
+      }
+    }, 1000);
+  });
+};
+```
+We can create equivalent executions with either a promise then/catch chain, or an await with a try/catch block.
+
+**then/catch chain version:**
+```
+coinToss()
+  .then((result) => console.log(`Toss result ${result}`))
+  .catch((err) => console.error(`Error: ${err}`))
+  .finally(() => console.log(`Toss completed`));
+```
+**async, try/catch version:**
+```
+try {
+  const result = await coinToss();
+  console.log(`Toss result ${result}`);
+} catch (err) {
+  console.error(`Error: ${err}`);
+} finally {
+  console.log(`Toss completed`);
+}
+```
+**async:**
+One important restriction for working with await is that you cannot call await unless it is called at the top level of the JavaScript, or is in a function that is defined with the async keyword. Applying the async keyword transforms the function so that it returns a promise that will resolve to the value that was previously returned by the function. Basically this turns any function into an asynchronous function, so that it can in turn make asynchronous requests.
+
+This can be demonstrated with a function that makes animal noises. Notice that the return value is a simple string.
+```
+function cow() {
+  return 'moo';
+}
+console.log(cow());
+// OUTPUT: moo
+```
+If we designate the function to be asynchronous then the return value becomes a promise that is immediately resolved and has a value that is the return value of the function.
+```
+async function cow() {
+  return 'moo';
+}
+console.log(cow());
+// OUTPUT: Promise {<fulfilled>: 'moo'}
+```
+We then change the cow function to explicitly create a promise instead of the automatically generated promise that the await keyword generates.
+```
+async function cow() {
+  return new Promise((resolve) => {
+    resolve('moo');
+  });
+}
+console.log(cow());
+// OUTPUT: Promise {<pending>}
+```
+You can see that the promise is in the pending state because the promise's execution function has not yet resolved.
+
+**await:**
+The async keyword declares that a function returns a promise. The await keyword wraps a call to the async function, blocks execution until the promise has resolved, and then returns the result of the promise.
+
+We can demonstrate await in action with the cow promise from above. If we log the output from invoking cow then we see that the return value is a promise. However, if we prefix the call to the function with the await keyword, execution will stop until the promise has resolved, at which point the result of the promise is returned instead of the actual promise object.
+```
+console.log(cow());
+// OUTPUT: Promise {<pending>}
+
+console.log(await cow());
+// OUTPUT: moo
+```
+By combining async, to define functions that return promises, with await, to wait on the promise, you can create code that is asynchronous, but still maintains the flow of the code without explicitly using callbacks.
+
+Putting it all together
+You can see the benefit for async/await clearly by considering a case where multiple promises are required. For example, when calling the fetch web API on an endpoint that returns JSON, you would need to resolve two promises. One for the network call, and one for converting the result to JSON. A promise implementation would look like the following.
+```
+const httpPromise = fetch('https://simon.cs260.click/api/user/me');
+const jsonPromise = httpPromise.then((r) => r.json());
+jsonPromise.then((j) => console.log(j));
+console.log('done');
+
+// OUTPUT: done
+// OUTPUT: {email: 'bud@mail.com', authenticated: true}
+```
+With async/await, you can clarify the code intent by hiding the promise syntax, and also make the execution block until the promise is resolved.
+```
+const httpResponse = await fetch('https://simon.cs260.click/api/user/me');
+const jsonResponse = await httpResponse.json();
+console.log(jsonResponse);
+console.log('done');
+
+// OUTPUT: {email: 'bud@mail.com', authenticated: true}
+// OUTPUT: done
+```
 
 # Midterm Review Questions:
 In the following code, what does the link element do?
@@ -1991,12 +2295,12 @@ Questions to look into:
 
 
 # TA QUESTIONS DEEPER UNDERSTANDING
-You can also use the ternary operator. This provides a compact if else representation.
+1. You can also use the ternary operator. This provides a compact if else representation.
 ```
 a === 1 ? console.log(1) : console.log('not 1');
 ```
 
-You can create formatted messages in the log parameter.
+ You can create formatted messages in the log parameter.
 ```
 console.log('hello %s', 'world');
 // OUTPUT: hello world
@@ -2005,7 +2309,7 @@ You can even specify CSS declarations in order to style the log output.
 ```
 console.log('%c JavaScript Demo', 'font-size:1.5em; color:green;');
 // OUTPUT: JavaScript Demo //in large green text
-```
+
 function labeler(value, title = 'title') {
   console.log(`${title}=${value}`);
 }
@@ -2020,3 +2324,18 @@ labeler('fish', 'animal');
 // OUTPUT: animal=fish
 ```
 Question: WHat the heck does the cash sign do in the function above?
+
+2. The debounce function implements the execution of windowFunc within the restricted time window by creating a closure that contains the current timeout and returning a function that will reset the timeout every time it is called. The returned function is what the scroll event will actually call when the user scrolls the page. However, instead of directly executing the windowFunc it sets a timer based on the value of windowMs. If the debounce function is called again before the window times out then it resets the timeout.
+```
+function debounce(windowMs, windowFunc) {
+  let timeout;
+  return function () {
+    console.log('scroll event');
+    clearTimeout(timeout);
+    timeout = setTimeout(() => windowFunc(), windowMs);
+  };
+}
+```
+You can experiment with this in CodePen. In this example, the background color will change as long as the user is scrolling. When they stop the background reverts back to white.
+
+Question, what does the debounce function do above?
