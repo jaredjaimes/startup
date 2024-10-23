@@ -2518,3 +2518,588 @@ function debounce(windowMs, windowFunc) {
 You can experiment with this in CodePen. In this example, the background color will change as long as the user is scrolling. When they stop the background reverts back to white.
 
 Question, what does the debounce function do above?
+
+## Web frameworks:
+- Make the job of writing web applications easier by providing tools for completing common application tasks.
+- There are lots of web frameworks to choose from and they evolve all the time. You can view the latest popularity poll at StateOfJS.
+
+![stateofjs-webframeworks](https://github.com/user-attachments/assets/35d39147-911b-4c52-8fda-cfd8b01c1cee)
+
+Here are some of the different ones you can use:
+
+### Vue:
+Vue combines HTML, CSS, and JavaScript into a single file. HTML is represented by a template element that can be aggregated into other templates.
+
+SFC
+```
+<script>
+  export default {
+    data() {
+      return {
+        name: 'world',
+      };
+    },
+  };
+</script>
+
+<style>
+  p {
+    color: green;
+  }
+</style>
+
+<template>
+  <p>Hello {{ name }}!</p>
+</template>
+```
+### Svelte
+Like Vue, Svelte combines HTML, CSS, and JavaScript into a single file. The difference here is that Svelte requires a transpiler to generate browser-ready code, instead of a runtime virtual DOM.
+
+Svelte file
+```
+<script>
+  let name = 'world';
+</script>
+
+<style>
+  p {
+    color: green;
+  }
+</style>
+
+<p>Hello {name}!</p>
+```
+### React
+React combines JavaScript and HTML into its component format. CSS must be declared outside of the JSX file. The component itself leverages the functionality of JavaScript and can be represented as a function or class.
+
+JSX
+```
+import 'hello.css';
+
+const Hello = () => {
+  let name = 'world';
+
+  return <p>Hello {name}</p>;
+};
+```
+CSS
+```
+p {
+  color: green;
+}
+```
+Angular component
+- An Angular component defines what JavaScript, HTML, and CSS are combined together. This keeps a fairly strong separation of files that are usually grouped together in a directory rather than using the single file representation.
+
+JS
+```
+@Component({
+  selector: 'app-hello-world',
+  templateUrl: './hello-world.component.html',
+  styleUrls: ['./hello-world.component.css'],
+})
+export class HelloWorldComponent {
+  name: string;
+  constructor() {
+    this.name = 'world';
+  }
+}
+```
+HTML
+```
+<p>hello {{name}}</p>
+```
+CSS
+```
+p {
+  color: green;
+}
+```
+# React:
+For additional reading: [react](https://react.dev/learn)
+
+### Notes on Instruction Video:
+- Web frameworks: they simplify common patterns , provide common components, improve performance, and increased device coverage, they do this because they now what common things you are using and it knows how to use each of these things.
+- React is the most popular framework by far.
+
+ Core concept of react, is the JSX:
+- JSX: combine javascript and html into one representation.
+![jsx notes](https://github.com/user-attachments/assets/71a12801-281d-477a-9cef-a0e95715982c)
+- the jsx can't be understood by browser, so you throw the stuff in jsx into babel and it translate it into a language the browser can understand.
+When using codepen you need to tell codepen that you are using babel in the code. Just fyi.
+- Make sure to import React library.
+- 
+Components:
+A component is taking some peice of your application and pulling it out and making a single representation.
+
+### Extra reading with React:
+
+Its biggest departure from JavaScript comes with the use of JSX syntax. JSX extends JavaScript's syntax so that HTML-like code can live alongside it. For example:
+jsx
+```
+const heading = <h1>Mozilla Developer Network</h1>;
+```
+This heading constant is known as a JSX expression. React can use it to render that <h1> tag in our app.
+
+Suppose we wanted to wrap our heading in a <header> tag, for semantic reasons? The JSX approach allows us to nest our elements within each other, just like we do with HTML:
+
+jsx
+```
+const header = (
+  <header>
+    <h1>Mozilla Developer Network</h1>
+  </header>
+);
+```
+
+Of course, your browser can't read JSX without help. When compiled (using a tool like Babel or Parcel), our header expression would look like this:
+
+jsx
+```
+const header = React.createElement(
+  "header",
+  null,
+  React.createElement("h1", null, "Mozilla Developer Network"),
+);
+```
+React componenets:
+React apps are made out of components. A component is a piece of the UI (user interface) that has its own logic and appearance. A component can be as small as a button, or as large as an entire page.
+
+React components are JavaScript functions that return markup:
+```
+function MyButton() {
+  return (
+    <button>I'm a button</button>
+  );
+}
+```
+Now that you’ve declared MyButton, you can nest it into another component:
+```
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Welcome to my app</h1>
+      <MyButton />
+    </div>
+  );
+}
+```
+Notice that <MyButton /> starts with a capital letter. That’s how you know it’s a React component. React component names must always start with a capital letter, while HTML tags must be lowercase.
+
+**ADDING STYLES:**
+In React, you specify a CSS class with className. It works the same way as the HTML class attribute:
+```
+<img className="avatar" />
+```
+Then you write the CSS rules for it in a separate CSS file:
+```
+/* In your CSS */
+.avatar {
+  border-radius: 50%;
+}
+```
+React does not prescribe how you add CSS files. In the simplest case, you’ll add a <link> tag to your HTML. If you use a build tool or a framework, consult its documentation to learn how to add a CSS file to your project.
+
+**DISPLAYING DATA:**
+JSX lets you put markup into JavaScript. Curly braces let you “escape back” into JavaScript so that you can embed some variable from your code and display it to the user. For example, this will display user.name:
+```
+return (
+  <h1>
+    {user.name}
+  </h1>
+);
+```
+You can also “escape into JavaScript” from JSX attributes, but you have to use curly braces instead of quotes. For example, className="avatar" passes the "avatar" string as the CSS class, but src={user.imageUrl} reads the JavaScript user.imageUrl variable value, and then passes that value as the src attribute:
+```
+return (
+  <img
+    className="avatar"
+    src={user.imageUrl}
+  />
+);
+```
+**CONDITIONALS:**
+
+In React, there is no special syntax for writing conditions. Instead, you’ll use the same techniques as you use when writing regular JavaScript code. For example, you can use an if statement to conditionally include JSX:
+```
+let content;
+if (isLoggedIn) {
+  content = <AdminPanel />;
+} else {
+  content = <LoginForm />;
+}
+return (
+  <div>
+    {content}
+  </div>
+);
+```
+If you prefer more compact code, you can use the conditional ? operator. Unlike if, it works inside JSX:
+```
+<div>
+  {isLoggedIn ? (
+    <AdminPanel />
+  ) : (
+    <LoginForm />
+  )}
+</div>
+```
+When you don’t need the else branch, you can also use a shorter logical && syntax:
+```
+<div>
+  {isLoggedIn && <AdminPanel />}
+</div>
+```
+All of these approaches also work for conditionally specifying attributes. If you’re unfamiliar with some of this JavaScript syntax, you can start by always using if...else.
+
+**Rendering lists:**
+You will rely on JavaScript features like for loop and the array map() function to render lists of components.
+
+For example, let’s say you have an array of products:
+```
+const products = [
+  { title: 'Cabbage', id: 1 },
+  { title: 'Garlic', id: 2 },
+  { title: 'Apple', id: 3 },
+];
+```
+Inside your component, use the map() function to transform an array of products into an array of <li> items:
+```
+const listItems = products.map(product =>
+  <li key={product.id}>
+    {product.title}
+  </li>
+);
+
+return (
+  <ul>{listItems}</ul>
+);
+```
+Notice how <li> has a key attribute. For each item in a list, you should pass a string or a number that uniquely identifies that item among its siblings. Usually, a key should be coming from your data, such as a database ID. React uses your keys to know what happened if you later insert, delete, or reorder the items.
+
+**Responding to events** 
+You can respond to events by declaring event handler functions inside your components:
+```
+function MyButton() {
+  function handleClick() {
+    alert('You clicked me!');
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Click me
+    </button>
+  );
+}
+```
+Notice how onClick={handleClick} has no parentheses at the end! Do not call the event handler function: you only need to pass it down. React will call your event handler when the user clicks the button.
+
+**Updating the screen:**
+Often, you’ll want your component to “remember” some information and display it. For example, maybe you want to count the number of times a button is clicked. To do this, add state to your component.
+
+First, import useState from React:
+```
+import { useState } from 'react';
+```
+Now you can declare a state variable inside your component:
+```
+function MyButton() {
+  const [count, setCount] = useState(0);
+  // ...
+```
+You’ll get two things from useState: the current state (count), and the function that lets you update it (setCount). You can give them any names, but the convention is to write [something, setSomething].
+
+The first time the button is displayed, count will be 0 because you passed 0 to useState(). When you want to change state, call setCount() and pass the new value to it. Clicking this button will increment the counter:
+```
+function MyButton() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Clicked {count} times
+    </button>
+  );
+}
+```
+React will call your component function again. This time, count will be 1. Then it will be 2. And so on.
+
+If you render the same component multiple times, each will get its own state. Then each will remember it's own count state and doesn't affect other buttons.
+
+**Using Hooks:** 
+Functions starting with use are called Hooks. useState is a built-in Hook provided by React. You can find other built-in Hooks in the API reference. You can also write your own Hooks by combining the existing ones.
+
+Hooks are more restrictive than other functions. You can only call Hooks at the top of your components (or other Hooks). If you want to use useState in a condition or a loop, extract a new component and put it there.
+
+**Sharing data between components :**
+In the previous example, each MyButton had its own independent count, and when each button was clicked, only the count for the button clicked changed:
+
+![Screenshot 2024-10-22 175314](https://github.com/user-attachments/assets/6bc751b1-f1ce-45c7-a34c-bf526cbe6824)
+
+However, often you’ll need components to share data and always update together.
+
+To make both MyButton components display the same count and update together, you need to move the state from the individual buttons “upwards” to the closest component containing all of them.
+
+In this example, it is MyApp:
+
+![Screenshot 2024-10-22 175410](https://github.com/user-attachments/assets/1667d263-cc24-409a-84e0-3f419d5b1e10)
+
+Now when you click either button, the count in MyApp will change, which will change both of the counts in MyButton. Here’s how you can express this in code.
+
+First, move the state up from MyButton into MyApp:
+```
+export default function MyApp() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <h1>Counters that update separately</h1>
+      <MyButton />
+      <MyButton />
+    </div>
+  );
+}
+
+function MyButton() {
+  // ... we're moving code from here ...
+}
+```
+Then, pass the state down from MyApp to each MyButton, together with the shared click handler. You can pass information to MyButton using the JSX curly braces, just like you previously did with built-in tags like <img>:
+```
+export default function MyApp() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <h1>Counters that update together</h1>
+      <MyButton count={count} onClick={handleClick} />
+      <MyButton count={count} onClick={handleClick} />
+    </div>
+  );
+}
+```
+The information you pass down like this is called props. Now the MyApp component contains the count state and the handleClick event handler, and passes both of them down as props to each of the buttons.
+
+Finally, change MyButton to read the props you have passed from its parent component:
+```
+function MyButton({ count, onClick }) {
+  return (
+    <button onClick={onClick}>
+      Clicked {count} times
+    </button>
+  );
+}
+```
+When you click the button, the onClick handler fires. Each button’s onClick prop was set to the handleClick function inside MyApp, so the code inside of it runs. That code calls setCount(count + 1), incrementing the count state variable. The new count value is passed as a prop to each button, so they all show the new value. This is called “lifting state up”. By moving state up, you’ve shared it between components.
+
+
+## React Componenets:
+
+### React devv- your first component:
+[react dev-your fist component](https://react.dev/learn/your-first-component)
+
+- React lets you combine your markup, CSS, and JavaScript into custom “components”, reusable UI elements for your app.
+
+#### Here’s how to build a component:
+
+**Step 1: Export the component**
+The export default prefix is a standard JavaScript syntax (not specific to React). It lets you mark the main function in a file so that you can later import it from other files. 
+
+**Step 2: Define the function**
+With function Profile() { } you define a JavaScript function with the name Profile.
+
+**Pitfall
+React components are regular JavaScript functions, but their names must start with a capital letter or they won’t work!**
+
+**Step 3: Add markup**
+The component returns an <img /> tag with src and alt attributes. <img /> is written like HTML, but it is actually JavaScript under the hood! This syntax is called JSX, and it lets you embed markup inside JavaScript.
+
+Return statements can be written all on one line, as in this component:
+```
+return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
+```
+But if your markup isn’t all on the same line as the return keyword, you must wrap it in a pair of parentheses:
+```
+return (
+  <div>
+    <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  </div>
+);
+```
+**Pitfall
+Without parentheses, any code on the lines after return will be ignored!**
+
+Using a component: Now that you defined a component you can nest it in other components.
+```
+function Profile() {
+  return (
+    <img
+      src="https://i.imgur.com/MK3eW3As.jpg"
+      alt="Katherine Johnson"
+    />
+  );
+}
+
+export default function Gallery() {
+  return (
+    <section>
+      <h1>Amazing scientists</h1>
+      <Profile />
+      <Profile />
+      <Profile />
+    </section>
+  );
+}
+```
+Result:
+![Screenshot 2024-10-22 182329](https://github.com/user-attachments/assets/a7499bc9-7430-4952-865e-3bd12c6d0a54)
+
+Notice the difference in casing:
+- <section> is lowercase, so React knows we refer to an HTML tag.
+- <Profile /> starts with a capital P, so React knows that we want to use our component called Profile.
+And Profile contains even more HTML: <img />. In the end, this is what the browser sees:
+```
+<section>
+  <h1>Amazing scientists</h1>
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+</section>
+```
+Because the Profile components are rendered inside Gallery—even several times!—we can say that Gallery is a parent component, rendering each Profile as a “child”. This is part of the magic of React: you can define a component once, and then use it in as many places and as many times as you like.
+
+**Pitfall
+Components can render other components, but you must never nest their definitions:**
+```
+export default function Gallery() {
+  // 🔴 Never define a component inside another component!
+  function Profile() {
+    // ...
+  }
+  // ...
+}
+```
+**The snippet above is very slow and causes bugs. Instead, define every component at the top level:**
+```
+export default function Gallery() {
+  // ...
+}
+
+// ✅ Declare components at the top level
+function Profile() {
+  // ...
+}
+```
+**When a child component needs some data from a parent, pass it by props instead of nesting definitions.**
+
+### React Components Notes:
+**The render function:**
+One of the primary purposes of a component is to generate the user interface. 
+- This is done with the component's render function. Whatever is returned from the render function is inserted into the component HTML element.
+
+As a simple example, a JSX file containing a React component element named Demo would cause React to load the Demo component, call the render function, and insert the result into the place of the Demo element.
+
+JSX
+```
+<div>
+  Component: <Demo />
+</div>
+```
+Notice that Demo is not a valid HTML element. The transpiler will replace this tag with the resulting rendered HTML.
+
+React component
+```
+function Demo() {
+  const who = 'world';
+  return <b>Hello {who}</b>;
+}
+```
+Resulting HTML
+```
+<div>Component: <b>Hello world</b></div>
+```
+
+**Properties:**
+React components also allow you to pass information to them in the form of element properties. The component receives the properties in its constructor and then can display them when it renders.
+
+JSX
+```
+<div>Component: <Demo who="Walke" /><div>
+```
+React component
+```
+function Demo(props) {
+  return <b>Hello {props.who}</b>;
+}
+```
+Resulting HTML
+```
+<div>Component: <b>Hello Walke</b></div>
+```
+**State**:
+
+In addition to properties, a component can have internal state. 
+- Component state is created by calling the React.useState hook function.
+- The useState function returns a variable that contains the current state and a function to update the state.
+- The following example creates a state variable called clicked and toggles the click state in the updateClicked function that gets called when the paragraph text is clicked.
+```
+const Clicker = () => {
+  const [clicked, updateClicked] = React.useState(false);
+
+  const onClicked = (e) => {
+    updateClicked(!clicked);
+  };
+
+  return <p onClick={(e) => onClicked(e)}>clicked: {`${clicked}`}</p>;
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clicker />);
+```
+You should note that you can use JSX even without a function. A simple variable representing JSX will work anyplace you would otherwise provide a component.
+```
+const hello = <div>Hello</div>;
+
+ReactDOM.render(hello, document.getElementById('root'));
+```
+
+**Class style components**
+In addition to the preferred function style components demonstrated above, React also supports class style components. However, you should note that the React team is moving away from the class style representation, and for that reason you should probably not use it. With that said, you are likely to see class style components and so you should be aware of the syntax. Below is the equivalent class style component for the Clicker component that we created above.
+
+The major difference is that properties are loaded on the constructor and state is set using a setState function on the component object.
+```
+class Clicker extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      clicked: false,
+    };
+  }
+  onClicked() {
+    this.setState({
+      clicked: !this.state.clicked,
+    });
+  }
+  render() {
+    return <p onClick={(e) => this.onClicked(e)}>clicked: {`${this.state.clicked}`}</p>;
+  }
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clicker />);
+```
+Reactivity:
+
+A component's properties and state are used by the React framework to determine the reactivity of the interface. Reactivity controls how a component reacts to actions taken by the user or events that happen within the application. Whenever a component's state or properties change, the render function for the component and all of its dependent component render functions are called.
+
