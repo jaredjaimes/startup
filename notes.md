@@ -3103,3 +3103,15 @@ Reactivity:
 
 A component's properties and state are used by the React framework to determine the reactivity of the interface. Reactivity controls how a component reacts to actions taken by the user or events that happen within the application. Whenever a component's state or properties change, the render function for the component and all of its dependent component render functions are called.
 
+Here is a complete list of all the steps involved to convert Simon to a React application. When you port your startup to React you will want to commit your changes as you complete each step in the process.
+
+Install and configure Vite
+Reorganize the code
+Convert to React Bootstrap
+Enable React
+Create app component
+Create view components
+Create the router
+Convert HTML to React components
+Replace deployment script
+
