@@ -1,0 +1,61 @@
+<!DOCTYPE html> <!-- All html documents must start with this -->
+<html lang="en"><!-- This represent root of HTML document. The container for all html elements.-->
+<!--Note: Always include html lang attribute inside html taf to declare language of web page. To assit search engines.-->
+<head> <!-- This tag is a container for metadata(data about data), it is placed between <html> and the body.-->
+    <!-- Metadata is not displayed. Defines the document title,character set, style, and other meta info.-->
+    <meta charset=" UTF-8"/> <!-- makes it possible to use emojis and other characters that aren't in the traditional ASCII character set on your webpage. If you don't use the tag, then you will need to look up HTML entities to manually insert an emoji or other character.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- sets the initial zoom level when the page is first loaded by the browser-->
+    <title>Olaga.io</title> <!--defines the title of the document, and it is shown in the browser's title bar or in the page's tab.-->
+    <link rel="icon" href="favicon.ico" /> <!--The rel attribute defines the relationship between the current page and the linked resource. The rel="icon" value defines the web page icon or favicon which visually represents the website. The icon URL is specified in the href attribute.-->
+
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <header>
+        <h1>Olaga.io<sup>&reg;</sup></h1> <!--<sup>&reg;</sup>: This puts the trademark r on it.-->
+        
+        <!-- Navigation elements -->
+      <nav> <!--The <nav> element in HTML is used to represent a section of a page that contains navigation links. These links can be to other pages or to different parts of the same page-->
+        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
+        <menu>
+          <button><a class= "nav-button" href="index.html">Home</a></button>
+          <button><a class= "nav-button" href="avatar.html">Avatar</a></button>
+          <button><a class= "nav-button" href="skills.html">Skills</a></button>
+          <button><a class= "nav-button" href="rankings.html">Rankings</a></button>
+        </menu>
+      </nav>
+
+    </header>
+
+    
+    <main> <!--specifies the main content of a document. The content inside the <main> element should be unique to the document. It should not contain any content that is repeated across documents such as sidebars, navigation links, copyright information, site logos, and search forms.-->
+      <div class="form-container"> 
+        <p>Login to make your goals a reality</p>
+        <form method="get" action="avatar.html"> <!--form: a container for different types of input elements, such as: text fields, checkboxes, radio buttons, submit buttons, etc-->
+          <div>
+            <span>@</span>
+            <input type="text" placeholder="your@email.com" />
+          </div>
+          <div>
+            <span>🔒</span>
+            <input type="password" placeholder="password" />
+          </div>
+          <div>
+            <span>Name:</span>
+            <input type="text" placeholder="first name" />
+          </div>
+          <div class= "login"> <button type="submit">Login</button>
+            <button type="submit">Create</button></div>
+        </form>
+      </div>
+
+        <!--<img src="https://t4.ftcdn.net/jpg/02/08/77/37/240_F_208773750_fOnOoBOYJUBQ73gseJO8khowC9Pr7dyd.jpg" alt="man on mountain">-->
+    </main>
+
+      <footer>
+        <span class="text-reset">Jared Jaimes</span>
+        <br />
+        <a  href="https://github.com/jaredjaimes/startup.git">GitHub</a>
+      </footer>
+</body>
+</html>
