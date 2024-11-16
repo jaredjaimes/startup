@@ -1,11 +1,54 @@
-## The link to your website.
+#### The link to your website.
 [olaga.link](https://olaga.link/)
 
-## questions to ask the TA.
-Can you demonstrate what it looks like to need to merge and then, how to do it exactly.
-
 ## Console:
+- Also known as the command line, shell, or terminal, the console window is an essential web development tool. 
 - When ever you use the **"vi"** command in the console. There are certain command that you can type in for it to work the way you need it to. You can find all those commands here: [vim cheat sheet](https://vim.rtorr.com/)
+-  At any given point in time your console is located at one of the directories in the file system. You can see which directory you are in with the pwd (present working directory) command.
+  
+- echo - Output the parameters of the command
+- cd - Change directory
+- mkdir - Make directory
+- rmdir - Remove directory
+- rm - Remove file(s)
+- mv - Move file(s)
+- cp - Copy files
+- ls - List files
+- curl - Command line client URL browser
+- grep - Regular expression search
+- find - Find files
+- top - View running processes with CPU and memory usage
+- df - View disk statistics
+- cat - Output the contents of a file
+- less - Interactively output the contents of a file
+- wc - Count the words in a file
+- ps - View the currently running processes
+- kill - Kill a currently running process
+- sudo - Execute a command as a super user (admin)
+- ssh - Create a secure shell on a remote computer
+- scp - Securely copy files to a remote computer
+- history - Show the history of commands
+- ping - Check if a website is up
+- tracert - Trace the connections to a website
+- dig - Show the DNS information for a domain
+- man - Look up a command in the manual
+
+You can also chain the input and output of commands using special characters
+```
+ | - Take the output from the command on the left and pipe, or pass, it to the command on the right
+ > - Redirect output to a file. Overwrites the file if it exists
+ > - >> - Redirect output to a file. Appends if the file exists
+```
+
+For example, you can list the files in a directory, pipe it into grep to search for files created in Nov, and then pipe that into wc to count the number of files found with a date of Nov.
+```
+- ls -l | grep ' Nov ' | wc -l
+```
+
+There are also keystrokes that have special meaning in the console.
+- CTRL-R - Use type ahead to find previous commands
+- CTRL-C - Kill the currently running command
+
 
 ## Https and Tls, and web certificates
 - Https is the secure HTTP.
@@ -38,7 +81,24 @@ You can obtain, and renew, a web certificate by enabling the ACME protocol for y
 ```
     -<a href="https://byu.edu">Go to the Y</a>
 ```
--**NOTE:** By default a web server will display the HTML file named **index.html**. So it is very common to name the main HTML file for your web application **index.html**.
+HTML defines a header (<!DOCTYPE html>) that tells the browser the type and version of the document. You should always include this at the top of the HTML file. We can now add the header, some attributes, and more content to our document for a full example.
+```
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <main>
+      <h1>Hello world</h1>
+      <p class="introduction">
+        HTML welcomes you to the amazing world of
+        <span class="topic">web programming</span>.
+      </p>
+      <p class="question">What will this mean to you?</p>
+      <p class="assignment">Learn more <a href="instruction.html">here</a>.</p>
+    </main>
+  </body>
+</html>
+```
+- **NOTE:** By default a web server will display the HTML file named **index.html**. So it is very common to name the main HTML file for your web application **index.html**.
 
 -**TABLES:** This is how you do it:
 ```
@@ -116,9 +176,103 @@ Also: There is a github account with public videos to url from.
       ctx.stroke();
     </script>
     ```
+### Html input elements:
+|Element|	Meaning|	Example|
+|-------|--------|---------|
+|form|	Input container and submission|	<form action="form.html" method="post">|
+|fieldset|	Labeled input grouping|	<fieldset> ... </fieldset>|
+|input|	Multiple types of user input|	<input type="" />|
+|select|	Selection dropdown|	<select><option>1</option></select>|
+|optgroup|	Grouped selection dropdown|	<optgroup><option>1</option></optgroup>|
+|option|	Selection option|	<option selected>option2</option>|
+|textarea|	Multiline text input|	<textarea></textarea>|
+|label|	Individual input label|	<label for="range">Range: </label>|
+|output|	Output of input|	<output for="range">0</output>|
+|meter|	Display value with a known range|	<meter min="0" max="100" value="50"></meter>|
 
+Input elements types:
+|Type|	Meaning|
+|----|---------|
+|text|	Single line textual value|
+|password|	Obscured password|
+|email|	Email address|
+|tel|	Telephone number|
+|url|	URL address|
+|number|	Numerical value|
+|checkbox|	Inclusive selection|
+|radio|	Exclusive selection|
+|range|	Range limited number|
+|date|	Year, month, day|
+|datetime-local|	Date and time|
+|month|	Year, month|
+|week|	Week of year|
+|color|	Color|
+|file|	Local file|
+|submit|	button to trigger form submission|
 
-## HTML Glossary:
+Attributes:
+|Attribute|	Meaning|
+|---------|--------|
+|name|	The name of the input. This is submitted as the name of the input if used in a form|
+|disabled|	Disables the ability for the user to interact with the input|
+|value|	The initial value of the input|
+|required|	Signifies that a value is required in order to be valid|
+
+### Comments in HTML:
+```
+<!-- commented text -->
+```
+
+### Special characters:
+HTML uses several reserved characters for defining its file format. If you want to use those characters in your content then you need to escape them using the entity syntax. For example, to display a less than symbol (<) you would instead use the less than entity (&lt;). You can also use the entity syntax to represent any unicode character.
+
+|Character|	Entity|
+|---------|----|
+|&|	&amp;|
+|<|	&lt;|
+|>|	&gt;|
+|"|	&quot;|
+|'|	&apos;|
+|😀|	&#128512;|
+
+### Common Elements:
+|element|	meaning|
+|-------|--------|
+|html	|The page container|
+|head	|Header information|
+|title|	Title of the page|
+|meta	|Metadata for the page such as character set or viewport settings|
+|script|	JavaScript reference. Either a external reference, or inline|
+|include|	External content reference|
+|body	|The entire content body of the page|
+|header|	Header of the main content|
+|footer	|Footer of the main content|
+|nav	|Navigational inputs|
+|main	|Main content of the page|
+|section|	A section of the main content|
+|aside	|Aside content from the main content|
+|div	|A block division of content|
+|span	|An inline span of content|
+|h<1-9>|	Text heading. From h1, the highest level, down to h9, the lowest level|
+|p	|A paragraph of text|
+|b	|Bring attention|
+|table|	Table|
+|tr	|Table row|
+|th	|Table header|
+|td	|Table data|
+|ol,ul|	Ordered or unordered list|
+|li	|List item|
+|a	|Anchor the text to a hyperlink|
+|img|	Graphical image reference|
+|dialog|	Interactive component such as a confirmation|
+|form	|A collection of user input|
+|input|	User input field|
+|audio|	Audio content|
+|video|	Video content|
+|svg	|Scalable vector graphic content|
+|iframe|	Inline frame of another HTML page|
+
+### HTML Glossary:
 |Element | Meaning     |
 |------|-------------|
 |html| top-level page structure, or page container|
@@ -137,10 +291,14 @@ Also: There is a github account with public videos to url from.
 |nav| The <nav> element in HTML is used to represent a section of a page that contains navigation links. These links can be to other pages or to different parts of the same page |
 |attribute= placeholder| 
 
+
+
 ## CSS:
 - With CSS a web programmer can animate the page, deploy custom fonts, respond to user actions, and dynamically alter the entire layout of the page based on the size of a device and its orientation.
 - CSS is primarily concerned with defining rulesets, or simply rules. A rule is comprised of a selector that selects the elements to apply the rule to, and one or more declarations that represent the property to style with the given property value.
 Example:
+![cssDefinitions](https://github.com/user-attachments/assets/e57e1a40-91e9-4174-8656-e2e3476952c0)
+
 ```
 p {
   font-family: sans-serif;
@@ -150,7 +308,6 @@ p {
 }
 ```
 The selector p selects all paragraph elements in the HTML document. The four specified declarations then: 1) change the font to use a sans-serif font, 2) increase the font size to be twice as big as the default font, 3) change the text color to be navy, and 4) create a gray shadow for the text. The result looks like this.
-
 
 ![cssSimpleRule](https://github.com/user-attachments/assets/321557b9-fe82-4080-90ca-4ec67f1a4def)
 
@@ -186,13 +343,17 @@ p {
 All of the above examples are equivalent, but using the link element usually is the preferred way to define CSS.
 
 ### The box model:
-CSS defines everything as boxes. When you apply styles, you are applying them to a region of the display that is a rectangular box. Within an element's box there are several internal boxes. The innermost box holds the element's content. This is where things like the text or image of an element is displayed. Next comes the padding. The padding will inherit things like the background color. After padding is the border, which has properties like color, thickness and line style. The final box is the margin. The margin is considered external to the actual styling of the box and therefore only represents whitespace. It is important to understand each of these boxes so that you can achieve the desired visual result by applying the proper CSS declaration.
+CSS defines everything as boxes. When you apply styles, you are applying them to a region of the display that is a rectangular box. Within an element's box there are several internal boxes. 
 
+- Content is inside:  This is where things like the text or image of an element is displayed
+- Then padding: The padding will inherit things like the background color
+- After padding is border:which has properties like color, thickness and line style.
+- Final box is margin:The margin is considered external to the actual styling of the box and therefore only represents whitespace.
 
 ![cssBoxModel](https://github.com/user-attachments/assets/dec87aed-0604-4406-baa2-249ec9156705)
 
-
-the width and height of an element is defined by the width and height of the content box.
+The width and height of an element is defined by the width and height of the content box.
+You can change the box-sizing CSS property from the default value of content-box to border-box in order to redefine the width and height to also include the padding and the border. 
 
 ### CSS Selectors:
 Example: This is the html code: 
@@ -223,45 +384,95 @@ Example: This is the html code:
   ```
   #physics {  }
   ```
-- You can do attributes.
+- You can do **Attributes**:
+Attribute selectors allow you to select elements based upon their attributes. You use an attribute selector to select any element with a given attribute (a[href]). You can also specify a required value for an attribute (a[href="./fish.png"]) in order for the selector to match. Attribute selectors also support wildcards such as the ability to select attribute values containing specific text (p[href*="https://"]).
+```
+p[class='summary'] {
+  color: red;
+}
+```
+
+- **Hover** highlight bar.
 - And you can do something called psuedo selector. Suppose we want our purple highlight bar to appear only when the mouse hovers over the text. To accomplish this we can change our ID selector to select whenever a section is hovered over.
   ```
   section:hover {  }
   ```
 This is [CodePen](https://codepen.io/leesjensen/pen/NWzByav) to look into it more.
 
+### Combinators:
+We want to change the color of the second level headings (h2), but we only want to do that within the sections for each department. To make that happen we can provide a descendant combinator that is defined with a space delimited list of values where each item in the list is a descendant of the previous item. So our selector would be all h2 elements that are descendants of section elements.
+```
+section h2 {
+  color: #004400;
+}
+```
+There are other types of combinators that you can use. These include the following.
+
+|Combinator|	Meaning|	Example|	Description|
+|----------|---------|---------|-------------|
+|Descendant	|A list of descendants	|body section	|Any section that is a descendant of a body|
+|Child	|A list of direct children	|section > p |Any p that is a direct child of a section|
+|General sibling	|A list of siblings|	div ~ p	|Any p that has a div sibling|
+|Adjacent sibling	|A list of adjacent sibling|	div + p	|Any p that has an adjacent div sibling|
+
+You can also combine the element name and class selectors to select all paragraphs with a class of summary.
+```
+p.summary {
+  font-weight: bold;
+}
+```
+
 ### CSS Declerations:
 - Basically, the thingns you can say, units you can use, and ways to say color.
+
 **List of declerations**
-  Property	Value	Example	Discussion
-background-color	color	red	Fill the background color
-border	color width style	#fad solid medium	Sets the border using shorthand where any or all of the values may be provided
-border-radius	unit	50%	The size of the border radius
-box-shadow	x-offset y-offset blu-radius color	2px 2px 2px gray	Creates a shadow
-columns	number	3	Number of textual columns
-column-rule	color width style	solid thin black	Sets the border used between columns using border shorthand
-color	color	rgb(128, 0, 0)	Sets the text color
-cursor	type	grab	Sets the cursor to display when hovering over the element
-display	type	none	Defines how to display the element and its children
-filter	filter-function	grayscale(30%)	Applies a visual filter
-float	direction	right	Places the element to the left or right in the flow
-flex			Flex layout. Used for responsive design
-font	family size style	Arial 1.2em bold	Defines the text font using shorthand
-grid			Grid layout. Used for responsive design
-height	unit	.25em	Sets the height of the box
-margin	unit	5px 5px 0 0	Sets the margin spacing
-max-[width/height]	unit	20%	Restricts the width or height to no more than the unit
-min-[width/height]	unit	10vh	Restricts the width or height to no less than the unit
-opacity	number	.9	Sets how opaque the element is
-overflow	[visible/hidden/scroll/auto]	scroll	Defines what happens when the content does not fix in its box
-position	[static/relative/absolute/sticky]	absolute	Defines how the element is positioned in the document
-padding	unit	1em 2em	Sets the padding spacing
-left	unit	10rem	The horizontal value of a positioned element
-text-align	[start/end/center/justify]	end	Defines how the text is aligned in the element
-top	unit	50px	The vertical value of a positioned element
-transform	transform-function	rotate(0.5turn)	Applies a transformation to the element
-width	unit	25vmin	Sets the width of the box
-z-index	number	100	Controls the positioning of the element on the z axis
+|Property|	Value|	Example|	Discussion|
+|--------|-------|---------|------------|
+|background-color|	color|	red|	Fill the background color|
+|border|	color width style|	#fad solid medium|	Sets the border using shorthand where any or all of the values may be provided|
+|border-radius|	unit|	50%|	The size of the border radius|
+|box-shadow|	x-offset y-offset blu-radius color|	2px 2px 2px gray|	Creates a shadow|
+|columns|	number|	3|	Number of textual columns|
+|column-rule|	color width style|	solid thin black|	Sets the border used between columns using border shorthand|
+|color	color	rgb(128, 0, 0)	Sets the text color
+|cursor	type	grab	Sets the cursor to display when hovering over the element
+|display	type	none	Defines how to display the element and its children
+|filter	filter-function	grayscale(30%)	Applies a visual filter
+|float	direction	right	Places the element to the left or right in the flow
+|flex			Flex layout. Used for responsive design
+|font	family size style	Arial 1.2em bold	Defines the text font using shorthand
+|grid			Grid layout. Used for responsive design
+|height	unit	.25em	Sets the height of the box
+|margin	unit	5px 5px 0 0	Sets the margin spacing
+|max-[width/height]	unit	20%	Restricts the width or height to no more than the unit
+|min-[width/height]	unit	10vh	Restricts the width or height to no less than the unit
+|opacity	number	.9	Sets how opaque the element is
+|overflow	[visible/hidden/scroll/auto]	scroll	Defines what happens when the content does not fix in its |box
+|position	[static/relative/absolute/sticky]	absolute	Defines how the element is positioned in the document
+|padding	unit	1em 2em	Sets the padding spacing
+|left	unit	10rem	The horizontal value of a positioned element
+|text-align	[start/end/center/justify]	end	Defines how the text is aligned in the element
+|top	unit	50px	The vertical value of a positioned element
+|transform	transform-function	rotate(0.5turn)	Applies a transformation to the element
+|width	unit	25vmin	Sets the width of the box
+|z-index	number	100	Controls the positioning of the element on the z axis
+
+
+**Units:**
+Unit	Description
+px	The number of pixels
+pt	The number of points (1/72 of an inch)
+in	The number of inches
+cm	The number of centimeters
+%	A percentage of the parent element
+em	A multiplier of the width of the letter m in the parent's font
+rem	A multiplier of the width of the letter m in the root's font
+ex	A multiplier of the height of the element's font
+vw	A percentage of the viewport's width
+vh	A percentage of the viewport's height
+vmin	A percentage of the viewport's smaller dimension
+vmax	A percentage of the viewport's larger dimension
+
 
 This [Codepen](https://codepen.io/leesjensen/pen/rNKrgKQ) demonstrates the use of many of the above declarations. Take some time to experiment with it. Make sure you try modifying different selectors and declarations. Try different unit representations.
 
@@ -352,11 +563,60 @@ To try more stuff here is [CodePen](https://codepen.io/leesjensen/pen/LYrJEwX)
 |flex	|Display this element's children in a flexible orientation.|
 |grid	|Display this element's children in a grid orientation.|
 
-- include a meta tag in the head element of all your HTML pages. This tells the browser to not scale the page.
+We can demonstrate the different CSS display property values with the following HTML that contains a bunch of div elements. By default div elements have a display property value of block.
+```
+<div class="none">None</div>
+<div class="block">Block</div>
+<div class="inline">Inline1</div>
+<div class="inline">Inline2</div>
+<div class="flex">
+  <div>FlexA</div>
+  <div>FlexB</div>
+  <div>FlexC</div>
+  <div>FlexD</div>
+</div>
+<div class="grid">
+  <div>GridA</div>
+  <div>GridB</div>
+  <div>GridC</div>
+  <div>GridD</div>
+</div>
+```
+default of above.
+![cssDisplayDefault](https://github.com/user-attachments/assets/f0c32eff-f793-4509-9dff-d4bcced4da54)
+
+If we modify the display property associated with each element with the following CSS, then we get a totally different rendering.
+```
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+```
+![cssDisplay](https://github.com/user-attachments/assets/2cce3afb-eb4b-4fdb-abb2-c64c3449a6bf)
+
+- include a meta tag in the head element of all your HTML pages. This tells the browser to not scale the page. So that you can look at it with phone and laptop.
   ```
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   ```
   
+**Float:**
 - The float css property moves an element to the left or right of its container element and allows inline elements to wrap around it. For example, if we had an aside element followed by a large paragraph of text, we could create the following CSS rule in order to cause the text to wrap around the aside.
   ```
   aside {
@@ -388,6 +648,7 @@ To try more stuff here is [CodePen](https://codepen.io/leesjensen/pen/LYrJEwX)
     }
   }
   ```
+
 ### Grid:
 - The grid display layout is useful when you want to display a group of child elements in a responsive grid. We start with a container element that has a bunch of child elements.
   ```
@@ -414,15 +675,205 @@ We turn this into a responsive grid by including a CSS display property with the
   ```
 ![cssGrid](https://github.com/user-attachments/assets/23176d90-03f2-4a32-9bce-d237fa6ba003)
 
-### Flex:
+### Flexbox:
 - The flex display layout is useful when you want to partition your application into areas that responsively move around as the window resizes or the orientation changes.
 
 justify-content: center; this centers content in relation to what is the box it is in. SO its not just centerd at the top of the box but in the middle of the entire box it is in.
 flex: 1; this makes sure the page can expand or grow. If you don't have your main part of your page set to that then it will always stay small.
 Also, need to have the html set to 100% so it can grow that length.
 
-### Bootstrap:
+So we can visualize our design by quickly sketching it out.
 
+![cssAppMock](https://github.com/user-attachments/assets/f823a281-1c65-4867-844c-3687692abe21)
+
+Next we build our structural HTML to match our design.
+```
+<body>
+  <header>
+    <h1>CSS flex &amp; media query</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Controls</h2>
+    </section>
+    <section>
+      <h2>Content</h2>
+    </section>
+  </main>
+  <footer>
+    <h2>Footer</h2>
+  </footer>
+</body>
+```
+
+Now we can use Flexbox to make it all come alive. We make the body element into a responsive flexbox by including the CSS display property with the value of flex. This tells the browser that all of the children of this element are to be displayed in a flex flow. We want our top level flexbox children to be column oriented and so we add the flex-direction property with a value of column. We then add some simple other declarations to zero out the margin and fill the entire viewport with our application frame.
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  height: 100vh;
+}
+To get the division of space for the flexbox children correct we add the following flex properties to each of the children.
+
+header - flex: 0 80px - Zero means it will not grow and 80px means it has a starting basis height of 80 pixels. This creates a fixed size box.
+footer - flex: 0 30px - Like the header it will not grow and has a height of 30 pixels.
+main - flex: 1 - One means it will get one fractional unit of growth, and since it is the only child with a non-zero growth value, it will get all the remaining space. Main also gets some additional properties because we want it to also be a flexbox container for the controls and content area. So we set its display to be flex and specify the flex-direction to be row so that the children are oriented side by side.
+```
+header {
+  flex: 0 80px;
+  background: hsl(223, 57%, 38%);
+}
+
+footer {
+  flex: 0 30px;
+  background: hsl(180, 10%, 10%);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+```
+Now we just need to add CSS to the control and content areas represented by the two child section elements. We want the controls to have 25% of the space and the content to have the remaining. So we set the flex property value to 1 and 3 respectively. That means that the controls get one unit of space and the content gets three units of space. No matter how we resize things this ratio will responsively remain.
+```
+section:nth-child(1) {
+  flex: 1;
+  background-color: hsl(180, 10%, 80%);
+}
+section:nth-child(2) {
+  flex: 3;
+  background-color: white;
+}
+```
+Media Query
+That completes our original design, but we also want to handle small screen sizes. To do this, we add some media queries that drop the header and footer if the viewport gets too short, and orient the main sections as rows if it gets too narrow.
+
+To support the narrow screen (portrait mode), we include a media query that detects when we are in portrait orientation and sets the flex-direction of the main element to be column instead of row. This causes the children to be stacked on top of each other instead of side by side.
+
+To handle making our header and footer disappear when the screen is to short to display them, we use a media query that triggers when our viewport height has a maximum value of 700 pixels. When that is true we change the display property for both the header and the footer to none so that they will be hidden. When that happens the main element becomes the only child and since it has a flex value of 1, it takes over everything.
+```
+@media (orientation: portrait) {
+  main {
+    flex-direction: column;
+  }
+}
+
+@media (max-height: 700px) {
+  header {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+}
+```
+Here is what the finished application looks like.
+
+![cssFlex](https://github.com/user-attachments/assets/13415d3a-90e7-4291-a45d-0b210b1687e1)
+
+
+### Debugging in CSS:
+Open the directory with VS Code and use the Live Server extension to view the HTML in the Chrome browser. In the browser, right click on the text and select inspect. This will open the debugger window and display the Elements tab. As you move your cursor over the different elements you will visually see what the padding, borders, and margins are set to. The Styles pane shows all of the CSS properties applied to the currently selected element. If you scroll down to the bottom of the styles pane you will see the CSS box. By moving the cursor over the different parts of the CSS box it will highlight the different box parts in the browser window.
+
+![debugCssBrowser](https://github.com/user-attachments/assets/b206154e-5b6e-4c72-9010-e56dc69be4d3)
+
+You can change any of the CSS properties, and even add new properties, directly in the debugger. This allows you to see what each property is contributing and change them to see how that impacts the rendering. This is a great way to figure out what CSS works best without having to continually change the CSS file and refresh the browser.
+
+Basically using the inspector tool. You can directly edit it in the debugger.
+
+### CSS Frameworks:
+CSS frameworks provide functions and components that commonly appear in web applications. As web developers built more and more web applications they began to use the same patterns over and over. They combined these patterns into a shared package of code and contributed it to the world as open source repositories. This helped not only decrease the time to develop an application, but created a common user experience for the web in general.
+
+**Tailwind**:
+A new rising contender in the CSS framework space is Tailwind CSS and its associated component library Tailwind UI. In the 2022 StateOfCSS poll, Tailwind gained an impressive 46% general usage ranking with a retention rating of 78%, all within the last four years.
+
+Tailwind takes a different approach than traditional CSS frameworks. Instead of using large, rich, CSS rulesets to compartmentalize styling and functionality, it uses smaller definitions that are applied specifically to individual HTML elements. This moves much of the CSS representation out of the CSS file and directly into the HTML.
+```
+<div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+  <img class="w-24 h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="profile.png" />
+  <p class="text-lg font-medium">“Tailwind CSS”</p>
+</div>
+```
+
+**Bootstrap:**
+The reigning champion for CSS frameworks is Bootstrap. Bootstrap has been supported by an active and vibrant community for over a decade and contains many lessons learned from real world applications. The major downside of Bootstrap is its own success. Because it is so popular, Bootstrap defines the de facto look and feel of websites. This is great for user experience continuity, but it makes it difficult for a website to grab the attention of new users.
+
+Getting bootstrap
+You can integrate Bootstrap into your web applications simply by referencing the Bootstrap CSS files from their content delivery network (CDN). You then add the HTML link elements to your head element like this.
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    ...
+  </body>
+</html>
+```
+If you are going to use Bootstrap components that require JavaScript (carousel, buttons, and more), you will also need to include Bootstrap's JavaScript module. You add this by putting the following at the end of your HTML body element.
+```
+<body>
+  ...
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"
+  ></script>
+</body>
+```
+You don't need to worry about this now, but later on, when we introduce the downloading of JavaScript packages, you can use the Node Package Manager (NPM) to download Bootstrap and include it in your source code. That way you don't have to rely on someone else's server to provide you with a vital piece of your application. For future reference, to include Bootstrap in your application using NPM you would run the following from your console.
+```
+npm install bootstrap@5.2.3
+```
+
+1. Create a new index.html file in your project root. Include the <meta name="viewport"> tag as well for proper responsive behavior in mobile devices.
+```
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+  </body>
+</html>
+```
+2. Include Bootstrap’s CSS and JS. Place the <link> tag in the <head> for our CSS, and the <script> tag for our JavaScript bundle (including Popper for positioning dropdowns, poppers, and tooltips) before the closing </body>. Learn more about our CDN links.
+
+```
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </body>
+</html>
+```
+You can also include Popper and our JS separately. If you don’t plan to use dropdowns, popovers, or tooltips, save some kilobytes by not including Popper.
+
+```
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+```
+Hello, world! Open the page in your browser of choice to see your Bootstrapped page. Now you can start building with Bootstrap by creating your own layout, adding dozens of components, and utilizing our official examples.
 
 
 ## CSS GLossary:
@@ -437,10 +888,2230 @@ Also, need to have the html set to 100% so it can grow that length.
 |th|used for table header cells|
 
 
+# JavaScript:
+
+Java is weakly typed language made from  C, Java, and Scheme. It is by far the most used programming language in the world. The more effectively you understand JavaScript, the better web programmer you will be.
+
+To output: 
+```
+console.log('Hello' + ' ' + 'world');
+// OUTPUT: Hello world
+```
+To create a function:
+```
+function join(a, b) {
+  return a + ' ' + b;
+}
+```
+NOTE: Use your browser's debugger. For example, if you open Chrome and press F12 the debugger will display. Select the Console menu option. This will display a JavaScript interpreter where you can write and execute your code.
+
+### Javascrpt Console:
+The basic usage of the console object is to output a log message.
+```
+console.log('hello');
+// OUTPUT: hello
+```
+You can create formatted messages in the log parameter.
+```
+console.log('hello %s', 'world');
+// OUTPUT: hello world
+```
+You can even specify CSS declarations in order to style the log output.
+```
+console.log('%c JavaScript Demo', 'font-size:1.5em; color:green;');
+// OUTPUT: JavaScript Demo //in large green text
+```
+
+**Timers:**
+If you are trying to see how long a piece of code is running you can wrap it with time and timeEnd calls and it will output the duration between the time and timeEnd calls.
+```
+console.time('demo time');
+// ... some code that takes a long time.
+console.timeEnd('demo time');
+// OUTPUT: demo time: 9762.74 ms
+```
+
+**Count:**
+To see how many times a block of code is called you can use the count function.
+```
+console.count('a');
+// OUTPUT: a: 1
+console.count('a');
+// OUTPUT: a: 2
+console.count('b');
+// OUTPUT: b: 1
+```
+
+### Adding JavaScript to HTML:
+- You can insert JavaScript into HTML either by directly including it in the HTML within the content of a <script> element, or by using the src attribute of the script element to reference an external JavaScript file.
+  
+index.js
+```
+function sayHello() {
+  console.log('hello');
+}
+```
+index.html
+```
+<head>
+  <script src="javascript.js"></script>
+</head>
+<body>
+  <button onclick="sayHello()">Say Hello</button>
+  <button onclick="sayGoodbye()">Say Goodbye</button>
+  <script>
+    function sayGoodbye() {
+      alert('Goodbye');
+    }
+  </script>
+</body>
+```
+**Onclick**
+Notice that we call the sayHello and sayGoodbye JavaScript functions from the HTML in the onclick attribute of the button element. Special attributes like onclick automatically create event listeners for different DOM events that call the code contained in the attribute's value. The code specified by the attribute value can be a simple call to a function or any JavaScript code.
+```
+<button onclick="let i=1;i++;console.log(i)">press me</button>
+<!-- OUTPUT: 2 -->
+```
+
+### JavaScript type and construct:
+
+- Variables are declared using either the let or const keyword. let allows you to change the value of the variable while const will cause an error if you attempt to change it.
+```
+let x = 1;
+
+const y = 2;
+```
+Type:
+
+|Type|	Meaning|
+|----|---------|
+|Null|	The type of a variable that has not been assigned a value.|
+|Undefined|	The type of a variable that has not been defined.|
+|Boolean|	true or false.|
+|Number|	A 64-bit signed number.|
+|BigInt|	A number of arbitrary magnitude.|
+|String|	A textual sequence of characters.|
+|Symbol|	A unique value.|
+
+NOte: You assign a null to a variable if you want it to be not assigned anything. Like setting character color o null if not selected anything, etc.
+
+|Type|	Use	|Example|
+|Object|	A collection of properties represented by name-value pairs. Values can be of any type.|	{a:3, b:'fish'}|
+|Function	|An object that has the ability to be called.	|function a() {}|
+|Date	|Calendar dates and times.	|new Date('1995-12-17')|
+|Array	|An ordered sequence of any type.|	[3, 'fish']|
+|Map	|A collection of key-value pairs that support efficient lookups.	|new Map()|
+|JSON	|A lightweight data-interchange format used to share information across programs.	|{"a":3, "b":"fish"}|
+
+Common Operations:
+When dealing with a number variable, JavaScript supports standard mathematical operators like + (add), - (subtract), * (multiply), / (divide), and === (equality). For string variables, JavaScript supports + (concatenation) and === (equality).
+
+Type conversions
+JavaScript is a weakly typed language. That means that a variable always has a type, but the variable can change type when it is assigned a new value, or that types can be automatically converted based upon the context that they are used in. Sometimes the results of automatic conversions can be unexpected from programmers who are used to strongly typed languages. Consider the following examples.
+```
+2 + '3';
+// OUTPUT: '23'
+2 * '3';
+// OUTPUT: 6
+[2] + [3];
+// OUTPUT: '23'
+true + null;
+// OUTPUT: 1
+true + undefined;
+// OUTPUT: NaN
+```
+Getting unexpected results is especially common when dealing with the equality operator.
+```
+1 == '1';
+// OUTPUT: true
+null == undefined;
+// OUTPUT: true
+'' == false;
+// OUTPUT: true
+```
+⚠ The unexpected results happen in JavaScript because it uses complex rules for defining equality that depend upon the conversion of a type to a boolean value. You will sometimes hear this referred to as falsy and truthy evaluations. To remove this confusion, JavaScript introduced the strict equality (===) and inequality (!==) operators. The strict operators skip the type conversion when computing equality. This results in the following.
+```
+1 === '1';
+// OUTPUT: false
+null === undefined;
+// OUTPUT: false
+'' === false;
+// OUTPUT: false
+```
+Because strict equality is considered more intuitive, it is almost always preferred and should be used in your code.
+
+Here is a fun example of JavaScript's type conversion. Execute the following in the browser's debugger console.
+```
+('b' + 'a' + +'a' + 'a').toLowerCase();
+```
+**Conditionals:**
+JavaScript supports many common programming language conditional constructs. This includes if, else, and if else. Here are some examples.
+```
+if (a === 1) {
+  //...
+} else if (b === 2) {
+  //...
+} else {
+  //...
+}
+```
+You can also use the ternary operator. This provides a compact if else representation.
+```
+a === 1 ? console.log(1) : console.log('not 1');
+```
+You can use boolean operations in the expression to create complex predicates. Common boolean operators include && (and), || (or), and ! (not).
+```
+if (true && (!false || true)) {
+  //...
+}
+```
+**Loops:**
+JavaScript supports many common programming language looping constructs. This includes for, for in, for of, while, do while, and switch. Here are some examples.
+
+for
+Note the introduction of the common post increment operation (i++) for adding one to a number.
+```
+for (let i = 0; i < 2; i++) {
+  console.log(i);
+}
+// OUTPUT: 0 1
+```
+do while
+```
+let i = 0;
+do {
+  console.log(i);
+  i++;
+} while (i < 2);
+// OUTPUT: 0 1
+```
+while
+```
+let i = 0;
+while (i < 2) {
+  console.log(i);
+  i++;
+}
+// OUTPUT: 0 1
+```
+for in
+The for in statement iterates over an object's property names.
+```
+const obj = { a: 1, b: 'fish' };
+for (const name in obj) {
+  console.log(name);
+}
+// OUTPUT: a
+// OUTPUT: b
+```
+For arrays the object's name is the array index.
+```
+const arr = ['a', 'b'];
+for (const name in arr) {
+  console.log(name);
+}
+// OUTPUT: 0
+// OUTPUT: 1
+```
+for of
+The for of statement iterates over an iterable's (Array, Map, Set, ...) property values.
+```
+const arr = ['a', 'b'];
+for (const val of arr) {
+  console.log(val);
+}
+// OUTPUT: 'a'
+// OUTPUT: 'b'
+```
+Break and continue
+All of the looping constructs demonstrated above allow for either a break or continue statement to abort or advance the loop.
+```
+let i = 0;
+while (true) {
+  console.log(i);
+  if (i === 0) {
+    i++;
+    continue;
+  } else {
+    break;
+  }
+}
+// OUTPUT: 0 1
+```
+
+### JavaScript String:
+
+Strings are a primitive type in JavaScript. A string variable is specified by surrounding a sequence of characters with single quotes ('), double quotes ("), or backticks (`). The meaning of single or double quotes are equivalent, but the backtick defines a string literal that may contain JavaScript that is evaluated in place and concatenated into the string. A string literal replacement specifier is declared with a dollar sign followed by a curly brace pair. Anything inside the curly braces is evaluated as JavaScript. You can also use backticks to create multiline strings without having to explicitly escape the newline characters using \n.
+```
+'quoted text'; // " also works
+
+const l = 'literal';
+console.log(`string ${l + (1 + 1)} text`);
+// OUTPUT: string literal2 text
+```
+
+String functions
+The string object has several interesting functions associated with it. Here are some of the commonly used ones.
+
+|Function	|Meaning|
+|---------|-------|
+|length	|The number of characters in the string|
+|indexOf()	|The starting index of a given substring|
+|split()	|Split the string into an array on the given delimiter string|
+|startsWith()	|True if the string has a given prefix|
+|endsWith()	|True if the string has a given suffix|
+|toLowerCase()	|Converts all characters to lowercase|
+
+```
+const s = 'Example:조선글';
+
+console.log(s.length);
+// OUTPUT: 11
+console.log(s.indexOf('조선글'));
+// OUTPUT: 8
+console.log(s.split(':'));
+// OUTPUT: ['Example', '조선글']
+console.log(s.startsWith('Ex'));
+// OUTPUT: true
+console.log(s.endsWith('조선글'));
+// OUTPUT: true
+console.log(s.toLowerCase());
+// OUTPUT: example:조선글
+```
+
+### Functions:
+In JavaScript functions are first class objects. That means that they can be assigned a name, passed as a parameter, returned as a result, and referenced from an object or array just like any other variable.
+
+The basic syntax of a function begins with the function keyword followed by zero or more parameters and a body that may contain zero or more return statements. The return statement may return a single value. Note that there are no type declarations, as the type is always inferred by the assignment of the value to the parameter.
+```
+function hello(who) {
+  return 'hello ' + who;
+}
+
+console.log(hello('world'));
+// OUTPUT: hello world
+```
+A function without a return value usually exists to produce some side effect like modifying a parameter or interacting with an external program. In the following example the side effect of the function is to output text to the debugger console.
+```
+function hello(who) {
+  who.count++;
+  console.log('hello ' + who.name);
+}
+
+hello({ name: 'world', count: 0 });
+// OUTPUT: hello world
+```
+Function parameters
+When a function is called, the caller may choose what parameters to provide. If a parameter is not provided then the value of the parameter is undefined when the function executes.
+
+In addition to explicitly passing the value of a parameter to a function, the function can define a default value. This is done by assigning a value to the parameter in the function declaration.
+```
+function labeler(value, title = 'title') {
+  console.log(`${title}=${value}`);
+}
+
+labeler();
+// OUTPUT: title=undefined
+
+labeler('fish');
+// OUTPUT: title=fish
+
+labeler('fish', 'animal');
+// OUTPUT: animal=fish
+```
+Question: WHat the heck does the cash sign do in the function above?
+
+**Anonymous functions:**
+Functions in JavaScript are commonly assigned to a variable so that they can be passed as a parameter to some other function or stored as an object property. To easily support this common use you can define a function anonymously and assign it to a variable.
+```
+// Function that takes a function as a parameter
+function doMath(operation, a, b) {
+  return operation(a, b);
+}
+
+// Anonymous function assigned to a variable
+const add = function (a, b) {
+  return a + b;
+};
+
+console.log(doMath(add, 5, 3));
+// OUTPUT: 8
+
+// Anonymous function assigned to a parameter
+console.log(
+  doMath(
+    function (a, b) {
+      return a - b;
+    },
+    5,
+    3
+  )
+);
+// OUTPUT: 2
+```
+**Creating, passing, and returning functions:**
+Here are examples of assigning functions to variables, as well as using functions as parameters and return values.
+```
+// Anonymous declaration of the function that is later assigned to a variable
+const add = function (a, b) {
+  return a + b;
+};
+
+// Function that logs as a side effect of its execution
+function labeler(label, value) {
+  console.log(label + '=' + value);
+}
+
+// Function that takes a function as a parameter and then executes the function as a side effect
+function addAndLabel(labeler, label, adder, a, b) {
+  labeler(label, adder(a, b));
+}
+
+// Passing a function to a function
+addAndLabel(labeler, 'a+b', add, 1, 3);
+// OUTPUT: a+b=4
+
+// Function that returns a function
+function labelMaker(label) {
+  return function (value) {
+    console.log(label + '=' + value);
+  };
+}
+
+// Assign a function from the return value of the function
+const nameLabeler = labelMaker('name');
+
+// Calling the returned function
+nameLabeler('value');
+// OUTPUT: name=value
+```
+**Inner functions:**
+Functions can also be declared inside other functions. This allows you to modularize your code without always exposing private details.
+```
+function labeler(value) {
+  function stringLabeler(value) {
+    console.log('string=' + value);
+  }
+  function numberLabeler(value) {
+    console.log('number=' + value);
+  }
+
+  if (typeof value == 'string') {
+    stringLabeler(value);
+  } else if (typeof value == 'number') {
+    numberLabeler(value);
+  }
+}
+
+labeler(5);
+// OUTPUT: number=5
+
+labeler('fish');
+// OUTPUT: string=fish
+```
+Basically, you can have functions inside functions in JavaScript.
+
+### JavaScript arrow function:
+Arrow syntax replaces the need for the function keyword with the symbols => placed after the parameter declaration. The enclosing curly braces are also optional.
+
+This is a function in arrow syntax that takes no parameters and always returns 3.
+```
+() => 3;
+```
+The following two invocations of sort are equivalent.
+```
+const a = [1, 2, 3, 4];
+
+// standard function syntax
+a.sort(function (v1, v2) {
+  return v1 - v2;
+});
+
+// arrow function syntax
+a.sort((v1, v2) => v1 - v2);
+```
+Note: arrow functions cannot be used for constructors or iterator generators.
+
+Return values
+Arrow functions also have special rules for the return keyword. The return keyword is optional if no curly braces are provided for the function and it contains a single expression. In that case the result of the expression is automatically returned. If curly braces are provided then the arrow function behaves just like a standard function.
+```
+() => 3;
+// RETURNS: 3
+
+() => {
+  3;
+};
+// RETURNS: undefined
+
+() => {
+  return 3;
+};
+// RETURNS: 3
+```
+**This pointer:**
+Next, arrow functions inherit the this pointer from the scope in which they are created. This makes what is known as a closure. 
+- A closure allows a function to continue referencing its creation scope, even after it has passed out of that scope.
+- This can be tricky to wrap your head around, and we discuss it in detail when we later talk about JavaScript scope. For now consider the following example.
+
+The function makeClosure returns an anonymous function using the arrow syntax. Notice that the a parameter is overridden, a new b variable is created, and both a and b are referenced in the arrow function. Because of that reference, they are both part of the closure for the returned function.
+```
+function makeClosure(a) {
+  a = 'a2';
+  const b = 'b2';
+  return () => [a, b];
+}
+```
+Next, we declare the variables a and b at the top level scope, and call makeClosure with a.
+```
+const a = 'a';
+const b = 'b';
+
+const closure = makeClosure(a);
+```
+Now, when we call the closure function, it will output the values contained in the scope in which it was created, instead of the current values of the variables.
+```
+console.log(closure());
+// OUTPUT: ['a2', 'b2']
+
+console.log(a, b);
+// OUTPUT: 'a' 'b'
+```
+Closures provide a valuable property when we do things like execute JavaScript within the scope of an HTML page, because it can remember the values of variables when the function was created instead of what they are when they are executed.
+
+Putting it all together
+Now that you know how functions work in JavaScript, let's look at an example that demonstrates the use of functions, arrow functions, parameters, a function as a parameter (callback), closures, and browser event listeners. This is done by implementing a debounce function.
+
+The point of a debounce function is to only execute a specified function once within a given time window. Any requests to execute the debounce function more frequently than this will case the time window to reset. This is important in cases where a user can trigger expensive events thousands of times per second. Without a debounce the performance of your application can greatly suffer.
+
+The following code calls the browser's window.addEventListener function to add a callback function that is invoked whenever the user scrolls the browser's web page. The first parameter to addEventListener specifies that it wants to listen for scroll events. The second parameter provides the function to call when a scroll event happens. In this case we call a function named debounce.
+
+The debounce function takes two parameters, the time window for executing the window function, and the window function to call within that limit. In this case we will execute the arrow function at most every 500 milliseconds.
+```
+window.addEventListener(
+  'scroll',
+  debounce(500, () => {
+    console.log('Executed an expensive calculation');
+  })
+);
+```
+The debounce function implements the execution of windowFunc within the restricted time window by creating a closure that contains the current timeout and returning a function that will reset the timeout every time it is called. The returned function is what the scroll event will actually call when the user scrolls the page. However, instead of directly executing the windowFunc it sets a timer based on the value of windowMs. If the debounce function is called again before the window times out then it resets the timeout.
+```
+function debounce(windowMs, windowFunc) {
+  let timeout;
+  return function () {
+    console.log('scroll event');
+    clearTimeout(timeout);
+    timeout = setTimeout(() => windowFunc(), windowMs);
+  };
+}
+```
+You can experiment with this in CodePen. In this example, the background color will change as long as the user is scrolling. When they stop the background reverts back to white.
 
 
+### JavaScript Arrays:
+JavaScript array objects represent a sequence of other objects and primitives. You can reference the members of the array using a zero based index. You can create an array with the Array constructor or using the array literal notation shown below.
+```
+const a = [1, 2, 3];
+console.log(a[1]);
+// OUTPUT: 2
+
+console.log(a.length);
+// OUTPUT: 3
+```
+Object functions
+The Array object has several interesting static functions associated with it. Here are some of the interesting ones.
+
+|Function|	Meaning|	Example|
+|--------|---------|---------|
+|push|	Add an item to the end of the array|	a.push(4)|
+|pop|	Remove an item from the end of the array|	x = a.pop()|
+|slice|	Return a sub-array|	a.slice(1,-1)|
+|sort|	Run a function to sort an array in place|	a.sort((a,b) => b-a)|
+|values|	Creates an iterator for use with a for of loop|	for (i of a.values()) {...}|
+|find|	Find the first item satisfied by a test function|	a.find(i => i < 2)|
+|forEach|	Run a function on each array item|	a.forEach(console.log)|
+|reduce|	Run a function to reduce each array item to a single item|	a.reduce((a, c) => a + c)|
+|map|	Run a function to map an array to a new array|	a.map(i => i+i)|
+|filter|	Run a function to remove items|	a.filter(i => i%2)|
+|every|	Run a function to test if all items match|	a.every(i => i < 3)|
+|some|	Run a function to test if any items match|	a.some(i => i < 1)|
+```
+const a = [1, 2, 3];
+
+console.log(a.map((i) => i + i));
+// OUTPUT: [2,4,6]
+console.log(a.reduce((v1, v2) => v1 + v2));
+// OUTPUT: 6
+console.log(a.sort((v1, v2) => v2 - v1));
+// OUTPUT: [3,2,1]
+
+a.push(4);
+console.log(a.length);
+// OUTPUT: 4
+```
+### JSON:
+- JSON provides a simple way to share and store data. 
+- By design JSON is easily convertible to, and from, JavaScript object
+
+JSON document contains one of the following data types:
+|Type	|Example|
+|-----|-------|
+|string|	"crockford"|
+|number	|42|
+|boolean|	true|
+|array	|[null,42,"crockford"]|
+|object	|{"a":1,"b":"crockford"}|
+|null|	null|
+
+- Most commonly, a JSON document contains an object.
+- Objects contain zero or more key value pairs. The key is always a string, and the value must be one of the valid JSON data types.
+- Key value pairs are delimited with commas. Curly braces delimit an object, square brackets and commas delimit arrays, and strings are always delimited with double quotes.
+
+Here is an example of a JSON document.
+```
+{
+  "class": {
+    "title": "web programming",
+    "description": "Amazing"
+  },
+  "enrollment": ["Marco", "Jana", "فَاطِمَة"],
+  "start": "2025-02-01",
+  "end": null
+}
+```
+JSON is always encoded with UTF-8. This allows for the representation of global data.
+
+**Converting to JAVASCRIPT:**
+You can convert JSON to, and from, JavaScript using the JSON.parse and JSON.stringify functions.
+```
+const obj = { a: 2, b: 'crockford', c: undefined };
+const json = JSON.stringify(obj);
+const objFromJson = JSON.parse(json);
+
+console.log(obj, json, objFromJson);
+
+// OUTPUT:
+// {a: 2, b: 'crockford', c: undefined}
+// {"a":2, "b":"crockford"}
+// {a: 2, b: 'crockford'}
+```
+Note that in this example, JSON cannot represent the JavaScript undefined object and so it gets dropped when converting from JavaScript to JSON.
+
+### Javascript object and classes:
+A JavaScript object represents a collection of name value pairs referred to as properties. The property name must be of type String or Symbol, but the value can be of any type. Objects also have common object-oriented functionality such as constructors, a this pointer, static properties and functions, and inheritance.
+
+Objects can be created with the new operator. This causes the object's constructor to be called. Once declared you can add properties to the object by simply referencing the property name in an assignment. Any type of variable can be assigned to a property. This includes a sub-object, array, or function. The properties of an object can be referenced either with dot (obj.prop) or bracket notation (obj['prop']).
+```
+const obj = new Object({ a: 3 });
+obj['b'] = 'fish';
+obj.c = [1, 2, 3];
+obj.hello = function () {
+  console.log('hello');
+};
+
+console.log(obj);
+// OUTPUT: {a: 3, b: 'fish', c: [1,2,3], hello: func}
+```
+The ability to dynamically modify an object is incredibly useful when manipulating data with an indeterminate structure.
+
+⚠ Note the different uses of the term object. Object can refer to the standard JavaScript objects (e.g. Promise, Map, Object, Function, Date, ...), or it can refer specifically to the JavaScript Object object (i.e. new Object()), or it can refer to any JavaScript object you create (e.g. {a:'a', b:2} ). This overloaded usage can be a bit confusing.
+
+**Object-literals**
+You can also declare a variable of object type with the object-literal syntax. This syntax allows you to provide the initial composition of the object.
+```
+const obj = {
+  a: 3,
+  b: 'fish',
+};
+```
+**Object functions**
+Object has several interesting static functions associated with it. Here are some of the commonly used ones.
+
+|Function|	Meaning|
+|--------|---------|
+|entries|	Returns an array of key value pairs|
+|keys	|Returns an array of keys|
+|values	|Returns an array of values|
+```
+console.log(Object.entries(obj));
+// OUTPUT: [['a', 3], ['b', 'fish']]
+console.log(Object.keys(obj));
+// OUTPUT: ['a', 'b']
+console.log(Object.values(obj));
+// OUTPUT: [3, 'fish']
+```
+**Constructor:**
+Any function that returns an object is considered a constructor and can be invoked with the new operator.
+```
+function Person(name) {
+  return {
+    name: name,
+  };
+}
+
+const p = new Person('Eich');
+console.log(p);
+// OUTPUT: {name: 'Eich'}
+```
+
+Because objects can have any type of property value you can create methods on the object as part of its encapsulation.
+```
+function Person(name) {
+  return {
+    name: name,
+    log: function () {
+      console.log('My name is ' + this.name);
+    },
+  };
+}
+
+const p = new Person('Eich');
+p.log();
+// OUTPUT: My name is Eich
+```
+**This pointer:**
+- Notice in the last example the use of the keyword this when we referred to the name property (this.name).
+- The meaning of this depends upon the scope of where it is used, but in the context of an object it refers to a pointer to the object. 
+
+**Classes:**
+- You can use classes to define objects.
+-  Using a class to create a reusable component rather than a one-off object.
+-  Class declarations look similar to declaring an object, but classes have an explicit constructor and assumed function declarations.
+-  The person object from above would look like the following when converted to a class.
+```
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  log() {
+    console.log('My name is ' + this.name);
+  }
+}
+
+const p = new Person('Eich');
+p.log();
+// OUTPUT: My name is Eich
+```
+You can make properties and functions of classes private by prefixing them with a #.
+```
+class Person {
+  #name;
+
+  constructor(name) {
+    this.#name = name;
+  }
+}
+
+const p = new Person('Eich');
+p.#name = 'Lie';
+// OUTPUT: Uncaught SyntaxError: Private field '#name' must be declared in an enclosing class
+```
+**Inheritance:**
+- Classes can be extended by using the **'extends'** keyword to define inheritance.
+- Parameters that need to be passed to the parent class are delivered using the **'super'** function.
+- Any functions defined on the child that have the same name as the parent override the parent's implementation. A parent's function can be explicitly accessed using the super keyword.
+```
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  print() {
+    return 'My name is ' + this.name;
+  }
+}
+
+class Employee extends Person {
+  constructor(name, position) {
+    super(name);
+    this.position = position;
+  }
+
+  print() {
+    return super.print() + '. I am a ' + this.position;
+  }
+}
+
+const e = new Employee('Eich', 'programmer');
+console.log(e.print());
+// OUTPUT: My name is Eich. I am a programmer
+```
+
+### JavaScript Regular expressions:
+Regular expression support is built right into JavaScript. If you are not familiar with regular expressions, you can think of them as textual pattern matchers. You use a regular expression to find text in a string so that you can replace it, or simply to know that it exists.
+
+You can create a regular expression using the class constructor or a regular expression literal.
+```
+const objRegex = new RegExp('ab*', 'i');
+const literalRegex = /ab*/i;
+```
+The string class has several functions that accept regular expressions. This includes match, replace, search, and split. For a quick test to see if there is a match you can use the regular expression object's test function.
+```
+const petRegex = /(dog)|(cat)|(bird)/gim;
+const text = 'Both cats and dogs are pets, but not rocks.';
+
+text.match(petRegex);
+// RETURNS: ['cat', 'dog']
+
+text.replace(petRegex, 'animal');
+// RETURNS: Both animals and animals are pets, but not rocks.
+
+petRegex.test(text);
+// RETURNS: true
+```
+
+### JavaScript rest and spread:
+**Rest:**
+- Sometimes you want a function to take an unknown number of parameters.
+- For example, write a function that checks to see if some number in a list is equal to a given number, you could write this using an array.
+```
+function hasNumber(test, numbers) {
+  return numbers.some((i) => i === test);
+}
+
+const a = [1, 2, 3];
+hasNumber(2, a);
+// RETURNS: true
+```
+However sometimes you don't have an array to work with. In this case you could create one on the fly.
+```
+function hasTwo(a, b, c) {
+  return hasNumber(2, [a, b, c]);
+}
+```
+But JavaScript provides the rest syntax to make this easier. Think of it as a parameter that contains the rest of the parameters. To turn the last parameter of any function into a rest parameter you prefix it with three periods. You can then call it with any number of parameters and they are all automatically combined into an array.
+```
+function hasNumber(test, ...numbers) {
+  return numbers.some((i) => i === test);
+}
+
+hasNumber(2, 1, 2, 3);
+// RETURNS: true
+```
+Note that you can only make the last parameter a rest parameter. Otherwise JavaScript would not know which parameters to combine into the array.
+
+Technically speaking, rest allows JavaScript to provide what is called variadic functions.
+
+**Spread**
+Spread does the opposite of rest. It take an object that is iterable (e.g. array or string) and expands it into a function's parameters. Consider the following.
+```
+function person(firstName, lastName) {
+  return { first: firstName, last: lastName };
+}
+
+const p = person(...['Ryan', 'Dahl']);
+console.log(p);
+// OUTPUT: {first: 'Ryan', last: 'Dahl'}
+```
+### javascript exceptions:
+JavaScript supports exception handling using the try catch and throw syntax. An exception can be triggered whenever your code generates an exception using the throw keyword, or whenever an exception is generated by the JavaScript runtime, for example, when an undefined variable is used.
+
+To catch a thrown exception, you wrap a code block with the try keyword, and follow the try block with a catch block. If within the try block, including any functions that block calls, an exception is thrown, then all of the code after the throw is ignored, the call stack is unwound, and the catch block is called.
+
+In addition to a catch block, you can specify a finally block that is always called whenever the try block is exited regardless if an exception was ever thrown.
+
+The basic syntax looks like the following.
+```
+try {
+  // normal execution code
+} catch (err) {
+  // exception handling code
+} finally {
+  // always called code
+}
+```
+For example:
+```
+function connectDatabase() {
+  throw new Error('connection error');
+}
+
+try {
+  connectDatabase();
+  console.log('never executed');
+} catch (err) {
+  console.log(err);
+} finally {
+  console.log('always executed');
+}
+
+// OUTPUT: Error: connection error
+//         always executed
+```
+⚠ When first using exception handling it is tempting to use it as way to handle normal flows of execution. For example, throwing a file not found exception when it is common for users to request nonexistent files. Throwing exceptions should only happen when something truly exceptional occurs. For example, a file not found exception when the file is required for your code to run, such as a required configuration file. Your code will be easier to debug, and your logs more meaningful if you restrict exceptions to truly exceptional situations.
+
+**Fallbacks:**
+The fallback pattern is commonly implemented using exception handling. To implement the fallback pattern you put the normal feature path in a try block and then provide a fallback implementation in the catch block. For example, normally you would get the high scores for a game by making a network request, but if the network is not available then a locally cached version of the last available scores is used. By providing a fallback, you can always return something, even if the desired feature is temporarily unavailable.
+```
+function getScores() {
+  try {
+    const scores = scoringService.getScores();
+    // store the scores so that we can use them later if the network is not available
+    window.localStorage.setItem('scores', scores);
+    return scores;
+  } catch {
+    return window.localStorage.getItem('scores');
+  }
+}
+```
+
+### Javascript destructing:
+Destructuring, not to be confused with destructing, is the process of pulling individual items out of an existing one, or removing structure. You can do this with either arrays or objects. This is helpful when you only care about a few items in the original structure.
+
+An example of destructuring arrays looks like the following.
+```
+const a = [1, 2, 4, 5];
+
+// destructure the first two items from a, into the new variables b and c
+const [b, c] = a;
+
+console.log(b, c);
+// OUTPUT: 1, 2
+```
+Note that even though it looks like you are declaring an array with the syntax on the left side of the expression, it is only specifying that you want to destructure those values out of the array.
+
+You can also combine multiple items from the original object using rest syntax.
+```
+const [b, c, ...others] = a;
+
+console.log(b, c, others);
+// OUTPUT: 1, 2, [4,5]
+```
+- This works in a similar manner for objects' except with arrays, the assignment of the associated value was assumed by the positions in the two arrays.
+- When destructuring objects, you explicitly specify the properties you want to pull from the source object.
+```
+const o = { a: 1, b: 'animals', c: ['fish', 'cats'] };
+
+const { a, c } = o;
+
+console.log(a, c);
+// OUTPUT 1, ['fish', 'cats']
+```
+You can also map the names to new variables instead of just using the original property names.
+```
+const o = { a: 1, b: 'animals', c: ['fish', 'cats'] };
+
+const { a: count, b: type } = o;
+
+console.log(count, type);
+// OUTPUT 1, animals
+```
+Default values may also be provided for missing ones.
+```
+const { a, b = 22 } = {};
+const [c = 44] = [];
+
+console.log(a, b, c);
+// OUTPUT: undefined, 22, 44
+```
+Note that all of the above examples created new constant variables, but you can also use destructuring to reassign existing variables.
+```
+let a = 22;
+
+[a] = [1, 2, 3];
+
+console.log(a);
+// OUTPUT: 1
+```
+
+### Scope:
+Understanding JavaScript scope is essential for making your programs run as you expect. Scope is defined as the variables that are visible in the current context of execution. JavaScript has four different types of scope:
+
+* Global - Visible to all code
+* Module - Visible to all code running in a module
+* Function - Visible within a function
+* Block - Visible within a block of code delimited by curly braces
+
+**Var:**
+- Initially JavaScript used the keyword var to declare a variable. 
+- The problem with var, unlike const or let, is that it ignores block scope.
+- Variables declared with var are always logically hoisted to the top of the function.
+- For example, the following code shows the same variable name being used within different enclosing scopes.
+- However, because var ignores block scope the for loop is simply assigning a new value to x rather than declaring a new variable that has the same name.
+```
+var x = 10;
+console.log('start', x);
+
+for (var x = 0; x < 1; x++) {
+  console.log('middle', x);
+}
+
+console.log('end', x);
+
+// OUTPUT: start 10
+//         middle 0
+//         end 1
+```
+⚠ There are few cases where it makes sense to use var. It is strongly suggested that you only use const and let unless you fully understand why you are using var.
+
+**This:**
+The keyword this represents a variable that points to an object that contains the context within the scope of the currently executing line of code. The this variable is automatically declared and you can reference this anywhere in a JavaScript program. Because the value of **this** depends upon the context in which it is referenced, there are three different contexts to which this can refer:
+
+* Global - When **this** is referenced outside a function or object it refers to the **globalThis** object. The globalThis object represents the context for runtime environment. For example, when running in a browser, globalThis refers to the browser's window object.
+* Function - When **this** is referenced in a function it refers to the object that owns the function. That is either an object you defined or globalThis if the function is defined outside of an object. Note that when running in JavaScript strict mode, a global function's this variable is undefined instead of globalThis.
+* Object - When **this** is referenced in an object it refers to the object.
+
+```
+'use strict';
+
+// global scope
+console.log('global:', this);
+console.log('globalThis:', globalThis);
+
+// function scope for a global function
+function globalFunc() {
+  console.log('globalFunctionThis:', this);
+}
+globalFunc();
+
+// object scope
+class ScopeTest {
+  constructor() {
+    console.log('objectThis:', this);
+  }
+
+  // function scope for an object function
+  objectFunc() {
+    console.log('objectFunctionThis:', this);
+  }
+}
+
+new ScopeTest().objectFunc();
+```
+Running the above code in a browser results in the following.
+```
+global: Window
+globalThis: Window
+globalFunctionThis: undefined
+objectThis: ScopeTest
+objectFunctionThis: ScopeTest
+```
+Note that if we were not using JavaScript strict mode then globalFunctionThis would refer to Window.
+
+**Closure:**
+A closure is defined as a function and its surrounding state. That means whatever variables are accessible when a function is created are available inside that function. This holds true even if you pass the function outside of the scope of its original creation.
+
+Here is an example of a function that is created as part of an object. That means that function has access to the object's **this** pointer.
+```
+globalThis.x = 'global';
+
+const obj = {
+  x: 'object',
+  f: function () {
+    console.log(this.x);
+  },
+};
+
+obj.f();
+// OUTPUT: object
+```
+Arrow functions are a bit different because they inherit the **this** pointer of their creation context. So if we change our previous example to return an arrow function, then the **this** pointer at the time of creation will be globalThis.
+```
+globalThis.x = 'global';
+
+const obj = {
+  x: 'object',
+  f: () => console.log(this.x),
+};
+
+obj.f();
+// OUTPUT: global
+```
+However, if we make function in our object that returns an arrow function, then the this pointer will be the object's this pointer since that was the active context at the time the arrow function was created.
+```
+globalThis.x = 'global';
+
+const obj = {
+  x: 'object',
+  make: function () {
+    return () => console.log(this.x);
+  },
+};
+
+const f = obj.make();
+f();
+// OUTPUT: object
+```
+
+### Modules javascript:
+JavaScript modules allow for the partitioning and sharing of code. Initially JavaScript had no support for modules. Node.js, a server side JavaScript execution application, introduced the concept of modules in order to support the importing of packages of JavaScript from third party providers.
+
+JavaScript got full module support with ES6, and they have become the standard module representation as browser support for ES modules is now almost universal.
+
+In order to differentiate between the two implementations, Node.js modules are called CommonJS modules, and JavaScript modules are called ES modules. For this discussion, we will focus only on ES modules.
+
+Because modules create a file-based scope for the code they represent, you must explicitly export the objects from one file and then import them into another file. For example, here is a simple module that exports a function that displays an alert.
+
+alert.js
+```
+export function alertDisplay(msg) {
+  alert(msg);
+}
+```
+You can import the module's exported function into another module using the import keyword.
+
+main.js
+```
+import { alertDisplay } from './alert.js';
+
+alertDisplay('called from main.js');
+```
+**ES Modules in the browser:**
+When you use ES modules in the browser via HTML script references, things get a little complicated. The key thing to understand is that modules can only be called from other modules. You cannot access JavaScript contained in a module from the global scope that your non-module JavaScript is executing in.
+
+From your HTML, you can specify that you are using an ES module by including a type attribute with the value of module in the script element. You can then import and use other modules. This is shown in the example below.
+
+index.html
+```
+<script type="module">
+  import { alertDisplay } from './alert.js';
+  alertDisplay('module loaded');
+</script>
+```
+If we want to use a module in the global scope that our HTML or other non-module JavaScript is executing in, then we must leak it into the global scope. We do this by either attaching an event handler or explicitly adding a function to the global window object. In the example below, we expose the alertDisplay imported module function by attaching it to the global JavaScript window object so that it can then be called from the button onclick handler. We also expose the module function by attaching a keypress event.
+
+index.html
+```
+<html>
+  <body>
+    <script type="module">
+      import { alertDisplay } from './alert.js';
+      window.btnClick = alertDisplay;
+
+      document.body.addEventListener('keypress', function (event) {
+        alertDisplay('Key pressed');
+      });
+    </script>
+    <button onclick="btnClick('button clicked')">Press me</button>
+  </body>
+</html>
+```
+Now, if the button is pushed or a key is pressed our ES module function will be called.
+
+**Modules with web frameworks**
+Fortunately, when you use a web framework bundler, discussed in later instruction, to generate your web application distribution code, you usually don't have to worry about differentiating between global scope and ES module scope. The bundler will inject all the necessary syntax to connect your HTML to your modules. Historically, this was done by removing the modules and placing all of the JavaScript in a namespaced global partition. Now that ES Modules are supported on most browsers, the bundler will expose the ES module directly.
+
+Because of the complex history of modules they can be a confusing topic, but it is well worth the time to understand how they work as they are a core piece of a web programmer's toolkit.
+
+### Local Storage:
+- -The browser's localStorage API provides the ability to persistently store and retrieve data on a user's browser across user sessions and HTML page renderings. (i.e. scores, usernames, etc.,)
+-  localStorage is also used as a cache for when data cannot be obtained from the server. For example, your frontend JavaScript could store the last high scores obtained from the service, and then display those scores in the future if the service is not available.
+
+**How to use LocalStorage**
+There are four main functions that can be used with localStorage.
+
+|Function|	Meaning|
+|--------|---------|
+|setItem(name, value)|	Sets a named item's value into local storage|
+|getItem(name)|	Gets a named item's value from local storage|
+|removeItem(name)|	Removes a named item from local storage|
+|clear()|	Clears all items in local storage|
+
+-A local storage value must be of type string, number, or boolean. If you want to store a JavaScript object or array, then you must first convert it to a JSON string with JSON.stringify() on insertion, and parse it back to JavaScript with JSON.parse() when retrieved.
+
+Open your startup website and run the following code in the browser's dev tools console window.
+```
+let user = 'Alice';
+
+let myObject = {
+  name: 'Bob',
+  info: {
+    favoriteClass: 'CS 260',
+    likesCS: true,
+  },
+};
+
+let myArray = [1, 'One', true];
+
+localStorage.setItem('user', user);
+localStorage.setItem('object', JSON.stringify(myObject));
+localStorage.setItem('array', JSON.stringify(myArray));
+
+console.log(localStorage.getItem('user'));
+console.log(JSON.parse(localStorage.getItem('object')));
+console.log(JSON.parse(localStorage.getItem('array')));
+```
+Output
+```
+Alice
+{name: 'Bob', info: {favoriteClass: 'CS 260', likesCS: true}
+[1, 'One', true]
+```
+Notice that you are able to see the round trip journey of the local storage values in the console output. If you want to see what values are currently set for your application, then open the Application tab of the dev tools and select Storage > Local Storage and then your domain name. With the dev tools you can add, view, update, and delete any local storage values.
+
+![localStorageDevTools](https://github.com/user-attachments/assets/ae06bc77-a9b3-46d0-b8aa-c9f2c4388912)
+
+### Promises:
+- The rendering process of your HTML executes on a single thread.
+- That means that you cannot take a long time processing JavaScript on the main rendering thread.
+- Long running, or blocking tasks, should be executed with the use of a JavaScript Promise.
+- The execution of a promise allows the main rendering thread to continue while some action is executed in the background.
+- You create a promise by calling the Promise object constructor and passing it an executor function that runs the asynchronous operation.
+- Executing asynchronously means that promise constructor may return before the promise executor function runs.
+- The state of the promise execution is always in one of three possible states.
+
+1. pending - Currently running asynchronously
+2. fulfilled - Completed successfully
+3. rejected - Failed to complete
+
+- We can demonstrate asynchronous execution by using the standard JavaScript setTimeout function to create a delay in the execution of the code.
+-  The setTimeout function takes the number of milliseconds to wait and a function to call after that amount of time has expired.
+-  We call the delay function in a for loop in the promise executor and also in a for loop outside the promise so that both code blocks are running in parallel.
+```
+const delay = (msg, wait) => {
+  setTimeout(() => {
+    console.log(msg, wait);
+  }, 1000 * wait);
+};
+
+new Promise((resolve, reject) => {
+  // Code executing in the promise
+  for (let i = 0; i < 3; i++) {
+    delay('In promise', i);
+  }
+});
+
+// Code executing after the promise
+for (let i = 0; i < 3; i++) {
+  delay('After promise', i);
+}
+
+// OUTPUT:
+//   In promise 0
+//   After promise 0
+//   In promise 1
+//   After promise 1
+//   In promise 2
+//   After promise 2
+```
+
+**Resolving and rejecting:**
+- Now that we know how to use a promise to execute asynchronously, we need to be able to set the state to fulfilled when things complete correctly, or to rejected when an error happens.
+- The promise executor function takes two functions as parameters, resolve and reject.
+- Calling resolve sets the promise to the fulfilled state, and calling reject sets the promise to the rejected state.
+
+Consider the following "coin toss" promise that waits ten seconds and then has a fifty percent chance of resolving or rejecting.
+```
+const coinToss = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    if (Math.random() > 0.5) {
+      resolve('success');
+    } else {
+      reject('error');
+    }
+  }, 10000);
+});
+```
+If you log the coinToss promise object to the console immediately after calling the constructor, it will display that it is in the pending state.
+```
+console.log(coinToss);
+// OUTPUT: Promise {<pending>}
+```
+If you wait ten seconds and then log the coinToss promise object again, the state will either show as fulfilled or rejected depending upon the way the coin landed.
+```
+console.log(coinToss);
+// OUTPUT: Promise {<fulfilled>}
+```
+**Then, catch, finally:**
+With the ability to asynchronously execute and set the resulting state, we now need a way to generically do something with the result of a promise after it resolves.
+- This is done with functionality similar to exception handling.
+- The promise object has three functions: then, catch, and finally.
+  - The then function is called if the promise is fulfilled.
+  - catch is called if the promise is rejected.
+  - finally is always called after all the processing is completed.
+
+We can rework our coinToss example and make it so 10 percent of the time the coin falls off the table and resolves to the rejected state. Otherwise the promise resolves to fulfilled with a result of either heads or tails.
+```
+const coinToss = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    if (Math.random() > 0.1) {
+      resolve(Math.random() > 0.5 ? 'heads' : 'tails');
+    } else {
+      reject('fell off table');
+    }
+  }, 10000);
+});
+```
+We then chain the then, catch and finally functions to the coinToss object in order to handle each of the possible results.
+```
+coinToss
+  .then((result) => console.log(`Coin toss result: ${result}`))
+  .catch((err) => console.log(`Error: ${err}`))
+  .finally(() => console.log('Toss completed'));
+
+// OUTPUT:
+//    Coin toss result: tails
+//    Toss completed
+```
+### JavaScript Async/await:
+JavaScript Promise objects are great for asynchronous execution, but as developers began to build large systems with promises they started wanting a more concise representation. 
+- This was provided with the introduction of the **async/await** syntax. The **await** keyword wraps the execution of a promise and removed the need to chain functions.
+- The await expression will block until the promise state moves to fulfilled, or throws an exception if the state moves to rejected. For example, if we have a function that returns a coin toss promise.
+```
+const coinToss = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (Math.random() > 0.1) {
+        resolve(Math.random() > 0.5 ? 'heads' : 'tails');
+      } else {
+        reject('fell off table');
+      }
+    }, 1000);
+  });
+};
+```
+We can create equivalent executions with either a promise then/catch chain, or an await with a try/catch block.
+
+**then/catch chain version:**
+```
+coinToss()
+  .then((result) => console.log(`Toss result ${result}`))
+  .catch((err) => console.error(`Error: ${err}`))
+  .finally(() => console.log(`Toss completed`));
+```
+**async, try/catch version:**
+```
+try {
+  const result = await coinToss();
+  console.log(`Toss result ${result}`);
+} catch (err) {
+  console.error(`Error: ${err}`);
+} finally {
+  console.log(`Toss completed`);
+}
+```
+**async:**
+One important restriction for working with await is that you cannot call await unless it is called at the top level of the JavaScript, or is in a function that is defined with the async keyword. Applying the async keyword transforms the function so that it returns a promise that will resolve to the value that was previously returned by the function. Basically this turns any function into an asynchronous function, so that it can in turn make asynchronous requests.
+
+This can be demonstrated with a function that makes animal noises. Notice that the return value is a simple string.
+```
+function cow() {
+  return 'moo';
+}
+console.log(cow());
+// OUTPUT: moo
+```
+If we designate the function to be asynchronous then the return value becomes a promise that is immediately resolved and has a value that is the return value of the function.
+```
+async function cow() {
+  return 'moo';
+}
+console.log(cow());
+// OUTPUT: Promise {<fulfilled>: 'moo'}
+```
+We then change the cow function to explicitly create a promise instead of the automatically generated promise that the await keyword generates.
+```
+async function cow() {
+  return new Promise((resolve) => {
+    resolve('moo');
+  });
+}
+console.log(cow());
+// OUTPUT: Promise {<pending>}
+```
+You can see that the promise is in the pending state because the promise's execution function has not yet resolved.
+
+**await:**
+The async keyword declares that a function returns a promise. The await keyword wraps a call to the async function, blocks execution until the promise has resolved, and then returns the result of the promise.
+
+We can demonstrate await in action with the cow promise from above. If we log the output from invoking cow then we see that the return value is a promise. However, if we prefix the call to the function with the await keyword, execution will stop until the promise has resolved, at which point the result of the promise is returned instead of the actual promise object.
+```
+console.log(cow());
+// OUTPUT: Promise {<pending>}
+
+console.log(await cow());
+// OUTPUT: moo
+```
+By combining async, to define functions that return promises, with await, to wait on the promise, you can create code that is asynchronous, but still maintains the flow of the code without explicitly using callbacks.
+
+Putting it all together
+You can see the benefit for async/await clearly by considering a case where multiple promises are required. For example, when calling the fetch web API on an endpoint that returns JSON, you would need to resolve two promises. One for the network call, and one for converting the result to JSON. A promise implementation would look like the following.
+```
+const httpPromise = fetch('https://simon.cs260.click/api/user/me');
+const jsonPromise = httpPromise.then((r) => r.json());
+jsonPromise.then((j) => console.log(j));
+console.log('done');
+
+// OUTPUT: done
+// OUTPUT: {email: 'bud@mail.com', authenticated: true}
+```
+With async/await, you can clarify the code intent by hiding the promise syntax, and also make the execution block until the promise is resolved.
+```
+const httpResponse = await fetch('https://simon.cs260.click/api/user/me');
+const jsonResponse = await httpResponse.json();
+console.log(jsonResponse);
+console.log('done');
+
+// OUTPUT: {email: 'bud@mail.com', authenticated: true}
+// OUTPUT: done
+```
+
+## Midterm Questions
+1. In the following code, what does the link element do?
+- The <link> tag defines the relationship between the current document and an external resource.
+- The <link> tag is most often used to link to external style sheets or to add a favicon to your website.
+- The <link> element is an empty element, it contains attributes only.
+```
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+```
+2. In the following code,  what does a div tag do?
+- The <div> tag defines a division or a section in an HTML document. The <div> tag is used as a container for HTML elements.
 
 
+3. In the following code, what is the difference between padding and margin?
+- Padding: Creates space within an element, between the content and the border
+- Margin: Creates space around an element, outside of the border
+- Padding can be used to separate text boxes and images while keeping them aligned.
+- Padding can be used to adjust the size of an element.
+- Margin can be used to separate a button from other elements.
+
+4. What does the following line of Javascript do using a # selector?
+- In JavaScript, selectors can be used to select elements in the DOM. A selector can be an element ID, class, or tag name such as document. querySelector('#my-id') . Here is an example of using a selector in JavaScript to select an element with an ID of 'my-id'.
+
+5. By default, the HTML span element has a default CSS display property value of: 
+|display| Value	HTML Elements With This Default Value|
+|-------|--------------------------------------------|
+|block|	div , p , table|
+|inline|	span , b , i , strong , em|
+|inline-block|	img|
+
+7. How would you use CSS to change all the div elements to have a background color of red?
+- you use the background-color property.
+7. How would you display an image with a hyperlink in HTML?
+- To display an image with a hyperlink in HTML, you can use the <img> and <a> tags, and specify the URL to link to in the <a> tag's href attribute.
+
+8. What is the opening HTML tag for a paragraph, ordered list, unordered list, second level heading, first level heading, third level heading?
+- Paragraph: <p> 
+- Ordered list: <ol> 
+- Unordered list: <ul> 
+- Second level heading: <h2> 
+- First level heading: <h1> 
+- Third level heading: <h3>
 
 
+9. How do you declare the document type to be html?
+- To declare that a document is HTML, you use the HTML document type declaration, or DOCTYPE, at the beginning of the document
+
+10. What is valid javascript syntax for if, else, for, while, switch statements?
+```
+// if statement
+if (condition) {
+  // code to execute if condition is true
+} else {
+  // code to execute if condition is false
+}
+
+// for statement
+for (initialization; condition; increment/decrement) {
+  // code to execute repeatedly as long as condition is true
+}
+
+// while statement
+while (condition) {
+  // code to execute repeatedly as long as condition is true
+}
+
+// switch statement
+switch (expression) {
+  case value1:
+    // code to execute if expression matches value1
+    break;
+  case value2:
+    // code to execute if expression matches value2
+    break;
+  default:
+    // code to execute if expression does not match any case
+}
+```
+11. What is the correct syntax for creating a javascript object?
+```
+const myObject = {
+  property1: "value1",
+  property2: 2,
+  property3: function() {
+    // function code
+  }
+};
+```
+Explanation:
+Curly braces {} define the object.
+property1, property2, and property3 are the property names (keys).
+"value1", 2, and the function are the corresponding property values.
+Commas separate the key-value pairs.
+
+Another explanation:
+With Object.create() , we can create an object with null as prototype. The equivalent syntax in object initializers would be the __proto__ key. o = Object.create(null); // Is equivalent to: o = { __proto__: null }; By default properties are not writable, enumerable or configurable.
+
+
+12.  Is it possible to add new properties to javascript objects?
+- To add a new property to an object, you can use dot notation or bracket notation in JavaScript. object['property'] = value; Replace object with the name of the object you want to add the property to, property with the name of the new property, and value with the value you want to assign to the property.
+
+Yes, it is possible to add new properties to JavaScript objects. You can do this using either dot notation or bracket notation:
+Dot notation:
+JavaScript
+```
+const myObject = {};
+
+myObject.newProperty = "Hello, world!";
+
+console.log(myObject.newProperty); // Output: Hello, world!
+```
+Bracket notation:
+JavaScript
+```
+const myObject = {};
+
+const propertyName = "newProperty";
+
+myObject[propertyName] = "Hello, world!";
+
+console.log(myObject[propertyName]); // Output: Hello, world!
+```
+
+
+13. If you want to include JavaScript on an HTML page, which tag do you use?
+- The <script> tag is what we use to includes our JavaScript. It's a lot like the <link> tag you've already been using to include your CSS files. Here's a very basic snippet of JavaScript using the script tag. This JavaScript is written directly into our HTML page.
+
+14. Which of the following correctly describes JSON?
+- a text-based format for storing and exchanging data that's both human-readable and machine-parsable. It's commonly used in web applications and API calls.
+15. What does the console command chmod, pwd, cd, ls, vim, nano, mkdir, mv, rm, man, ssh, ps, wget, sudo  do?
+Here are the functions of some Linux console commands: 
+- chmod: Changes the permissions for files and directories. The command can be used to grant or revoke read, write, and execute permissions for users, groups, and others. 
+- pwd: Prints the current working directory, starting from the root. 
+- cd: Navigates between directories. 
+- ls: Lists the contents of a folder, including files and directories. 
+- mkdir: Creates one or more directories. 
+- rmdir: Deletes empty directories. 
+- rm: Deletes files from a directory. 
+- mv: Moves or renames files. 
+- cp: Copies files. 
+- touch: Creates blank files. 
+- ln: Creates symbolic links to other files. 
+- clear: Clears the terminal display. 
+- cat: Displays file contents on the terminal. 
+- echo: Prints any text that follows the command. 
+- less: Displays paged outputs in the terminal.
+
+16. Which of the following console command creates a remote shell session?
+
+- The console command that creates a remote shell session is typically "ssh". 
+Explanation: 
+"ssh" stands for Secure Shell: and is the standard way to establish a secure connection to a remote computer, allowing you to execute commands on that machine as if you were logged in directly. 
+Example usage:
+Code
+```
+ssh username@server_address
+```
+
+17. Is a web certificate is necessary to use HTTPS.
+
+- Most crucially for businesses, an SSL certificate is necessary for an HTTPS web address. HTTPS is the secure form of HTTP, and HTTPS websites are websites that have their traffic encrypted by SSL/TLS.
+
+18. Can a DNS A record can point to an IP address or another A record.
+- A DNS A record can only point to an IP address; it cannot point to another A record. The purpose of an A record is to map a domain name directly to an IP address, so its value is always an IP address.
+
+19. Port 443, 80, 22 is reserved for which protocol?
+
+- Port 443 is reserved for the HTTPS protocol (Hypertext Transfer Protocol Secure), port 80 is for HTTP (Hypertext Transfer Protocol), and port 22 is for SSH (Secure Shell) protocol. 
+Breakdown: 
+- Port 443: HTTPS (encrypted web traffic) 
+- Port 80: HTTP (unencrypted web traffic) 
+- Port 22: SSH (secure remote access) 
+- What is a computer port? | Ports in networking - Cloudflare
+- Port 22: Secure Shell (SSH). ... Port 80: Hypertext Transfer Protocol (HTTP). ... Port 443: HTTP Secure (HTTPS). HTTPS is the secu...
+
+Cloudflare
+Common Ports for TCP & UDP Network Communication
+Oct 11, 2024 — While most networks rely on numerous ports, the most common ports used in a networking environment: * Port 80 – HTTP ...
+Netwrix Blog
+
+Port 80 (HTTP) vs. Port 443 (HTTPS): What's the Difference?
+Apr 21, 2024
+ClickSSL
+There are three main types of port numbers: Well-Known Ports (0-1023) that are reserved for reserved for standard services and protocols. They are assigned and controlled by IANA (Internet Assigned Numbers Authority). It includes things such as HTTP (80), HTTPS (443), FTP (21), SSH (22), and SMTP (25)
+
+FlashCards Kahhoot:
+1. What does the DOM textContent property do?
+   - Sets the child text for the an element.
+2. You can use CSS to load fonts from Google?
+   - true.
+3. What will the following output?
+   ```
+   const f = y => ++y;
+   console.log(f(3))
+   ```
+   - 4
+4. What does the following code ouput?
+   ```
+   let a = [1, 2, 3];
+   let e = a.map(number => {
+     return ('a' + number)
+   });
+   console.log(e);
+   ```
+   - ['a1','a22','a3']
+5. what does this do?
+   ```
+   document.querySelector('p').addEventListener('mouseover', console.log);
+   ```
+   - adds a mouseover event listener to a p element.
+6. whihc of the following is a valid javascrpt argument:
+   {n:1}
+7. which valid JSON:
+{"x":3}
+8. The following console command makes a script executable:
+   chmod +x deploy.sh
+9. 
+   
+
+Questions to look into:
+1. contructurs, operators in classes?
+2. javascript object and classes?
+3. JSON
+
+
+# TA QUESTIONS DEEPER UNDERSTANDING
+1. You can also use the ternary operator. This provides a compact if else representation.
+```
+a === 1 ? console.log(1) : console.log('not 1');
+```
+
+ You can create formatted messages in the log parameter.
+```
+console.log('hello %s', 'world');
+// OUTPUT: hello world
+```
+You can even specify CSS declarations in order to style the log output.
+```
+console.log('%c JavaScript Demo', 'font-size:1.5em; color:green;');
+// OUTPUT: JavaScript Demo //in large green text
+
+function labeler(value, title = 'title') {
+  console.log(`${title}=${value}`);
+}
+
+labeler();
+// OUTPUT: title=undefined
+
+labeler('fish');
+// OUTPUT: title=fish
+
+labeler('fish', 'animal');
+// OUTPUT: animal=fish
+```
+Question: WHat the heck does the cash sign do in the function above?
+
+2. The debounce function implements the execution of windowFunc within the restricted time window by creating a closure that contains the current timeout and returning a function that will reset the timeout every time it is called. The returned function is what the scroll event will actually call when the user scrolls the page. However, instead of directly executing the windowFunc it sets a timer based on the value of windowMs. If the debounce function is called again before the window times out then it resets the timeout.
+```
+function debounce(windowMs, windowFunc) {
+  let timeout;
+  return function () {
+    console.log('scroll event');
+    clearTimeout(timeout);
+    timeout = setTimeout(() => windowFunc(), windowMs);
+  };
+}
+```
+You can experiment with this in CodePen. In this example, the background color will change as long as the user is scrolling. When they stop the background reverts back to white.
+
+Question, what does the debounce function do above?
+
+## Web frameworks:
+- Make the job of writing web applications easier by providing tools for completing common application tasks.
+- There are lots of web frameworks to choose from and they evolve all the time. You can view the latest popularity poll at StateOfJS.
+
+![stateofjs-webframeworks](https://github.com/user-attachments/assets/35d39147-911b-4c52-8fda-cfd8b01c1cee)
+
+Here are some of the different ones you can use:
+
+### Vue:
+Vue combines HTML, CSS, and JavaScript into a single file. HTML is represented by a template element that can be aggregated into other templates.
+
+SFC
+```
+<script>
+  export default {
+    data() {
+      return {
+        name: 'world',
+      };
+    },
+  };
+</script>
+
+<style>
+  p {
+    color: green;
+  }
+</style>
+
+<template>
+  <p>Hello {{ name }}!</p>
+</template>
+```
+### Svelte
+Like Vue, Svelte combines HTML, CSS, and JavaScript into a single file. The difference here is that Svelte requires a transpiler to generate browser-ready code, instead of a runtime virtual DOM.
+
+Svelte file
+```
+<script>
+  let name = 'world';
+</script>
+
+<style>
+  p {
+    color: green;
+  }
+</style>
+
+<p>Hello {name}!</p>
+```
+### React
+React combines JavaScript and HTML into its component format. CSS must be declared outside of the JSX file. The component itself leverages the functionality of JavaScript and can be represented as a function or class.
+
+JSX
+```
+import 'hello.css';
+
+const Hello = () => {
+  let name = 'world';
+
+  return <p>Hello {name}</p>;
+};
+```
+CSS
+```
+p {
+  color: green;
+}
+```
+Angular component
+- An Angular component defines what JavaScript, HTML, and CSS are combined together. This keeps a fairly strong separation of files that are usually grouped together in a directory rather than using the single file representation.
+
+JS
+```
+@Component({
+  selector: 'app-hello-world',
+  templateUrl: './hello-world.component.html',
+  styleUrls: ['./hello-world.component.css'],
+})
+export class HelloWorldComponent {
+  name: string;
+  constructor() {
+    this.name = 'world';
+  }
+}
+```
+HTML
+```
+<p>hello {{name}}</p>
+```
+CSS
+```
+p {
+  color: green;
+}
+```
+# React:
+For additional reading: [react](https://react.dev/learn)
+
+### Notes on Instruction Video:
+- Web frameworks: they simplify common patterns , provide common components, improve performance, and increased device coverage, they do this because they now what common things you are using and it knows how to use each of these things.
+- React is the most popular framework by far.
+
+ Core concept of react, is the JSX:
+- JSX: combine javascript and html into one representation.
+![jsx notes](https://github.com/user-attachments/assets/71a12801-281d-477a-9cef-a0e95715982c)
+- the jsx can't be understood by browser, so you throw the stuff in jsx into babel and it translate it into a language the browser can understand.
+When using codepen you need to tell codepen that you are using babel in the code. Just fyi.
+- Make sure to import React library.
+- 
+Components:
+A component is taking some peice of your application and pulling it out and making a single representation.
+
+### Extra reading with React:
+
+Its biggest departure from JavaScript comes with the use of JSX syntax. JSX extends JavaScript's syntax so that HTML-like code can live alongside it. For example:
+jsx
+```
+const heading = <h1>Mozilla Developer Network</h1>;
+```
+This heading constant is known as a JSX expression. React can use it to render that <h1> tag in our app.
+
+Suppose we wanted to wrap our heading in a <header> tag, for semantic reasons? The JSX approach allows us to nest our elements within each other, just like we do with HTML:
+
+jsx
+```
+const header = (
+  <header>
+    <h1>Mozilla Developer Network</h1>
+  </header>
+);
+```
+
+Of course, your browser can't read JSX without help. When compiled (using a tool like Babel or Parcel), our header expression would look like this:
+
+jsx
+```
+const header = React.createElement(
+  "header",
+  null,
+  React.createElement("h1", null, "Mozilla Developer Network"),
+);
+```
+React componenets:
+React apps are made out of components. A component is a piece of the UI (user interface) that has its own logic and appearance. A component can be as small as a button, or as large as an entire page.
+
+React components are JavaScript functions that return markup:
+```
+function MyButton() {
+  return (
+    <button>I'm a button</button>
+  );
+}
+```
+Now that you’ve declared MyButton, you can nest it into another component:
+```
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Welcome to my app</h1>
+      <MyButton />
+    </div>
+  );
+}
+```
+Notice that <MyButton /> starts with a capital letter. That’s how you know it’s a React component. React component names must always start with a capital letter, while HTML tags must be lowercase.
+
+**ADDING STYLES:**
+In React, you specify a CSS class with className. It works the same way as the HTML class attribute:
+```
+<img className="avatar" />
+```
+Then you write the CSS rules for it in a separate CSS file:
+```
+/* In your CSS */
+.avatar {
+  border-radius: 50%;
+}
+```
+React does not prescribe how you add CSS files. In the simplest case, you’ll add a <link> tag to your HTML. If you use a build tool or a framework, consult its documentation to learn how to add a CSS file to your project.
+
+**DISPLAYING DATA:**
+JSX lets you put markup into JavaScript. Curly braces let you “escape back” into JavaScript so that you can embed some variable from your code and display it to the user. For example, this will display user.name:
+```
+return (
+  <h1>
+    {user.name}
+  </h1>
+);
+```
+You can also “escape into JavaScript” from JSX attributes, but you have to use curly braces instead of quotes. For example, className="avatar" passes the "avatar" string as the CSS class, but src={user.imageUrl} reads the JavaScript user.imageUrl variable value, and then passes that value as the src attribute:
+```
+return (
+  <img
+    className="avatar"
+    src={user.imageUrl}
+  />
+);
+```
+**CONDITIONALS:**
+
+In React, there is no special syntax for writing conditions. Instead, you’ll use the same techniques as you use when writing regular JavaScript code. For example, you can use an if statement to conditionally include JSX:
+```
+let content;
+if (isLoggedIn) {
+  content = <AdminPanel />;
+} else {
+  content = <LoginForm />;
+}
+return (
+  <div>
+    {content}
+  </div>
+);
+```
+If you prefer more compact code, you can use the conditional ? operator. Unlike if, it works inside JSX:
+```
+<div>
+  {isLoggedIn ? (
+    <AdminPanel />
+  ) : (
+    <LoginForm />
+  )}
+</div>
+```
+When you don’t need the else branch, you can also use a shorter logical && syntax:
+```
+<div>
+  {isLoggedIn && <AdminPanel />}
+</div>
+```
+All of these approaches also work for conditionally specifying attributes. If you’re unfamiliar with some of this JavaScript syntax, you can start by always using if...else.
+
+**Rendering lists:**
+You will rely on JavaScript features like for loop and the array map() function to render lists of components.
+
+For example, let’s say you have an array of products:
+```
+const products = [
+  { title: 'Cabbage', id: 1 },
+  { title: 'Garlic', id: 2 },
+  { title: 'Apple', id: 3 },
+];
+```
+Inside your component, use the map() function to transform an array of products into an array of <li> items:
+```
+const listItems = products.map(product =>
+  <li key={product.id}>
+    {product.title}
+  </li>
+);
+
+return (
+  <ul>{listItems}</ul>
+);
+```
+Notice how <li> has a key attribute. For each item in a list, you should pass a string or a number that uniquely identifies that item among its siblings. Usually, a key should be coming from your data, such as a database ID. React uses your keys to know what happened if you later insert, delete, or reorder the items.
+
+**Responding to events** 
+You can respond to events by declaring event handler functions inside your components:
+```
+function MyButton() {
+  function handleClick() {
+    alert('You clicked me!');
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Click me
+    </button>
+  );
+}
+```
+Notice how onClick={handleClick} has no parentheses at the end! Do not call the event handler function: you only need to pass it down. React will call your event handler when the user clicks the button.
+
+**Updating the screen:**
+Often, you’ll want your component to “remember” some information and display it. For example, maybe you want to count the number of times a button is clicked. To do this, add state to your component.
+
+First, import useState from React:
+```
+import { useState } from 'react';
+```
+Now you can declare a state variable inside your component:
+```
+function MyButton() {
+  const [count, setCount] = useState(0);
+  // ...
+```
+You’ll get two things from useState: the current state (count), and the function that lets you update it (setCount). You can give them any names, but the convention is to write [something, setSomething].
+
+The first time the button is displayed, count will be 0 because you passed 0 to useState(). When you want to change state, call setCount() and pass the new value to it. Clicking this button will increment the counter:
+```
+function MyButton() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Clicked {count} times
+    </button>
+  );
+}
+```
+React will call your component function again. This time, count will be 1. Then it will be 2. And so on.
+
+If you render the same component multiple times, each will get its own state. Then each will remember it's own count state and doesn't affect other buttons.
+
+**Using Hooks:** 
+Functions starting with use are called Hooks. useState is a built-in Hook provided by React. You can find other built-in Hooks in the API reference. You can also write your own Hooks by combining the existing ones.
+
+Hooks are more restrictive than other functions. You can only call Hooks at the top of your components (or other Hooks). If you want to use useState in a condition or a loop, extract a new component and put it there.
+
+**Sharing data between components :**
+In the previous example, each MyButton had its own independent count, and when each button was clicked, only the count for the button clicked changed:
+
+![Screenshot 2024-10-22 175314](https://github.com/user-attachments/assets/6bc751b1-f1ce-45c7-a34c-bf526cbe6824)
+
+However, often you’ll need components to share data and always update together.
+
+To make both MyButton components display the same count and update together, you need to move the state from the individual buttons “upwards” to the closest component containing all of them.
+
+In this example, it is MyApp:
+
+![Screenshot 2024-10-22 175410](https://github.com/user-attachments/assets/1667d263-cc24-409a-84e0-3f419d5b1e10)
+
+Now when you click either button, the count in MyApp will change, which will change both of the counts in MyButton. Here’s how you can express this in code.
+
+First, move the state up from MyButton into MyApp:
+```
+export default function MyApp() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <h1>Counters that update separately</h1>
+      <MyButton />
+      <MyButton />
+    </div>
+  );
+}
+
+function MyButton() {
+  // ... we're moving code from here ...
+}
+```
+Then, pass the state down from MyApp to each MyButton, together with the shared click handler. You can pass information to MyButton using the JSX curly braces, just like you previously did with built-in tags like <img>:
+```
+export default function MyApp() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <h1>Counters that update together</h1>
+      <MyButton count={count} onClick={handleClick} />
+      <MyButton count={count} onClick={handleClick} />
+    </div>
+  );
+}
+```
+The information you pass down like this is called props. Now the MyApp component contains the count state and the handleClick event handler, and passes both of them down as props to each of the buttons.
+
+Finally, change MyButton to read the props you have passed from its parent component:
+```
+function MyButton({ count, onClick }) {
+  return (
+    <button onClick={onClick}>
+      Clicked {count} times
+    </button>
+  );
+}
+```
+When you click the button, the onClick handler fires. Each button’s onClick prop was set to the handleClick function inside MyApp, so the code inside of it runs. That code calls setCount(count + 1), incrementing the count state variable. The new count value is passed as a prop to each button, so they all show the new value. This is called “lifting state up”. By moving state up, you’ve shared it between components.
+
+
+## React Componenets:
+
+### React devv- your first component:
+[react dev-your fist component](https://react.dev/learn/your-first-component)
+
+- React lets you combine your markup, CSS, and JavaScript into custom “components”, reusable UI elements for your app.
+
+#### Here’s how to build a component:
+
+**Step 1: Export the component**
+The export default prefix is a standard JavaScript syntax (not specific to React). It lets you mark the main function in a file so that you can later import it from other files. 
+
+**Step 2: Define the function**
+With function Profile() { } you define a JavaScript function with the name Profile.
+
+**Pitfall
+React components are regular JavaScript functions, but their names must start with a capital letter or they won’t work!**
+
+**Step 3: Add markup**
+The component returns an <img /> tag with src and alt attributes. <img /> is written like HTML, but it is actually JavaScript under the hood! This syntax is called JSX, and it lets you embed markup inside JavaScript.
+
+Return statements can be written all on one line, as in this component:
+```
+return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
+```
+But if your markup isn’t all on the same line as the return keyword, you must wrap it in a pair of parentheses:
+```
+return (
+  <div>
+    <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  </div>
+);
+```
+**Pitfall
+Without parentheses, any code on the lines after return will be ignored!**
+
+Using a component: Now that you defined a component you can nest it in other components.
+```
+function Profile() {
+  return (
+    <img
+      src="https://i.imgur.com/MK3eW3As.jpg"
+      alt="Katherine Johnson"
+    />
+  );
+}
+
+export default function Gallery() {
+  return (
+    <section>
+      <h1>Amazing scientists</h1>
+      <Profile />
+      <Profile />
+      <Profile />
+    </section>
+  );
+}
+```
+Result:
+![Screenshot 2024-10-22 182329](https://github.com/user-attachments/assets/a7499bc9-7430-4952-865e-3bd12c6d0a54)
+
+Notice the difference in casing:
+- <section> is lowercase, so React knows we refer to an HTML tag.
+- <Profile /> starts with a capital P, so React knows that we want to use our component called Profile.
+And Profile contains even more HTML: <img />. In the end, this is what the browser sees:
+```
+<section>
+  <h1>Amazing scientists</h1>
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+</section>
+```
+Because the Profile components are rendered inside Gallery—even several times!—we can say that Gallery is a parent component, rendering each Profile as a “child”. This is part of the magic of React: you can define a component once, and then use it in as many places and as many times as you like.
+
+**Pitfall
+Components can render other components, but you must never nest their definitions:**
+```
+export default function Gallery() {
+  // 🔴 Never define a component inside another component!
+  function Profile() {
+    // ...
+  }
+  // ...
+}
+```
+**The snippet above is very slow and causes bugs. Instead, define every component at the top level:**
+```
+export default function Gallery() {
+  // ...
+}
+
+// ✅ Declare components at the top level
+function Profile() {
+  // ...
+}
+```
+**When a child component needs some data from a parent, pass it by props instead of nesting definitions.**
+
+### React Components Notes:
+**The render function:**
+One of the primary purposes of a component is to generate the user interface. 
+- This is done with the component's render function. Whatever is returned from the render function is inserted into the component HTML element.
+
+As a simple example, a JSX file containing a React component element named Demo would cause React to load the Demo component, call the render function, and insert the result into the place of the Demo element.
+
+JSX
+```
+<div>
+  Component: <Demo />
+</div>
+```
+Notice that Demo is not a valid HTML element. The transpiler will replace this tag with the resulting rendered HTML.
+
+React component
+```
+function Demo() {
+  const who = 'world';
+  return <b>Hello {who}</b>;
+}
+```
+Resulting HTML
+```
+<div>Component: <b>Hello world</b></div>
+```
+
+**Properties:**
+React components also allow you to pass information to them in the form of element properties. The component receives the properties in its constructor and then can display them when it renders.
+
+JSX
+```
+<div>Component: <Demo who="Walke" /><div>
+```
+React component
+```
+function Demo(props) {
+  return <b>Hello {props.who}</b>;
+}
+```
+Resulting HTML
+```
+<div>Component: <b>Hello Walke</b></div>
+```
+**State**:
+
+In addition to properties, a component can have internal state. 
+- Component state is created by calling the React.useState hook function.
+- The useState function returns a variable that contains the current state and a function to update the state.
+- The following example creates a state variable called clicked and toggles the click state in the updateClicked function that gets called when the paragraph text is clicked.
+```
+const Clicker = () => {
+  const [clicked, updateClicked] = React.useState(false);
+
+  const onClicked = (e) => {
+    updateClicked(!clicked);
+  };
+
+  return <p onClick={(e) => onClicked(e)}>clicked: {`${clicked}`}</p>;
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clicker />);
+```
+You should note that you can use JSX even without a function. A simple variable representing JSX will work anyplace you would otherwise provide a component.
+```
+const hello = <div>Hello</div>;
+
+ReactDOM.render(hello, document.getElementById('root'));
+```
+
+**Class style components**
+In addition to the preferred function style components demonstrated above, React also supports class style components. However, you should note that the React team is moving away from the class style representation, and for that reason you should probably not use it. With that said, you are likely to see class style components and so you should be aware of the syntax. Below is the equivalent class style component for the Clicker component that we created above.
+
+The major difference is that properties are loaded on the constructor and state is set using a setState function on the component object.
+```
+class Clicker extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      clicked: false,
+    };
+  }
+  onClicked() {
+    this.setState({
+      clicked: !this.state.clicked,
+    });
+  }
+  render() {
+    return <p onClick={(e) => this.onClicked(e)}>clicked: {`${this.state.clicked}`}</p>;
+  }
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clicker />);
+```
+Reactivity:
+
+A component's properties and state are used by the React framework to determine the reactivity of the interface. Reactivity controls how a component reacts to actions taken by the user or events that happen within the application. Whenever a component's state or properties change, the render function for the component and all of its dependent component render functions are called.
+
+Here is a complete list of all the steps involved to convert Simon to a React application. When you port your startup to React you will want to commit your changes as you complete each step in the process.
+
+Install and configure Vite
+Reorganize the code
+Convert to React Bootstrap
+Enable React
+Create app component
+Create view components
+Create the router
+Convert HTML to React components
+Replace deployment script
 

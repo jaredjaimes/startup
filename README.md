@@ -6,6 +6,7 @@ Startup application for BYU CS260
 - Be simple: Do not start by implementing mutiple features. This project is about focusing on a core feature well.
 - You can make it look nicer after you have made it work.
 - **Demonstrating the technology is more important than complexity or creativity, and basic implementations of each of the course technologies is sufficient to demonstrate your mastery.**
+- NOTE: MAke sure when deploying that you are in your startup file
 
 ## Elevator Pitch
 Have you ever been stuck trying to complete the same life goal for years? Maybe you've tried getting in better shape, or have a better romantical life, but time and time again you lsot motivation and gave up. Well how about if I told you there was an app that made completeing tasks and reaching goals as addicting as video games, or learning languages on duolingo. Well introducing Life.io, this app allows users to create a virtual avatar that receives in app rewards when you complete a task, and lets you see your goal progress, so you actually see benefits immeadiatley after completeing a task. Making completing goals absolutely addicting.
