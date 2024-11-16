@@ -18,26 +18,36 @@ export default function App() {
                 <h1>Olaga.io<sup>&reg;</sup></h1>
                 <nav>
                     <menu>
-                        <button><NavLink className= "nav-button" to="index.html">Home</a></button>
-                        <button><NavLink className= "nav-button" to="avatar.html">Avatar</a></button>
-                        <button><NavLink className= "nav-button" to="skills.html">Skills</a></button>
-                        <button><NavLink className= "nav-button" to="rankings.html">Rankings</a></button>
+                        <button><NavLink className= "nav-button" to="index.html">Home</NavLink></button>
+                        <button><NavLink className= "nav-button" to="avatar.html">Avatar</NavLink></button>
+                        <button><NavLink className= "nav-button" to="skills.html">Skills</NavLink></button>
+                        <button><NavLink className= "nav-button" to="rankings.html">Rankings</NavLink></button>
                     </menu>
                 </nav>
                 <hr />
             </header>
 
-                <main> App componenets go here</main>
+            <Routes>
+                <Route path='/' element={<Login />} exact />
+                <Route path='/avatar' element={<Avatar/>} />
+                <Route path='/rankings' element={<Rankings />} />
+                <Route path='/skills' element={<Skills />} />
+                <Route path='*' element={<NotFound />} />
+            </Routes>
 
             <footer>
                 <hr />
                 <span className="text-reset">Jared Jaimes</span>
                 <br />
-                <NavLink to="https://github.com/jaredjaimes/startup.git">GitHub</a>
+                <NavLink to="https://github.com/jaredjaimes/startup.git">GitHub</NavLink>
             </footer>
 
         </div>
     </BrowserRouter>
     
   );
+
+  function NotFound() {
+    return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
+  }
 }
