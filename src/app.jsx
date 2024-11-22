@@ -18,10 +18,10 @@ export default function App() {
                 <h1>Olaga.io<sup>&reg;</sup></h1>
                 <nav>
                     <menu>
-                        <button><NavLink className= "nav-button" to="index.html">Home</NavLink></button>
-                        <button><NavLink className= "nav-button" to="avatar.html">Avatar</NavLink></button>
-                        <button><NavLink className= "nav-button" to="skills.html">Skills</NavLink></button>
-                        <button><NavLink className= "nav-button" to="rankings.html">Rankings</NavLink></button>
+                        <button><NavLink className= "nav-button" to=''>Home</NavLink></button>
+                        <button><NavLink className= "nav-button" to='avatar'>Avatar</NavLink></button>
+                        <button><NavLink className= "nav-button" to='skills'>Skills</NavLink></button>
+                        <button><NavLink className= "nav-button" to='rankings'>Rankings</NavLink></button>
                     </menu>
                 </nav>
                 <hr />

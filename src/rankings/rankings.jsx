@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './rankings.css';
 
-export default function Rankings() {
+export function Rankings() {
   return (
     <main>
       {/* Leaderboard Section */}

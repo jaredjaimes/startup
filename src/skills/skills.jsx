@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './skills.css';
 
-export default function Skills() {
+export function Skills() {
   return (
     <main>
       <h2 id="rank-lvl">Level: 10</h2>
