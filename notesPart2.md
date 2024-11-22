@@ -22,3 +22,9 @@ This .gitignore file is configured to:
 - Ignore files that are specific to your local system or development environment (.DS_Store, .vscode, npm-debug.log*).
 - Prevent sensitive or developer-specific files like dbConfig.json from being tracked.
 - By including these rules, your repository will only track the essential source files and configuration needed for others to build and run the project, reducing unnecessary clutter and improving security.
+
+## REACT
+### React Components:
+#### Function Components:
+- When creating a React component, the component's name MUST start with an upper case letter.
+- 
