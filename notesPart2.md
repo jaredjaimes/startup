@@ -321,10 +321,154 @@ function MyButton() {
 }
 ```
 React will call your component function again. This time, count will be 1. Then it will be 2. And so on.
+##### State: 
+Component state is created by calling the React.useState hook function. The useState function returns a variable that contains the current state and a function to update the state. The following example creates a state variable called clicked and toggles the click state in the updateClicked function that gets called when the paragraph text is clicked.
+```
+const Clicker = () => {
+  const [clicked, updateClicked] = React.useState(false);
+
+  const onClicked = (e) => {
+    updateClicked(!clicked);
+  };
+
+  return <p onClick={(e) => onClicked(e)}>clicked: {`${clicked}`}</p>;
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clicker />);
+```
+You should note that you can use JSX even without a function. A simple variable representing JSX will work anyplace you would otherwise provide a component.
+```
+const hello = <div>Hello</div>;
+
+ReactDOM.render(hello, document.getElementById('root'));
+```
+##### Render function:
+One of the primary purposes of a component is to generate the user interface. This is done with the component's render function. Whatever is returned from the render function is inserted into the component HTML element.
+
+##### Adding Properties:
+React components also allow you to pass information to them in the form of element properties. The component receives the properties in its constructor and then can display them when it renders.
+
+JSX
+```
+<div>Component: <Demo who="Walke" /><div>
+```
+React component
+```
+function Demo(props) {
+  return <b>Hello {props.who}</b>;
+}
+```
+Resulting HTML
+```
+<div>Component: <b>Hello Walke</b></div>
+```
+
+##### State:
 
 ##### Using Hooks:
-- Functions starting with use are called Hooks.
+- Functions starting with 'use' are called Hooks.
 - Note: useState is a built-in Hook provided by React. 
 
 #### Babel:
 - When creating jsx and you want to convert that to javascript then put it through a program called babel and it converts it to javascript. 
+
+### Vite:
+Vite is a toolchain that bundles your code quickly. It has great debugging support, and allows you to easily support JSX. 
+Explore the files that Vite Creates:
+|Directory|	File|	Purpose|
+|---------|-----|--------|
+||index.html|	Primary page for the application. This is the starting point to load all of the JSX components beginning with main.jsx.|
+||package.json|	NPM definition for package dependencies and script commands. This is what maps npm run dev to actually start up Vite.|
+||package-lock.json|	Version constraints for included packages (do not edit this).|
+||vite.config.js|	Configuration setting for Vite. Specifically this sets up React for development.|
+||vite.svg|	Vite logo for use as favicon and for display in the app.|
+||main.jsx|	Entry point for code execution. This simply loads the App component found in App.jsx.|
+||index.css|	CSS for the entire application.|
+||App.jsx|	JSX for top level application component. This displays the logs and implements the click counter.|
+||App.css|	CSS for the top level application component.|	
+||react.svg|	React logo for display in the app.|
+
+Note: The main files in the application are index.html, main.jsx, and App.jsx. The browser loads index.html which provides the HTML element (#root) that the React application will be injected into. It also includes the script element to load main.jsx.
+
+### Router:
+React Router is the most popular routing library in React.
+- In order to use it then you need to install it. You do this by running npm i react-router-dom.
+- Once you have this library installed you have to 3 things left to do in order to use the react router.
+- 1. Setup the router.
+  2. define the routes
+  3. handle the navigation.
+
+###### Setup:
+To set it up, import the specific router you need. (BrowserRouter for the web and NativeRouter for mobile) and wrap your entire application in that router.
+  ```
+  ...
+  import { BrowserRouter } from "react-router-dom"
+  ...
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+  ...
+  )
+  ```
+Generally you will import your router in the index.js page of your application and it will wrap your App component.
+
+###### Define Routes
+This is generally done at the top level of your application, such as in the App component. (however, it can be done wherever you want).
+```
+import { Route, Routes } from "react-router-dom"
+import { Home } from "./Home"
+import { BookList } from "./BookList"
+
+export function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/books" element={<BookList />} />
+    </Routes>
+  )
+}
+```
+It can be as simple as defining a single Route component for each route in your application and then putting all those Route components in a single Routes component and it will render the content in the element prop of the Route that has a path that matches the URL. 
+
+###### Handling Navigation:
+React Router uses its own custom Link component to handle navigation. This Link component is just a wrapper around an anchor tag that helps ensure all the routing and conditional re-rendering is handled properly. So  you use Link instead of the anchor tag, and instead of the 'href', you will use 'to', instead. 
+- remember a anchor tag is <a> that defines a hyperlink.
+```
+import { Route, Routes, Link } from "react-router-dom"
+import { Home } from "./Home"
+import { BookList } from "./BookList"
+
+export function App() {
+  return (
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/books">Books</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/books" element={<BookList />} />
+      </Routes>
+    </>
+  )
+}
+```
+### Advanced Route Definitions:
+The 5 main techniques:
+1. Dynamic Routing
+2. Routing Priority
+3. Nested Routes
+4. Multiple Routes
+5. useRoutes Hook
+Note: I was way to lazy to write all the notes for the rest of this subject so here is a link to it all.
+- [Ultimate React Router v6 Guide](https://blog.webdevsimplified.com/2022-07/react-router/)
+
