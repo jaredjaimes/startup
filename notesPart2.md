@@ -472,3 +472,40 @@ The 5 main techniques:
 Note: I was way to lazy to write all the notes for the rest of this subject so here is a link to it all.
 - [Ultimate React Router v6 Guide](https://blog.webdevsimplified.com/2022-07/react-router/)
 
+### Summary notes from making a component with react. 
+- [Getting started with React.js: simple todo list.](https://youtu.be/BaRtXhcD9O4?si=bHiqzbPAyZ8z2YO7)
+
+- Each component class has a thing called render(); Render renders the actual jsx into html. Render is called at component initialization and every time the state updates.
+  ```
+  render(){
+      return(
+          <div>
+            <h4>todo list</h4>
+          </div>
+      );
+  }
+  ```
+- You have to program where this component will be in. So in html, put the
+  ```
+  <script>
+    ReactDOM.render(
+        React.createElement(TodoList),
+        document.getElementById('todo')
+    );
+  </script>
+  ```
+  This creates the todo list and renders it into the todo div.
+Component State:
+- This describes how the component should render, what it should or shouldn't show.
+- And state is basically a javasctipt object containing values, objects, and arrays.
+- You can establish the initial state in a contructor.
+  ```
+  contructor(props){
+    super(props);
+    //since you need the state to be empty when you intialize it then:
+    this.state = {
+        items: []
+    };
+  }
+  ```
+
