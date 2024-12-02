@@ -198,7 +198,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './skills.css';
-import { SkillEventNotifier } from '../skillNotifier'; // Import SkillEventNotifier
+import { SkillNotifier, SkillEvent } from '../skillNotifier'; // Import SkillEventNotifier
 
 export function Skills() {
   // State for tasks and skills
