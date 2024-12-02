@@ -74,10 +74,14 @@ export function Skills() {
   // Calculate total skill points
   const totalPoints = skills.reduce((sum, sk) => sum + sk.points, 0);
 
+  // Calculate total player level
+  const playerLevel = Math.floor(totalPoints / 100) + 1;
+
   return (
     <main className="container">
       <h2 id="rank-lvl">Skill Manager</h2>
       <p>Total Skill Points: {totalPoints}</p>
+      <p>Player Level: {playerLevel}</p>
 
       {/* Input Section for Adding Tasks */}
       <div className="d-flex mb-3">
@@ -190,6 +194,7 @@ export function Skills() {
     </main>
   );
 }
+
 
 
 
