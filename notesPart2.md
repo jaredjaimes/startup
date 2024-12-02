@@ -636,3 +636,22 @@ Today, the fetch API is the preferred way to make HTTP requests. The fetch funct
 # Node Web Service:
 With JavaScript we can write code that listens on a network port (e.g. 80, 443, 3000, or 8080), receives HTTP requests, processes them, and then responds. We can use this to create a simple web service that we then execute using Node.js.
 
+Node.js creates a simple web server. This works great for small projects, but to build a full ready application you need a framework. This is where Node package Express comes in. 
+1. Express provides support for:
+2. Routing requests for service endpoints
+3. Manipulating HTTP requests with JSON body content
+4. Generating HTTP responses
+5. Using middleware to add functionality
+
+Everything in Express revolves around creating and using HTTP routing and middleware functions.
+- You create an Express application by using NPM to install the Express package and then calling the express constructor to create the Express application and listen for HTTP requests on a desired port.
+```
+➜ npm install express
+```
+```
+const express = require('express');
+const app = express();
+
+app.listen(8080);
+```
+With the app object you can now add HTTP routing and middleware functions to the application.
