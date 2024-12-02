@@ -509,3 +509,130 @@ Component State:
   }
   ```
 
+# The internet:
+It is not a bubble cloud. The internet is a wire buried in the ground. Two servers can connect to that wire to communicate. Webpages are files on the servers hard drive. Each server has a unique ip address. These help computers find each other. We also give them names to make them better for us to understand. Computers arent servers because, it is not connected directly to the internet. COmputers are clients because it is connected indirectly to the internet through an internet service provider. When ever info travels through the internet the internet breaks it down into packets to be smaller and then when it gets to destination they reform it in correct order of packets. What's to keep your packets from accidently going to bosses screen? Thats why IP addresses are important. Everyhting connected to the internet or indirectly has an ip adress. WHere two parts or more of the internet intersect there is a peice of equipment called a router that help packets find there way to their destination. 
+
+Note: You can run traceroute to in console utility to see the route the computer takes through the internet to get to a certain destination. 
+
+### Web Servers:
+A web server is a computing device that is hosting a web service that knows how to accept incomming internet connections and speak the HTTP application protocol.
+- Web page is basically a collection of raw materials. Web server is a peice of software that puts those raw materials in a web page.
+
+### Domain Name:
+YOu can see the domain name using dig in console. This hsows the domain name and all the different IP addresses associated with it. They do thiis in case of errors.
+Domains are broken into root domain and sub domains. The TLD or top level domain represent things like com, edu, or click. so a root domain is somehting like, byu.edu, google.com etc, where sub domain is something like travel.byu.edu, or finance.byu.edu.
+
+### DNS: 
+Once a domain name is in the registry it can be listed with a domain name system (DNS) server and associated with an IP address. Of course you must also lease the IP address before you can use it to uniquely identify a device on the internet, but that is a topic for another time. Every DNS server in the world references a few special DNS servers that are considered the authoritative name servers for associating a domain name with an IP address.
+
+The DNS database records that facilitate the mapping of domain names to IP addresses come in several flavors. The main ones we are concerned with are the address (A) and the canonical name (CNAME) records. An A record is a straight mapping from a domain name to IP address. A CNAME record maps one domain name to another domain name. This acts as a domain name alias. You would use a CNAME to do things like map byu.com to the same IP address as byu.edu so that either one could be used.
+
+When you enter a domain name into a browser, the browser first checks to see if it has the name already in its cache of names. If it does not, it contacts a DNS server and gets the IP address. The DNS server also keeps a cache of names. If the domain name is not in the cache, it will request the name from an authoritative name server. If the authority does not know the name then you get an unknown domain name error. If the process does resolve, then the browser makes the HTTP connection to the associated IP address.
+
+As you can see, there is a lot of levels of name caching. This is done for performance reasons, but it also can be frustrating when you are trying to update the information associated with your domain name. This is where the time to live (TTL) setting for a domain record comes into play. You can set this to be something short like 5 minutes or as long as several days. The different caching layers should then honor the TTL and clear their cache after the requested period has passed.
+
+
+## Web Services: 
+Up to this point, your entire application is loaded from your web server and runs on the user's browser. It starts when the browser requests the index.html file from the web server. The index.html, in turn, references other HTML, CSS, JavaScript, or image files. All of these files, that are running on the browser, comprise the frontend of your application.
+
+From our front end JAvaScript we can make requests to external services running anywhere in the world. This gets us external datat that we can inject into the DOM for the user to read. 
+- To make a webserver request, we supply the URL of the web service to the fetch function that is built into the browser.
+- We need to create our own web service.
+- Our web service willl provide  the static frontend files along with functions to handle fetch requests for things like storing data persistently, providing security and runnning tasks, executing application logic that you don;t want your user to be able to see, and communicating with other users.
+- Note: the functionality provided by your web service represents the backend of your application.
+- Generally the functions provided by a web service are called endpoints, or sometimes APIs. You access the web service endpoints from your frontend JavaScript with the fetch function. In the picture below, the backend web service is not only providing the static files that make up the frontend, but also providing the web service endpoints that the frontend calls to do things like get a user, create a user, or get high scores.
+
+![backEnd](https://github.com/user-attachments/assets/d22a167d-da31-4c83-90d7-777b6d91df00)
+
+### URL:
+The unifrom resource locator(URL) represents the location of a web resource. A web resource can be anything from a web page, font, image, database record. or JSON object. 
+
+Looking at the different parts of a URL is a good way to understand what it represents. Here is an example URL that represents the summary of accepted CS 260 BYU students that is accessible using secure HTTP.
+```
+https://byu.edu:443/cs/260/student?filter=accepted#summary
+```
+The URL syntax uses the following convention. Notice the delimiting punctuation between the parts of the URL. Most parts of the URL are optional. The only ones that are required are the scheme, and the domain name.
+```
+<scheme>://<domain name>:<port>/<path>?<parameters>#<anchor>
+```
+|Part|	Example|	Meaning|
+|----|---------|---------|
+|Scheme|	https|	The protocol required to ask for the resource. For web applications, this is usually HTTPS. But it could be any internet protocol such as FTP or MAILTO.|
+|Domain name|	byu.edu|	The domain name that owns the resource represented by the URL.|
+|Port|	3000|	The port specifies the numbered network port used to connect to the domain server. Lower number ports are reserved for common internet protocols, higher number ports can be used for any purpose. The default port is 80 if the scheme is HTTP, or 443 if the scheme is HTTPS.|
+|Path|	/school/byu/user/8014|	The path to the resource on the domain. The resource does not have to physically be located on the file system with this path. It can be a logical path representing endpoint parameters, a database table, or an object schema.|
+|Parameters|	filter=names&highlight=intro,summary|	The parameters represent a list of key value pairs. Usually it provides additional qualifiers on the resource represented by the path. This might be a filter on the returned resource or how to highlight the resource. The parameters are also sometimes called the query string.|
+|Anchor	|summary	|The anchor usually represents a sub-location in the resource. For HTML pages this represents a request for the browser to automatically scroll to the element with an ID that matches the anchor. The anchor is also sometimes called the hash, or fragment ID.|
+
+### Ports:
+Port numbers allow a single device to support multiple protocols (e.g. HTTP, HTTPS, FTP, or SSH) as well as different types of services (e.g. search, document, or authentication). 
+
+he internet governing body, IANA, defines the standard usage for port numbers. Ports from 0 to 1023 represent standard protocols. 
+
+Here is a list of common port numbers that you might come across.
+
+|Port|	Protocol|
+|----|----------|
+|20|	File Transfer Protocol (FTP) for data transfer|
+|22|	Secure Shell (SSH) for connecting to remote devices|
+|25|	Simple Mail Transfer Protocol (SMTP) for sending email|
+|53|	Domain Name System (DNS) for looking up IP addresses|
+|80|	Hypertext Transfer Protocol (HTTP) for web requests|
+|110|	Post Office Protocol (POP3) for retrieving email|
+|123|	Network Time Protocol (NTP) for managing time|
+|161|	Simple Network Management Protocol (SNMP) for managing network devices such as routers or printers|
+|194|	Internet Relay Chat (IRC) for chatting|
+|443|	HTTP Secure (HTTPS) for secure web requests|
+
+### HTTP:
+Hypertext Transfer Protocol (HTTP) is how the web talks. When a web browser makes a request to a web server it does it using the HTTP protocol. 
+- Just like becoming fluent in a foreign language makes a visit to another country more enjoyable, understanding how to speak HTTP helps you communicate effectively when talking on the web.
+- When a web client (e.g. a web browser) and a web server talk they exchange HTTP requests and responses. The browser will make an HTTP request and the server will generate an HTTP response.
+
+- The first line of the HTTP request contains the verb of the request, followed by the path, parameters, and anchor of the URL, and finally the version of HTTP being used.
+```
+<verb> <url path, parameters, anchor> <version>
+[<header key: value>]*
+[
+
+  <body>
+]
+```
+EX: 
+```
+GET /hypertext/WWW/Helping.html HTTP/1.1
+Host: info.cern.ch
+Accept: text/html
+```
+In the above example, we are asking to GET a resource found at the path /hypertext/WWW/Helping.html. The version used by the request is HTTP/1.1. This is followed by two headers. The first specifies the requested host (i.e. domain name). The second specifies what type of resources the client will accept. The resource type is always a MIME type as defined by internet governing body IANA. In this case we are asking for HTML.
+
+There are several verbs that describe what the HTTP request is asking for. The list below only describes the most common ones.
+
+|Verb|	Meaning|
+|----|---------|
+|GET|	Get the requested resource. This can represent a request to get a single resource or a resource representing a list of resources.|
+|POST|	Create a new resource. The body of the request contains the resource. The response should include a unique ID of the newly created resource.|
+|PUT|	Update a resource. Either the URL path, HTTP header, or body must contain the unique ID of the resource being updated. The body of the request should contain the updated resource. The body of the response may contain the resulting updated resource.|
+|DELETE|	Delete a resource. Either the URL path or HTTP header must contain the unique ID of the resource to delete.|
+|OPTIONS|	Get metadata about a resource. Usually only HTTP headers are returned. The resource itself is not returned.|
+
+### Cookies:
+HTTP itself is stateless. This means that one HTTP request does not know anything about a previous or future request. However, that does not mean that a server or client cannot track state across requests. One common method for tracking state is the cookie. Cookies are generated by a server and passed to the client as an HTTP header.
+```
+HTTP/2 200
+Set-Cookie: myAppCookie=tasty; SameSite=Strict; Secure; HttpOnly
+```
+The client then caches the cookie and returns it as an HTTP header back to the server on subsequent requests.
+```
+HTTP/2 200
+Cookie: myAppCookie=tasty
+```
+This allows the server to remember things like the language preference of the user, or the user's authentication credentials. A server can also use cookies to track, and share, everything that a user does. However, there is nothing inherently evil about cookies; the problem comes from web applications that use them as a means to violate a user's privacy or inappropriately monetize their data.
+
+### Fetch:
+Today, the fetch API is the preferred way to make HTTP requests. The fetch function is built into the browser's JavaScript runtime. This means you can call it from JavaScript code running in a browser.
+- The basic usage of fetch takes a URL and returns a promise. The promise then function takes a callback function that is asynchronously called when the requested URL content is obtained. If the returned content is of type application/json you can use the json function on the response object to convert it to a JavaScript object.
+
+# Node Web Service:
+With JavaScript we can write code that listens on a network port (e.g. 80, 443, 3000, or 8080), receives HTTP requests, processes them, and then responds. We can use this to create a simple web service that we then execute using Node.js.
+
