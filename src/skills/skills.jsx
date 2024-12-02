@@ -198,7 +198,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './skills.css';
-import { SkillNotifier, SkillEvent } from '../skillNotifier'; // Import SkillEventNotifier
+import { SkillNotifier } from '../skillNotifier'; // Import SkillNotifier
 
 export function Skills() {
   // State for tasks and skills
@@ -278,7 +278,7 @@ export function Skills() {
   // Broadcast skill data to SkillEventNotifier
   useEffect(() => {
     skills.forEach(skill => {
-      SkillEventNotifier.broadcastUpdate({
+      SkillNotifier.broadcastUpdate({
         name: skill.name,
         skills: { points: skill.points, level: skill.level }
       });
