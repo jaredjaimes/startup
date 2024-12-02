@@ -71,7 +71,7 @@
 // }
 
 import React, { useState, useEffect } from 'react';
-import { SkillNotifier } from '../skillNotifier'; // Import SkillEventNotifier
+import { SkillNotifier } from '../skillNotifier'; // Import SkillNotifier
 import './rankings.css'; // Your original CSS file
 
 export function Rankings() {
@@ -97,12 +97,12 @@ export function Rankings() {
       }
     };
 
-    // Subscribe to the SkillEventNotifier
-    SkillEventNotifier.addHandler(updateRankings);
+    // Subscribe to the SkillNotifier
+    SkillNotifier.addHandler(updateRankings);
 
     return () => {
       // Unsubscribe from SkillEventNotifier
-      SkillEventNotifier.removeHandler(updateRankings);
+      SkillNotifier.removeHandler(updateRankings);
     };
   }, []);
 
