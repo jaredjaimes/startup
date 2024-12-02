@@ -71,7 +71,7 @@
 // }
 
 import React, { useState, useEffect } from 'react';
-import { SkillEventNotifier } from '../skillNotifier'; // Import SkillEventNotifier
+import { SkillNotifier } from '../skillNotifier'; // Import SkillEventNotifier
 import './rankings.css'; // Your original CSS file
 
 export function Rankings() {
