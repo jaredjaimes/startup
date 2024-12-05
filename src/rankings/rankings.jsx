@@ -70,40 +70,95 @@
 //   );
 // }
 
+// import React, { useState, useEffect } from 'react';
+// import { SkillNotifier } from '../skillNotifier'; // Import SkillNotifier
+// import './rankings.css'; // Your original CSS file
+
+// export function Rankings() {
+//   const [rankings, setRankings] = useState([]);
+
+//   useEffect(() => {
+//     // Function to update rankings when events are broadcasted
+//     const updateRankings = (event) => {
+//       if (event.type === 'gameEnd') {
+//         setRankings((prevRankings) => {
+//           const updated = [...prevRankings];
+//           const index = updated.findIndex((p) => p.name === event.value.name);
+//           if (index !== -1) {
+//             // Update the existing player ranking
+//             updated[index] = { ...event.value };
+//           } else {
+//             // Add a new player ranking
+//             updated.push(event.value);
+//           }
+//           // Sort by total points in descending order
+//           return updated.sort((a, b) => b.score - a.score);
+//         });
+//       }
+//     };
+
+//     // Subscribe to the SkillNotifier
+//     SkillNotifier.addHandler(updateRankings);
+
+//     return () => {
+//       // Unsubscribe from SkillEventNotifier
+//       SkillNotifier.removeHandler(updateRankings);
+//     };
+//   }, []);
+
+//   return (
+//     <main className="container">
+//       <h2 id="rank-title">Player Rankings</h2>
+//       <table className="table table-striped">
+//         <thead>
+//           <tr>
+//             <th>Rank</th>
+//             <th>Name</th>
+//             <th>Total Points</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {rankings.map((player, index) => (
+//             <tr key={index}>
+//               <td>{index + 1}</td>
+//               <td>{player.name}</td>
+//               <td>{player.score}</td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+//     </main>
+//   );
+// }
+
 import React, { useState, useEffect } from 'react';
-import { SkillNotifier } from '../skillNotifier'; // Import SkillNotifier
-import './rankings.css'; // Your original CSS file
+import './rankings.css';
 
 export function Rankings() {
   const [rankings, setRankings] = useState([]);
 
   useEffect(() => {
-    // Function to update rankings when events are broadcasted
-    const updateRankings = (event) => {
-      if (event.type === 'gameEnd') {
+    const updateRankings = () => {
+      const storedData = localStorage.getItem('playerData');
+      if (storedData) {
+        const playerData = JSON.parse(storedData);
+
         setRankings((prevRankings) => {
           const updated = [...prevRankings];
-          const index = updated.findIndex((p) => p.name === event.value.name);
+          const index = updated.findIndex((p) => p.name === playerData.name);
           if (index !== -1) {
-            // Update the existing player ranking
-            updated[index] = { ...event.value };
+            updated[index] = playerData;
           } else {
-            // Add a new player ranking
-            updated.push(event.value);
+            updated.push(playerData);
           }
-          // Sort by total points in descending order
           return updated.sort((a, b) => b.score - a.score);
         });
       }
     };
 
-    // Subscribe to the SkillNotifier
-    SkillNotifier.addHandler(updateRankings);
+    const interval = setInterval(updateRankings, 1000); // Mock real-time updates
 
-    return () => {
-      // Unsubscribe from SkillEventNotifier
-      SkillNotifier.removeHandler(updateRankings);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -115,6 +170,7 @@ export function Rankings() {
             <th>Rank</th>
             <th>Name</th>
             <th>Total Points</th>
+            <th>Player Level</th>
           </tr>
         </thead>
         <tbody>
@@ -123,6 +179,7 @@ export function Rankings() {
               <td>{index + 1}</td>
               <td>{player.name}</td>
               <td>{player.score}</td>
+              <td>{player.level}</td>
             </tr>
           ))}
         </tbody>
