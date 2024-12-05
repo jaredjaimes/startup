@@ -86,13 +86,13 @@ For this deliverable I properly styled the application into its final appearance
 For this deliverable I used JavaScript and React so that the application completely works for a single user.
 
  - [ ] Bundled and transpiled - done!
- - [ ] Components - Login, voting list, vote are all components with mocks for login, WebSocket.
+ - [ ] Components - Login, skills, avatar, and ranking, the ranking is mock for websocket later use
  - [ ] login - When you press create or the login button it redirects you to the skills page.
- - [ ] database - Displayed the voting counts. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
+ - [ ] database - Displayed the the player level and exp points. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
  - [ ] WebSocket - I used the setInterval function to periodically increase a random vote count. This will be replaced with WebSocket messages later.
- - [ ] application logic - Have user edit and create tasks that tracks the level of the player based on point system.
- - [ ] Router - Routing between home, skills, avatar, and ranking components.
- - [ ] Hooks - ussed the usdVavigate hook to redirect user to different page when login. 
+ - [ ] application logic - Have a login component that allows users to login and shows different login states based on wether user has logged in or not. Have a avater desrption component that display the overall discription of the avatar based on user input. Then we have a skills page that allows users to create and complete tasks to earn exp points which are tracked by the rankings page. 
+ - [ ] React Router - Routing between home, skills, avatar, and ranking components. We 
+ - [ ] Hooks - the useNavigate hook to redirect user to different page when login, the useState to track username to remember user, and to track the authentication state.  
 
 
 ## Service deliverable
