@@ -11,6 +11,7 @@ export function Authenticated(props) {
   function logout() {
     localStorage.removeItem('userName');
     props.onLogout();
+    navigate('/'); //redirects user to the home page. 
   }
 
   return (
