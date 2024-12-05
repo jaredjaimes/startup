@@ -1,4 +1,4 @@
-### gitignore file:
+o### gitignore file:
 ```
 # dependencies
 node_modules
