@@ -544,6 +544,11 @@ From our front end JAvaScript we can make requests to external services running 
 
 ![backEnd](https://github.com/user-attachments/assets/d22a167d-da31-4c83-90d7-777b6d91df00)
 
+- Your backend web service can also use fetch to make requests to other web services.
+- For example, in the image below the frontend uses fetch to request the user's data from the backend web service. The backend then uses fetch to call two other web services, one to get the user's data from the database, and another one to request subway routes that are near the user's home. That data is then combined together by the backend web service and returned to the frontend for display in the browser.
+
+![backEndFetch](https://github.com/user-attachments/assets/337897c8-1491-4cd8-854e-c8be08be166c)
+
 ### URL:
 The unifrom resource locator(URL) represents the location of a web resource. A web resource can be anything from a web page, font, image, database record. or JSON object. 
 
@@ -565,7 +570,8 @@ The URL syntax uses the following convention. Notice the delimiting punctuation 
 |Anchor	|summary	|The anchor usually represents a sub-location in the resource. For HTML pages this represents a request for the browser to automatically scroll to the element with an ID that matches the anchor. The anchor is also sometimes called the hash, or fragment ID.|
 
 ### Ports:
-Port numbers allow a single device to support multiple protocols (e.g. HTTP, HTTPS, FTP, or SSH) as well as different types of services (e.g. search, document, or authentication). 
+- When you connect to a device on the internet you need both an IP address and a numbered port.
+- Port numbers allow a single device to support multiple protocols (e.g. HTTP, HTTPS, FTP, or SSH) as well as different types of services (e.g. search, document, or authentication). 
 
 he internet governing body, IANA, defines the standard usage for port numbers. Ports from 0 to 1023 represent standard protocols. 
 
