@@ -85,7 +85,7 @@ For this deliverable I properly styled the application into its final appearance
 
 For this deliverable I used JavaScript and React so that the application completely works for a single user.
 
- - [x] Bundled and transpiled - done!
+ - [x] Bundled and transpiled - done! DId i do this? I don't know what that means?
  - [x] Components - Login, skills, avatar, and ranking, the ranking is mock for websocket later use
  - [x] login - When you press create or the login button it redirects you to the skills page.
  - [x] database - Displayed the the player level and exp points, as well as avatar. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
