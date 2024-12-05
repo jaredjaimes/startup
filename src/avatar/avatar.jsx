@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./avatar.css";
 
 export function Avatar() {
-  // State for avatar customization
-  const [avatar, setAvatar] = useState({
-    hair: "short",
-    eyes: "blue",
-    gender: "male", // Default gender
+  // Load avatar from localStorage or set default values
+  const [avatar, setAvatar] = useState(() => {
+    const savedAvatar = localStorage.getItem("avatar");
+    return savedAvatar
+      ? JSON.parse(savedAvatar)
+      : { hair: "short", eyes: "blue", gender: "male" }; // Default avatar
   });
 
   // Options for customization
   const hairOptions = ["short", "long", "curly", "bald"];
   const eyeColors = ["blue", "green", "brown", "hazel"];
   const genderOptions = ["male", "female"];
+
+  // Save avatar state to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("avatar", JSON.stringify(avatar));
+  }, [avatar]);
 
   // Handlers for changes
   const handleAvatarChange = (key, value) => {
@@ -92,3 +98,4 @@ export function Avatar() {
     </div>
   );
 }
+
