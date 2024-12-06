@@ -78,4 +78,51 @@ For this deliverable I properly styled the application into its final appearance
 - [x] **Application elements** - Used good contrast and whitespace
 - [x] **Application text content** - Consistent fonts
 - [x] **Application images** - Have an image that I made as the background of the login/ index page.
+- [ ] 
+
+## React deliverable
+➡️ The following is an example of the required information for the Startup React deliverable
+
+For this deliverable I used JavaScript and React so that the application completely works for a single user.
+
+ - [x] Bundled and transpiled - done! DId i do this? I don't know what that means?
+ - [x] Components - Login, skills, avatar, and ranking, the ranking is mock for websocket later use
+ - [x] login - When you press create or the login button it redirects you to the skills page.
+ - [x] database - Displayed the the player level and exp points, as well as avatar. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
+ - [x] WebSocket - In my rankings pager I use a setInterval function that periodically reads updates from localStorage, making it like websocket.
+ - [x] application logic - Have a login component that allows users to login and shows different login states based on wether user has logged in or not. Have a avater desrption component that display the overall discription of the avatar based on user input. Then we have a skills page that allows users to create and complete tasks to earn exp points which are tracked by the rankings page. 
+ - [x] React Router - Routing between home, skills, avatar, and ranking components. We 
+ - [x] Hooks - the useNavigate hook to redirect user to different page when login, the useState to track username to remember user, and to track the authentication state, and password, and manage avatar customization, tasks state and skill state, and useEffect to manage to broadcast side effects a and skill updates. 
+
+
+## Service deliverable
+➡️ The following is an example of the required information for the Startup Service deliverable
+
+For this deliverable I added backend endpoints that receives votes and returns the voting totals.
+
+ Node.js/Express HTTP service - done!
+ Static middleware for frontend - done!
+ Calls to third party endpoints - I didn't have time to implement this. 😔
+ Backend service endpoints - Placeholders for login that stores the current user on the server. Endpoints for voting.
+ Frontend calls service endpoints - I did this using the fetch function.
+DB/Login deliverable
+➡️ The following is an example of the required information for the Startup DB/Login deliverable
+
+For this deliverable I associate the votes with the logged in user. I stored the votes in the database.
+
+ MongoDB Atlas database created - done!
+ Stores data in MongoDB - done!
+ User registration - Creates a new account in the database.
+ existing user - Stores the votes under the same user if the user already exists.
+ Use MongoDB to store credentials - Stores both user and their votes.
+ Restricts functionality - You cannot vote until you have logged in. This is restricted on the frontend only. 😔
+WebSocket deliverable
+➡️ The following is an example of the required information for the Startup WebSocket deliverable
+
+For this deliverable I used webSocket to update the votes on the frontend in realtime.
+
+ Backend listens for WebSocket connection - done!
+ Frontend makes WebSocket connection - done!
+ Data sent over WebSocket connection - done!
+ WebSocket data displayed - All user votes display in realtime. I'm really proud that this is working. Way cool!
 
