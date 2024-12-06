@@ -19,6 +19,7 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+//Login Logic
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
     const user = users[req.body.email];
@@ -58,6 +59,45 @@ apiRouter.delete('/auth/logout', (req, res) => {
 app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
 });
+
+
+//Skills logic:
+// Update Skills and Tasks for a User
+apiRouter.post('/skills/:username', (req, res) => {
+    const { username } = req.params;
+    const { skills, tasks } = req.body;
+  
+    if (!users[username]) {
+      users[username] = { skills: [], tasks: [] };
+    }
+  
+    users[username].skills = skills || users[username].skills;
+    users[username].tasks = tasks || users[username].tasks;
+  
+    res.status(200).send(users[username]);
+});
+
+//Rankings Logic:
+// Get Rankings
+apiRouter.get('/rankings', (_req, res) => {
+    res.send(rankings);
+});
+
+// Update Rankings
+apiRouter.post('/rankings', (req, res) => {
+    const playerData = req.body;
+  
+    const index = rankings.findIndex((p) => p.name === playerData.name);
+    if (index !== -1) {
+      rankings[index] = playerData;
+    } else {
+      rankings.push(playerData);
+    }
+  
+    rankings.sort((a, b) => b.score - a.score);
+    res.status(200).send(rankings);
+});
+  
   
 // Start server
 app.listen(port, () => {
