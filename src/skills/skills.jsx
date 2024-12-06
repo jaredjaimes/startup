@@ -1,46 +1,53 @@
-// import React, { useState } from 'react';
+// import React, { useState, useEffect } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import './skills.css';
 
 // export function Skills() {
-//   // State for tasks and skills
 //   const [tasks, setTasks] = useState([]);
 //   const [newTask, setNewTask] = useState('');
-//   const [taskXP, setTaskXP] = useState(10); // Default XP for a task
+//   const [taskXP, setTaskXP] = useState(10);
 //   const [skill, setSkill] = useState('');
-//   const [skills, setSkills] = useState([]); // No default skills
+//   const [skills, setSkills] = useState(() => {
+//     // Load skills from localStorage on initial render
+//     const savedSkills = localStorage.getItem('skills');
+//     return savedSkills ? JSON.parse(savedSkills) : [];
+//   });
 //   const [newSkill, setNewSkill] = useState('');
+
+//   // Fetch the username from localStorage
+//   const username = localStorage.getItem('userName') || 'Unknown Player';
+
+//   // Save the skills state to localStorage whenever it changes
+//   useEffect(() => {
+//     localStorage.setItem('skills', JSON.stringify(skills));
+//   }, [skills]);
 
 //   // Function to handle adding a new task
 //   const addTask = () => {
 //     if (newTask.trim() !== '' && taskXP > 0 && skill !== '') {
 //       setTasks([...tasks, { name: newTask, xp: taskXP, completed: false, skill }]);
-//       setNewTask(''); // Clear the input field
-//       setTaskXP(10); // Reset XP to default
-//       setSkill(''); // Reset skill to default
+//       setNewTask('');
+//       setTaskXP(10);
+//       setSkill('');
 //     }
 //   };
 
 //   // Function to toggle task completion
 //   const completeTask = (index) => {
 //     const task = tasks[index];
-
 //     if (!task.completed) {
-//       // Add XP to the corresponding skill when task is completed
 //       setSkills(
 //         skills.map((sk) =>
 //           sk.name === task.skill
 //             ? {
 //                 ...sk,
-//                 points: sk.points + task.xp, // Add task XP
-//                 level: Math.floor((sk.points + task.xp) / 50) + 1, // Level up every 50 XP
+//                 points: sk.points + task.xp,
+//                 level: Math.floor((sk.points + task.xp) / 50) + 1,
 //               }
 //             : sk
 //         )
 //       );
 //     }
-
-//     // Mark the task as completed
 //     setTasks(
 //       tasks.map((t, i) =>
 //         i === index ? { ...t, completed: true } : t
@@ -48,268 +55,150 @@
 //     );
 //   };
 
-//   // Function to delete a task
 //   const deleteTask = (index) => {
 //     setTasks(tasks.filter((_, i) => i !== index));
 //   };
 
-//   // Function to add a new skill
 //   const addSkill = () => {
 //     if (
 //       newSkill.trim() !== '' &&
 //       !skills.some((sk) => sk.name.toLowerCase() === newSkill.toLowerCase())
 //     ) {
 //       setSkills([...skills, { name: newSkill, points: 0, level: 1 }]);
-//       setNewSkill(''); // Clear the input field
+//       setNewSkill('');
 //     }
 //   };
 
-//   // Function to delete a skill
 //   const deleteSkill = (skillName) => {
-//     // Remove the skill and associated tasks
 //     setSkills(skills.filter((sk) => sk.name !== skillName));
 //     setTasks(tasks.filter((task) => task.skill !== skillName));
 //   };
 
-//   // Calculate total skill points
+//   // Calculate total skill points and level
 //   const totalPoints = skills.reduce((sum, sk) => sum + sk.points, 0);
-
-//   // Calculate total player level
 //   const playerLevel = Math.floor(totalPoints / 100) + 1;
 
-//   return (
-//     <main className="container">
-//       <h2 id="rank-lvl">Skill Manager</h2>
-//       <p>Total Skill Points: {totalPoints}</p>
-//       <p>Player Level: {playerLevel}</p>
-
-//       {/* Input Section for Adding Tasks */}
-//       <div className="d-flex mb-3">
-//         {/* Dropdown for selecting a skill */}
-//         <select
-//           className="form-select me-2"
-//           value={skill}
-//           onChange={(e) => setSkill(e.target.value)}
-//         >
-//           <option value="" disabled>
-//             Select a skill
-//           </option>
-//           {skills.map((sk, index) => (
-//             <option key={index} value={sk.name}>
-//               {sk.name}
-//             </option>
-//           ))}
-//         </select>
-
-//         {/* Input for entering a task */}
-//         <input
-//           type="text"
-//           className="form-control me-2"
-//           placeholder="Enter a new way to develop the skill"
-//           value={newTask}
-//           onChange={(e) => setNewTask(e.target.value)}
-//         />
-
-//         {/* Input for setting XP */}
-//         <input
-//           type="number"
-//           className="form-control me-2"
-//           placeholder="XP"
-//           value={taskXP}
-//           onChange={(e) => setTaskXP(Number(e.target.value))}
-//         />
-
-//         {/* Add Task Button */}
-//         <button className="btn btn-primary" onClick={addTask}>
-//           Add Task
-//         </button>
-//       </div>
-
-//       {/* Input Section for Adding a New Skill */}
-//       <div className="d-flex mb-4">
-//         <input
-//           type="text"
-//           className="form-control me-2"
-//           placeholder="Enter a new skill"
-//           value={newSkill}
-//           onChange={(e) => setNewSkill(e.target.value)}
-//         />
-//         <button className="btn btn-secondary" onClick={addSkill}>
-//           Create New Skill
-//         </button>
-//       </div>
-
-//       {/* Skills and Tasks Section */}
-//       {skills.map((sk) => (
-//         <div key={sk.name} className="mb-4">
-//           <h4>
-//             {sk.name} - Level: {sk.level} (Points: {sk.points})
-//             <button
-//               className="btn btn-danger btn-sm ms-3"
-//               onClick={() => deleteSkill(sk.name)}
-//             >
-//               Delete Skill
-//             </button>
-//           </h4>
-//           <ul className="list-group">
-//             {tasks
-//               .filter((task) => task.skill === sk.name)
-//               .map((task, index) => (
-//                 <li
-//                   key={index}
-//                   className={`list-group-item d-flex justify-content-between align-items-center ${
-//                     task.completed ? 'list-group-item-success' : ''
-//                   }`}
-//                 >
-//                   <span
-//                     style={{
-//                       textDecoration: task.completed ? 'line-through' : 'none',
-//                     }}
-//                   >
-//                     {task.name} (XP: {task.xp})
-//                   </span>
-//                   {!task.completed && (
-//                     <button
-//                       className="btn btn-success btn-sm"
-//                       onClick={() => completeTask(index)}
-//                     >
-//                       Complete
-//                     </button>
-//                   )}
-//                   <button
-//                     className="btn btn-danger btn-sm"
-//                     onClick={() => deleteTask(index)}
-//                   >
-//                     Delete
-//                   </button>
-//                 </li>
-//               ))}
-//           </ul>
-//           {/* Display a message if no tasks exist for this skill */}
-//           {tasks.filter((task) => task.skill === sk.name).length === 0 && (
-//             <p className="text-muted">No tasks for this skill.</p>
-//           )}
-//         </div>
-//       ))}
-//     </main>
-//   );
-// }
+//   // Save the current player's ranking data to localStorage
+//   useEffect(() => {
+//     const playerData = {
+//       name: username,
+//       score: totalPoints,
+//       level: playerLevel,
+//     };
+//     localStorage.setItem('playerData', JSON.stringify(playerData));
+//   }, [totalPoints, playerLevel]);
 
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './skills.css';
-import { SkillNotifier, SkillEvent } from '../skillNotifier'; // Import SkillEventNotifier
 
 export function Skills() {
-  // State for tasks and skills
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
-  const [taskXP, setTaskXP] = useState(10); // Default XP for a task
+  const [taskXP, setTaskXP] = useState(10);
   const [skill, setSkill] = useState('');
-  const [skills, setSkills] = useState([]); // No default skills
+  const [skills, setSkills] = useState([]);
   const [newSkill, setNewSkill] = useState('');
 
-  // Function to handle adding a new task
+  // Fetch the username from localStorage
+  const username = localStorage.getItem('userName') || 'Unknown Player';
+
+  // Fetch skills and tasks from the backend
+  useEffect(() => {
+    const fetchSkillsAndTasks = async () => {
+      try {
+        const response = await fetch(`/api/skills/${username}`);
+        if (response.ok) {
+          const data = await response.json();
+          setSkills(data.skills || []);
+          setTasks(data.tasks || []);
+        }
+      } catch (error) {
+        console.error('Error fetching skills and tasks:', error);
+      }
+    };
+
+    fetchSkillsAndTasks();
+  }, [username]);
+
+  // Update skills and tasks in the backend whenever they change
+  useEffect(() => {
+    const updateBackend = async () => {
+      try {
+        await fetch(`/api/skills/${username}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ skills, tasks }),
+        });
+      } catch (error) {
+        console.error('Error updating backend:', error);
+      }
+    };
+
+    updateBackend();
+  }, [skills, tasks, username]);
+
+  // Save the current player's ranking data to the backend
+  useEffect(() => {
+    const totalPoints = skills.reduce((sum, sk) => sum + sk.points, 0);
+    const playerLevel = Math.floor(totalPoints / 100) + 1;
+
+    const playerData = {
+      name: username,
+      score: totalPoints,
+      level: playerLevel,
+    };
+
+    const updateRankings = async () => {
+      try {
+        await fetch('/api/rankings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(playerData),
+        });
+      } catch (error) {
+        console.error('Error updating rankings:', error);
+      }
+    };
+
+    updateRankings();
+  }, [skills, username]);
+
+  // Add Task
   const addTask = () => {
     if (newTask.trim() !== '' && taskXP > 0 && skill !== '') {
       setTasks([...tasks, { name: newTask, xp: taskXP, completed: false, skill }]);
-      setNewTask(''); // Clear the input field
-      setTaskXP(10); // Reset XP to default
-      setSkill(''); // Reset skill to default
+      setNewTask('');
+      setTaskXP(10);
+      setSkill('');
     }
   };
 
-  // Function to toggle task completion
-  const completeTask = (index) => {
-    const task = tasks[index];
-
-    if (!task.completed) {
-      // Add XP to the corresponding skill when task is completed
-      setSkills(
-        skills.map((sk) =>
-          sk.name === task.skill
-            ? {
-                ...sk,
-                points: sk.points + task.xp, // Add task XP
-                level: Math.floor((sk.points + task.xp) / 50) + 1, // Level up every 50 XP
-              }
-            : sk
-        )
-      );
-    }
-
-    // Mark the task as completed
-    setTasks(
-      tasks.map((t, i) =>
-        i === index ? { ...t, completed: true } : t
-      )
-    );
-  };
-
-  // Function to delete a task
-  const deleteTask = (index) => {
-    setTasks(tasks.filter((_, i) => i !== index));
-  };
-
-  // Function to add a new skill
+  // Add Skill
   const addSkill = () => {
-    if (
-      newSkill.trim() !== '' &&
-      !skills.some((sk) => sk.name.toLowerCase() === newSkill.toLowerCase())
-    ) {
+    if (newSkill.trim() !== '' && !skills.some((sk) => sk.name.toLowerCase() === newSkill.toLowerCase())) {
       setSkills([...skills, { name: newSkill, points: 0, level: 1 }]);
-      setNewSkill(''); // Clear the input field
+      setNewSkill('');
     }
   };
 
-  // Function to delete a skill
-  const deleteSkill = (skillName) => {
-    // Remove the skill and associated tasks
-    setSkills(skills.filter((sk) => sk.name !== skillName));
-    setTasks(tasks.filter((task) => task.skill !== skillName));
-  };
 
-  // Calculate total skill points
-  const totalPoints = skills.reduce((sum, sk) => sum + sk.points, 0);
-
-  // Calculate total player level
-  const playerLevel = Math.floor(totalPoints / 100) + 1;
-
-  // Broadcast skill data to SkillEventNotifier
-  useEffect(() => {
-    skills.forEach(skill => {
-      SkillEventNotifier.broadcastUpdate({
-        name: skill.name,
-        skills: { points: skill.points, level: skill.level }
-      });
-    });
-  }, [skills]);
-
-  return (
+return (
     <main className="container">
       <h2 id="rank-lvl">Skill Manager</h2>
       <p>Total Skill Points: {totalPoints}</p>
       <p>Player Level: {playerLevel}</p>
-
-      {/* Input Section for Adding Tasks */}
       <div className="d-flex mb-3">
-        {/* Dropdown for selecting a skill */}
         <select
           className="form-select me-2"
           value={skill}
           onChange={(e) => setSkill(e.target.value)}
         >
-          <option value="" disabled>
-            Select a skill
-          </option>
+          <option value="" disabled>Select a skill</option>
           {skills.map((sk, index) => (
-            <option key={index} value={sk.name}>
-              {sk.name}
-            </option>
+            <option key={index} value={sk.name}>{sk.name}</option>
           ))}
         </select>
-
-        {/* Input for entering a task */}
         <input
           type="text"
           className="form-control me-2"
@@ -317,8 +206,6 @@ export function Skills() {
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
         />
-
-        {/* Input for setting XP */}
         <input
           type="number"
           className="form-control me-2"
@@ -326,14 +213,8 @@ export function Skills() {
           value={taskXP}
           onChange={(e) => setTaskXP(Number(e.target.value))}
         />
-
-        {/* Add Task Button */}
-        <button className="btn btn-primary" onClick={addTask}>
-          Add Task
-        </button>
+        <button className="btn btn-primary" onClick={addTask}>Add Task</button>
       </div>
-
-      {/* Input Section for Adding a New Skill */}
       <div className="d-flex mb-4">
         <input
           type="text"
@@ -342,68 +223,23 @@ export function Skills() {
           value={newSkill}
           onChange={(e) => setNewSkill(e.target.value)}
         />
-        <button className="btn btn-secondary" onClick={addSkill}>
-          Create New Skill
-        </button>
+        <button className="btn btn-secondary" onClick={addSkill}>Create New Skill</button>
       </div>
-
-      {/* Skills and Tasks Section */}
       {skills.map((sk) => (
         <div key={sk.name} className="mb-4">
-          <h4>
-            {sk.name} - Level: {sk.level} (Points: {sk.points})
-            <button
-              className="btn btn-danger btn-sm ms-3"
-              onClick={() => deleteSkill(sk.name)}
-            >
-              Delete Skill
-            </button>
-          </h4>
+          <h4>{sk.name} - Level: {sk.level} (Points: {sk.points})</h4>
+          <button className="btn btn-danger btn-sm ms-3" onClick={() => deleteSkill(sk.name)}>Delete Skill</button>
           <ul className="list-group">
-            {tasks
-              .filter((task) => task.skill === sk.name)
-              .map((task, index) => (
-                <li
-                  key={index}
-                  className={`list-group-item d-flex justify-content-between align-items-center ${
-                    task.completed ? 'list-group-item-success' : ''
-                  }`}
-                >
-                  <span
-                    style={{
-                      textDecoration: task.completed ? 'line-through' : 'none',
-                    }}
-                  >
-                    {task.name} (XP: {task.xp})
-                  </span>
-                  {!task.completed && (
-                    <button
-                      className="btn btn-success btn-sm"
-                      onClick={() => completeTask(index)}
-                    >
-                      Complete
-                    </button>
-                  )}
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => deleteTask(index)}
-                  >
-                    Delete
-                  </button>
-                </li>
-              ))}
+            {tasks.filter((task) => task.skill === sk.name).map((task, index) => (
+              <li key={index} className={`list-group-item ${task.completed ? 'list-group-item-success' : ''}`}>
+                <span>{task.name} (XP: {task.xp})</span>
+                {!task.completed && <button className="btn btn-success btn-sm" onClick={() => completeTask(index)}>Complete</button>}
+                <button className="btn btn-danger btn-sm" onClick={() => deleteTask(index)}>Delete</button>
+              </li>
+            ))}
           </ul>
-          {/* Display a message if no tasks exist for this skill */}
-          {tasks.filter((task) => task.skill === sk.name).length === 0 && (
-            <p className="text-muted">No tasks for this skill.</p>
-          )}
         </div>
       ))}
     </main>
   );
 }
-
-
-
-
-

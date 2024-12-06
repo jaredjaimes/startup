@@ -1,30 +1,4 @@
-### DOM:
-The DOM is a programming interface. It represents the page so that programs can change the structure, style, and content fo the document. The DOM represents the documents nodes and objects. 
-- Nodes represent building blocks of DOM, like a tree-like representation of a HTML. Each node in the DOM represent a single element, attribute, text, or other component of the document.
-- Objects are collections of key-value pairs, where keus are strings(or symbols) and the values can be any data type(including other objects). Think of them as containers that hold related data.
 
-|Data type (Interface)|	Description|
-|---------------------|------------|
-|Document	|When a member returns an object of type document (e.g., the ownerDocument property of an element returns the document to which it belongs), this object is the root document object itself. The DOM document Reference chapter describes the document object.|
-|Node	|Every object located within a document is a node of some kind. In an HTML document, an object can be an element node but also a text node or attribute node.|
-|NodeList	|A nodeList is an array of elements, like the kind that is returned by the method document.querySelectorAll(). Items in a nodeList are accessed by index in either of two ways: list.item(1), list[1] These two are equivalent. In the first, item() is the single method on the nodeList object. The latter uses the typical array syntax to fetch the second item in the list.|
-|Attr	|When an attribute is returned by a member (e.g., by the createAttribute() method), it is an object reference that exposes a special (albeit small) interface for attributes. Attributes are nodes in the DOM just like elements are, though you may rarely use them as such.|
-|NamedNodeMap	|A namedNodeMap is like an array, but the items are accessed by name or index, though this latter case is merely a convenience for enumeration, as they are in no particular order in the list. A namedNodeMap has an item() method for this purpose, and you can also add and remove items from a namedNodeMap.|
-
-The following is a brief list of common APIs in web and XML page scripting using the DOM.
-- [document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
-- document.querySelectorAll()
-- document.createElement()
-- Element.innerHTML
-- Element.setAttribute()
-- Element.getAttribute()
-- EventTarget.addEventListener()
-- HTMLElement.style
-- Node.appendChild()
-- window.onload
-- window.scrollTo()
-
-### gitignore file:
 ```
 # dependencies
 node_modules
