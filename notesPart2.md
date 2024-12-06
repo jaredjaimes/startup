@@ -637,7 +637,9 @@ This allows the server to remember things like the language preference of the us
 
 ### Fetch:
 Today, the fetch API is the preferred way to make HTTP requests. The fetch function is built into the browser's JavaScript runtime. This means you can call it from JavaScript code running in a browser.
-- The basic usage of fetch takes a URL and returns a promise. The promise then function takes a callback function that is asynchronously called when the requested URL content is obtained. If the returned content is of type application/json you can use the json function on the response object to convert it to a JavaScript object.
+- the fetch() function returns a Promise which is fulfilled with a Response object representing the server's response.
+
+- [More on fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
 # Node Web Service:
 With JavaScript we can write code that listens on a network port (e.g. 80, 443, 3000, or 8080), receives HTTP requests, processes them, and then responds. We can use this to create a simple web service that we then execute using Node.js.
@@ -663,6 +665,8 @@ app.listen(8080);
 With the app object you can now add HTTP routing and middleware functions to the application.
 
 ... Notes on express and troublehoot 502 code.
+
+Node is a basic low level API( Application programming interface, which is a set of rules and protocols that allow software applications to communicate with each other). Express is a node web framework that is buildt upon node in order to do allows you to do other more specific handling and API's.
 
 ### SOP:
 To combat this problem the Same Origin Policy (SOP) was created. Simply stated SOP only allows JavaScript to make requests to a domain if it is the same domain that the user is currently viewing. A request from byu.iinstructure.com for service endpoints that are made to byu.instructure.com would fail because the domains do not match. This provides significant security, but it also introduces complications when building web applications. For example, if you want build a service that any web application can use it would also violate the SOP and fail. In order to address this, the concept of Cross Origin Resource Sharing (CORS) was invented.
