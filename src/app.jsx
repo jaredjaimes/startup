@@ -1,4 +1,5 @@
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+
 import { Login } from './login/login';
 import { Avatar } from './avatar/avatar';
 import { Rankings } from './rankings/rankings';
@@ -15,7 +16,7 @@ export default function App() {
   const [authState, setAuthState] = React.useState(currentAuthState);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <div>
         <header>
           <h1>Olaga.io<sup>&reg;</sup></h1>
