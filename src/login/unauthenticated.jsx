@@ -11,15 +11,29 @@ export function Unauthenticated(props) {
   const navigate = useNavigate(); // gets the navigate function from react-router-dom.
 
   async function loginUser() {
-    localStorage.setItem('userName', userName);
-    props.onLogin(userName);
-    navigate('/skills'); 
+    loginOrCreate(`/api/auth/login`);
   }
 
   async function createUser() {
-    localStorage.setItem('userName', userName);
-    props.onLogin(userName);
-    navigate('/skills');
+    loginOrCreate(`/api/auth/create`);
+  }
+
+  async function loginOrCreate(endpoint) {
+    const response = await fetch(endpoint, {
+      method: 'post',
+      body: JSON.stringify({ email: userName, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (response?.status === 200) {
+      localStorage.setItem('userName', userName);
+      props.onLogin(userName);
+      navigate('/skills');
+    } else {
+      const body = await response.json();
+      setDisplayError(`⚠ Error: ${body.msg}`);
+    }
   }
 
   return (

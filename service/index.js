@@ -7,9 +7,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
 // In- memory storageok, wha
 let users = {};
-let skills = [];
-let tasks = [];
-let scores = [];
+let rankings = [];
 
 // Middleware
 app.use(express.json());
