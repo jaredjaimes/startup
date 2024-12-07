@@ -98,14 +98,15 @@ For this deliverable I used JavaScript and React so that the application complet
 ## Service deliverable
 ➡️ The following is an example of the required information for the Startup Service deliverable
 
-For this deliverable I added backend endpoints that receives votes and returns the voting totals.
+For this deliverable I added backend endpoints to the rankings in order to save the exp points into 
 
- Node.js/Express HTTP service - done!
- Static middleware for frontend - done!
- Calls to third party endpoints - I didn't have time to implement this. 😔
- Backend service endpoints - Placeholders for login that stores the current user on the server. Endpoints for voting.
- Frontend calls service endpoints - I did this using the fetch function.
-DB/Login deliverable
+ - [x] Node.js/Express HTTP service - done!
+ - [x] Static middleware for frontend - done! with "app.use(express.static('public'));"
+ - [x] Calls to third party endpoints - yes, I realized I hadn't had a section for this so I decided to do a third party to have a random inspirational quote at the login. 
+ - [x] Backend service endpoints - Placeholders for login that stores the current user on the server. And endpoints for the rankings section.
+ - [x] Frontend calls service endpoints - I did this using the fetch function with the login, skills, and rankings files.
+
+## DB/Login deliverable
 ➡️ The following is an example of the required information for the Startup DB/Login deliverable
 
 For this deliverable I associate the votes with the logged in user. I stored the votes in the database.
@@ -116,6 +117,7 @@ For this deliverable I associate the votes with the logged in user. I stored the
  existing user - Stores the votes under the same user if the user already exists.
  Use MongoDB to store credentials - Stores both user and their votes.
  Restricts functionality - You cannot vote until you have logged in. This is restricted on the frontend only. 😔
+ 
 WebSocket deliverable
 ➡️ The following is an example of the required information for the Startup WebSocket deliverable
 
