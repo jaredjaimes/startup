@@ -65,8 +65,12 @@ app.use((_req, res) => {
 });
 
 // Start server
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+app.listen(port, '0.0.0.0', (err) => {
+  if (err) {
+    console.error(`Error starting server: ${err}`);
+  } else {
+    console.log(`Listening on 0.0.0.0:${port}`);
+  }
 });
 
 
