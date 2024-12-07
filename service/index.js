@@ -7,7 +7,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 3001;
 
 // In- memory storageok, wha
 let users = {};
-let rankings = [];
+let playerDataStorage = [];
 
 // Middleware
 // You do this because all of our endpoints use JSON and so we want Express to automatically parse that for us.
@@ -56,7 +56,22 @@ apiRouter.delete('/auth/logout', (req, res) => {
     res.status(204).end();
 });
 
-//---
+app.post('/api/savePlayerData', (req, res) => {
+  const { name, score, level } = req.body;
+
+  if (!name || !score || !level) {
+    return res.status(400).send({ message: 'Invalid player data' });
+  }
+
+  playerDataStorage.push({ name, score, level });
+  console.log('Player data saved:', { name, score, level });
+
+  res.status(200).send({ message: 'Player data saved successfully' });
+});
+
+apiRouter.get('/rankings', (req, res) => {
+  res.json(playerDataStorage.sort((a, b) => b.score - a.score)); // Sort by score descending
+});
   
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
@@ -67,6 +82,7 @@ app.use((_req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
 
 //-----------------------------------------------
 
