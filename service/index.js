@@ -19,6 +19,10 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
+
 //Login Logic
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
