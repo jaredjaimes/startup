@@ -19,7 +19,6 @@ export function Login({ userName, authState, onAuthChange }) {
     })
     .catch();
 }, []);
-
   return (
     <main className='container-fluid bg-secondary text-center'>
       <div>
@@ -39,9 +38,8 @@ export function Login({ userName, authState, onAuthChange }) {
       <div className='quote-box bg-light text-dark'>
           <p className='quote'>{quote}</p>
           <p className='author'>{quoteAuthor}</p>
-        </div>
+      </div>
     </main>
   );
   
 }
-

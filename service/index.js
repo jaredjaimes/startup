@@ -2,7 +2,7 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 
 // In- memory storageok, wha
@@ -54,48 +54,12 @@ apiRouter.delete('/auth/logout', (req, res) => {
     }
     res.status(204).end();
 });
-
-// //get rankings
-// apiRouter.get('/rankings', (req, res) => {
-//   res.send(rankings);
-// });
-
-// //submit rankings
-// apiRouter.post('/ranking', (req, res) => {
-//   rankings = updateRankings(req.body, rankings);
-//   res.send(rankings);
-// });
-
-// //updateRankings considers a new ranking for inclusiion in the top rankings.
-// function updateRankings(newRank, rankings){
-//   let found = false;
-
-//   // Iterate over the rankings to find the correct insertion point
-//   for (let i = 0; i < rankings.length; i++) {
-//     if (newRank.points > rankings[i].points) {
-//       rankings.splice(i, 0, newRank); // Insert the new rank at the correct position
-//       found = true;
-//       break;
-//     }
-//   }
-
-//   // If the new rank wasn't inserted, add it to the end
-//   if (!found) {
-//     rankings.push(newRank);
-//   }
-
-//   // Ensure the rankings list has at most 10 entries
-//   if (rankings.length > 10) {
-//     rankings.length = 10; // Trim to top 10
-//   }
-//   return rankings
-// }
   
-// // Return the application's default page if the path is unknown
-// app.use((_req, res) => {
-//   res.sendFile('index.html', { root: 'public' });
-// });
-  
+// Return the application's default page if the path is unknown
+app.use((_req, res) => {
+  res.sendFile('index.html', { root: 'public' });
+});
+
 // Start server
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
