@@ -59,13 +59,13 @@ apiRouter.delete('/auth/logout', (req, res) => {
 //get rankings
 apiRouter.get('/rankings', (req, res) => {
   res.send(rankings);
-})
+});
 
 //submit rankings
 apiRouter.post('/ranking', (req, res) => {
   rankings = updateRankings(req.body, rankings);
   res.send(rankings);
-})
+});
 
 //updateRankings considers a new ranking for inclusiion in the top rankings.
 function updateRankings(newRank, rankings){

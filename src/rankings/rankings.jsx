@@ -66,7 +66,7 @@ export function Rankings() {
 
   useEffect(() => {
     fetch('/api/rankings')
-      .then((responsse) => Response.json())
+      .then((response) => response.json())
       .then((rankings) => {
         setRankings(rankings);
       });
