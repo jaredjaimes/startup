@@ -398,6 +398,7 @@ React Router is the most popular routing library in React.
 - 1. Setup the router.
   2. define the routes
   3. handle the navigation.
+  4. 
 
 ###### Setup:
 To set it up, import the specific router you need. (BrowserRouter for the web and NativeRouter for mobile) and wrap your entire application in that router.
@@ -705,3 +706,10 @@ The -k parameter provides the credential file necessary to access your productio
 
 ## Simon Service Notes:
 
+### More notes: 
+- Our web service will provide the static frontedn files along with functions to handle fetch requests for things like storing data persistently, providing security, running tasks, and executing logic you dont want the user to see.
+- This functionality provided by the web service represents the backend of your application.
+- The functions provided by a web service are called endpoionts or API
+- You can see the HTTP exchange by using browsers debugger or console tool like curl.
+- 
+The basic usage of fetch takes a URL and returns a promise. The promises then function takes a callbak function that is ays
