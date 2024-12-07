@@ -2,12 +2,11 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 
-const port = process.argv.length > 2 ? process.argv[2] : 3001;
+const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
 
 // In- memory storageok, wha
 let users = {};
-let rankings = [];
 
 // Middleware
 // You do this because all of our endpoints use JSON and so we want Express to automatically parse that for us.
@@ -92,10 +91,10 @@ apiRouter.delete('/auth/logout', (req, res) => {
 //   return rankings
 // }
   
-// Return the application's default page if the path is unknown
-app.use((_req, res) => {
-  res.sendFile('index.html', { root: 'public' });
-});
+// // Return the application's default page if the path is unknown
+// app.use((_req, res) => {
+//   res.sendFile('index.html', { root: 'public' });
+// });
   
 // Start server
 app.listen(port, () => {
