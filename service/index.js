@@ -10,6 +10,7 @@ let users = {};
 let rankings = [];
 
 // Middleware
+// You do this because all of our endpoints use JSON and so we want Express to automatically parse that for us.
 app.use(express.json());
 
 // Serves up front-end static content hosting.
@@ -54,12 +55,6 @@ apiRouter.delete('/auth/logout', (req, res) => {
     }
     res.status(204).end();
 });
-
-// Return the application's default page if the path is unknown
-app.use((_req, res) => {
-    res.sendFile('index.html', { root: 'public' });
-});
-
 
 //Skills logic:
 // Update Skills and Tasks for a User

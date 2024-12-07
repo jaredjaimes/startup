@@ -18,13 +18,15 @@ export function Authenticated(props) {
       .finally(() => {
         localStorage.removeItem('userName');
         props.onLogout();
-        navigate('/'); //redirects user to the home page. 
       });
   }
 
   return (
     <div>
       <div className='playerName'>{props.userName}</div>
+      <Button variant='primary' onClick={() => navigate('/play')}>
+        Play
+      </Button>
       <Button variant='secondary' onClick={() => logout()}>
         Logout
       </Button>
