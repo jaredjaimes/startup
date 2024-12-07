@@ -114,6 +114,25 @@ a{
   
 }
 
+.quote-box {
+  margin-bottom: 1em;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+.quote {
+  font-style: italic;
+}
+
+.author {
+  font-weight: bold;
+  text-align: right;
+}
+
+.author::before {
+  content: " - ";
+}
+
 /*
 1. How do I make the content in form centered to the page
 2. How do I get the stuff to fil the page instead of the html file color being seen.
