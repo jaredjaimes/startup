@@ -16,7 +16,7 @@ export default function App() {
   const [authState, setAuthState] = React.useState(currentAuthState);
 
   return (
-    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <BrowserRouter>
       <div>
         <header>
           <h1>Olaga.io<sup>&reg;</sup></h1>
