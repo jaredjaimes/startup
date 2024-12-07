@@ -233,35 +233,16 @@ export function Skills() {
   const playerLevel = Math.floor(totalPoints / 100) + 1;
 
   // Save the current player's ranking data with fetch
-  useEffect(() => {
-    const savePlayerData = async () => {
-      const playerData = {
-        name: username,
-        score: totalPoints,
-        level: playerLevel,
-      };
+  async function saveRanking(totalPoints){
+    const playerData = { name: username, points: totalPoints, level:playerLevel };
   
-      try {
-        const response = await fetch('/api/savePlayerData', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(playerData),
-        });
+    await fetch('/api/ranking', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newRank)
+    });
   
-        if (!response.ok) {
-          console.error('Failed to save player data:', response.statusText);
-        } else {
-          console.log('Player data saved successfully!');
-        }
-      } catch (error) {
-        console.error('Error saving player data:', error);
-      }
-    };
-  
-    savePlayerData();
-  }, [totalPoints, playerLevel]);
+  }
 
   return (
     <main className="container">

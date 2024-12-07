@@ -65,23 +65,13 @@ export function Rankings() {
   const [rankings, setRankings] = useState([]);
 
   useEffect(() => {
-    const fetchRankings = async () => {
-      try {
-        const response = await fetch('/api/rankings'); // URL to your rankings endpoint
-        if (!response.ok) {
-          throw new Error(`Failed to fetch rankings: ${response.statusText}`);
-        }
-        const data = await response.json();
-        setRankings(data); // Update state with fetched rankings
-      } catch (error) {
-        console.error('Error fetching rankings:', error);
-      }
-    };
+    fetch('/api/rankings')
+      .then((responsse) => Response.json())
+      .then((rankings) => {
+        setRankings(rankings);
+      });
 
-    fetchRankings();
-
-    return () => clearInterval(interval);
-  }, []);
+    }, []);
 
   return (
     <main className="container">

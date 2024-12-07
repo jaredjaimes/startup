@@ -7,7 +7,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 3001;
 
 // In- memory storageok, wha
 let users = {};
-let playerDataStorage = [];
+let rankings = [];
 
 // Middleware
 // You do this because all of our endpoints use JSON and so we want Express to automatically parse that for us.
@@ -56,22 +56,41 @@ apiRouter.delete('/auth/logout', (req, res) => {
     res.status(204).end();
 });
 
-app.post('/api/savePlayerData', (req, res) => {
-  const { name, score, level } = req.body;
+//get rankings
+apiRouter.get('/rankings', (req, res) => {
+  res.send(rankings);
+})
 
-  if (!name || !score || !level) {
-    return res.status(400).send({ message: 'Invalid player data' });
+//submit rankings
+apiRouter.post('/ranking', (req, res) => {
+  rankings = updateRankings(req.body, rankings);
+  res.send(rankings);
+})
+
+//updateRankings considers a new ranking for inclusiion in the top rankings.
+function updateRankings(newRank, rankings){
+  let found = false;
+
+  // Iterate over the rankings to find the correct insertion point
+  for (let i = 0; i < rankings.length; i++) {
+    if (newRank.points > rankings[i].points) {
+      rankings.splice(i, 0, newRank); // Insert the new rank at the correct position
+      found = true;
+      break;
+    }
   }
 
-  playerDataStorage.push({ name, score, level });
-  console.log('Player data saved:', { name, score, level });
+  // If the new rank wasn't inserted, add it to the end
+  if (!found) {
+    rankings.push(newRank);
+  }
 
-  res.status(200).send({ message: 'Player data saved successfully' });
-});
-
-apiRouter.get('/rankings', (req, res) => {
-  res.json(playerDataStorage.sort((a, b) => b.score - a.score)); // Sort by score descending
-});
+  // Ensure the rankings list has at most 10 entries
+  if (rankings.length > 10) {
+    rankings.length = 10; // Trim to top 10
+  }
+  return rankings
+}
   
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
