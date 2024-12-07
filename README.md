@@ -85,8 +85,8 @@ For this deliverable I properly styled the application into its final appearance
 
 For this deliverable I used JavaScript and React so that the application completely works for a single user.
 
- - [x] Bundled and transpiled - done! DId i do this? I don't know what that means?
- - [x] Components - Login, skills, avatar, and ranking, the ranking is mock for websocket later use
+ - [x] Bundled and transpiled - done! DId i do this? 
+ - [x] Components - Login, skills, avatar, and ranking, the ranking is mock for websocket later and database storage.
  - [x] login - When you press create or the login button it redirects you to the skills page.
  - [x] database - Displayed the the player level and exp points, as well as avatar. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
  - [x] WebSocket - In my rankings pager I use a setInterval function that periodically reads updates from localStorage, making it like websocket.
@@ -100,11 +100,13 @@ For this deliverable I used JavaScript and React so that the application complet
 
 For this deliverable I added backend endpoints that receives votes and returns the voting totals.
 
- Node.js/Express HTTP service - done!
- Static middleware for frontend - done!
- Calls to third party endpoints - I didn't have time to implement this. 😔
- Backend service endpoints - Placeholders for login that stores the current user on the server. Endpoints for voting.
- Frontend calls service endpoints - I did this using the fetch function.
+ - [x] Node.js/Express HTTP service - done!
+ - [x] Static middleware for frontend - yes, with app.use(express.static('public')); in indes.js. 
+ - [x] Calls to third party endpoints - Yup, I added a motivational random quote much like the simon one to the login portion of my website. 
+ - [x] Backend service endpoints - Placeholders for login that stores the current user on the server.
+ - [x] Frontend calls service endpoints - using te fetch command in login. 
+
+
 DB/Login deliverable
 ➡️ The following is an example of the required information for the Startup DB/Login deliverable
 
