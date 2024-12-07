@@ -1,62 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import './rankings.css';
-
-// export function Rankings() {
-//   const [rankings, setRankings] = useState([]);
-
-//   useEffect(() => {
-//     const updateRankings = () => {
-//       const storedData = localStorage.getItem('playerData');
-//       if (storedData) {
-//         const playerData = JSON.parse(storedData);
-
-//         setRankings((prevRankings) => {
-//           const updated = [...prevRankings];
-//           const index = updated.findIndex((p) => p.name === playerData.name);
-//           if (index !== -1) {
-//             updated[index] = playerData;
-//           } else {
-//             updated.push(playerData);
-//           }
-//           return updated.sort((a, b) => b.score - a.score);
-//         });
-//       }
-//     };
-
-//     const interval = setInterval(updateRankings, 1000); // Mock real-time updates
-
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   return (
-//     <main className="container">
-//       <h2 id="rank-title">Player Rankings</h2>
-//       <table className="table table-striped">
-//         <thead>
-//           <tr>
-//             <th>Rank</th>
-//             <th>Name</th>
-//             <th>Total Points</th>
-//             <th>Player Level</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {rankings.map((player, index) => (
-//             <tr key={index}>
-//               <td>{index + 1}</td>
-//               <td>{player.name}</td>
-//               <td>{player.score}</td>
-//               <td>{player.level}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </main>
-//   );
-// }
-
-//---------------------------------------------------------
-
 import React, { useState, useEffect } from 'react';
 import './rankings.css';
 
@@ -64,18 +5,25 @@ export function Rankings() {
   const [rankings, setRankings] = useState([]);
 
   useEffect(() => {
-    const fetchRankings = async () => {
-      try {
-        const response = await fetch('/api/rankings');
-        const data = await response.json();
-        setRankings(data);
-      } catch (err) {
-        console.error('Error fetching rankings:', err);
+    const updateRankings = () => {
+      const storedData = localStorage.getItem('playerData');
+      if (storedData) {
+        const playerData = JSON.parse(storedData);
+
+        setRankings((prevRankings) => {
+          const updated = [...prevRankings];
+          const index = updated.findIndex((p) => p.name === playerData.name);
+          if (index !== -1) {
+            updated[index] = playerData;
+          } else {
+            updated.push(playerData);
+          }
+          return updated.sort((a, b) => b.score - a.score);
+        });
       }
     };
 
-    fetchRankings();
-    const interval = setInterval(fetchRankings, 1000);
+    const interval = setInterval(updateRankings, 1000); // Mock real-time updates
 
     return () => clearInterval(interval);
   }, []);
@@ -106,3 +54,55 @@ export function Rankings() {
     </main>
   );
 }
+
+//---------------------------------------------------------
+
+// import React, { useState, useEffect } from 'react';
+// import './rankings.css';
+
+// export function Rankings() {
+//   const [rankings, setRankings] = useState([]);
+
+//   useEffect(() => {
+//     const fetchRankings = async () => {
+//       try {
+//         const response = await fetch('/api/rankings');
+//         const data = await response.json();
+//         setRankings(data);
+//       } catch (err) {
+//         console.error('Error fetching rankings:', err);
+//       }
+//     };
+
+//     fetchRankings();
+//     const interval = setInterval(fetchRankings, 1000);
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   return (
+//     <main className="container">
+//       <h2 id="rank-title">Player Rankings</h2>
+//       <table className="table table-striped">
+//         <thead>
+//           <tr>
+//             <th>Rank</th>
+//             <th>Name</th>
+//             <th>Total Points</th>
+//             <th>Player Level</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {rankings.map((player, index) => (
+//             <tr key={index}>
+//               <td>{index + 1}</td>
+//               <td>{player.name}</td>
+//               <td>{player.score}</td>
+//               <td>{player.level}</td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+//     </main>
+//   );
+// }
