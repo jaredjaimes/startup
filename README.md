@@ -107,7 +107,7 @@ For this deliverable I added backend endpoints that receives votes and returns t
  - [x] Frontend calls service endpoints - using te fetch command in login. 
 
 
-DB/Login deliverable
+## DB/Login deliverable
 ➡️ The following is an example of the required information for the Startup DB/Login deliverable
 
 For this deliverable I associate the votes with the logged in user. I stored the votes in the database.
