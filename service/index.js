@@ -80,6 +80,20 @@ secureApiRouter.use(async (req, res, next) => {
   }
 });
 
+// Avatar routes --------------------
+secureApiRouter.get('/avatar', async (req, res) => {
+  const avatar = await DB.getAvatar(req.userId);
+  res.send(avatar || {});
+});
+
+secureApiRouter.post('/avatar', async (req, res) => {
+  const avatar = { ...req.body, userId: req.userId };
+  await DB.saveAvatar(avatar);
+  res.status(201).send(avatar);
+});
+
+
+//OTher codes for handling-------------
 // Default error handler
 app.use(function (err, req, res, next) {
   res.status(500).send({ type: err.name, message: err.message });
@@ -110,39 +124,3 @@ app.listen(port, '0.0.0.0', (err) => {
 
 
 //-----------------------------------------------
-
-// //Login Logic
-// // CreateAuth a new user
-// apiRouter.post('/auth/create', async (req, res) => {
-//   const user = users[req.body.email];
-//   if (user) {
-//     res.status(409).send({ msg: 'Existing user' });
-//   } else {
-//     const user = { email: req.body.email, password: req.body.password, token: uuid.v4() };
-//     users[user.email] = user;
-
-//     res.send({ token: user.token });
-//   }
-// });
-
-// // GetAuth login an existing user
-// apiRouter.post('/auth/login', async (req, res) => {
-//   const user = users[req.body.email];
-//   if (user) {
-//     if (req.body.password === user.password) {
-//       user.token = uuid.v4();
-//       res.send({ token: user.token });
-//       return;
-//     }
-//   }
-//   res.status(401).send({ msg: 'Unauthorized' });
-// });
-
-// // DeleteAuth logout a user
-// apiRouter.delete('/auth/logout', (req, res) => {
-//   const user = Object.values(users).find((u) => u.token === req.body.token);
-//   if (user) {
-//     delete user.token;
-//   }
-//   res.status(204).end();
-// });

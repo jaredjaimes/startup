@@ -6,8 +6,9 @@ const config = require('./dbConfig.json');
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
 const db = client.db('simon');
+
+
 const userCollection = db.collection('user');
-const scoreCollection = db.collection('score');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -40,9 +41,23 @@ async function createUser(email, password) {
   return user;
 }
 
+//Avatar:
+async function saveAvatar(avatar) {
+  return await avatarsCollection.updateOne(
+    { userId: avatar.userId },
+    { $set: avatar },
+    { upsert: true }
+  );
+}
+
+async function getAvatar(userId) {
+  return await avatarsCollection.findOne({ userId });
+}
 
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
+  saveAvatar,
+  getAvatar,
 };
