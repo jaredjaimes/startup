@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const config = require('./dbConfig.json');
 
-const url = `mongodb+srv://jaredjaimesstudent:12345@hostname":cluster0.mzmnu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const url = `mongodb+srv://jaredjaimesstudent:12345@hostname":cluster0.mzmnu.mongodb.net`;
 const client = new MongoClient(url);
 const db = client.db('simon');
 const userCollection = db.collection('user');
