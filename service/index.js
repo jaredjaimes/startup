@@ -1,20 +1,30 @@
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+const DB = require('./database.js');
+
+const authCookieName = 'token';
 
 const port = process.argv.length > 2 ? process.argv[2] : 4001;
-
-
-// In- memory storageok, wha
-let users = {};
 
 // Middleware
 // You do this because all of our endpoints use JSON and so we want Express to automatically parse that for us.
 app.use(express.json());
 
+// Use the cookie parser middleware for tracking authentication tokens
+app.use(cookieParser());
+
 // Serves up front-end static content hosting.
 //  The React app and backend are hosted on the same server, simplifying deployment and allowing seamless integration between the frontend and backend.
 app.use(express.static('public'));
+
+// In- memory storageok, wha
+let users = {};
+
+// Trust headers that are forwarded from the proxy so we can determine IP addresses
+app.set('trust proxy', true);
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
