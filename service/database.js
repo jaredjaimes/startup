@@ -5,9 +5,10 @@ const config = require('./dbConfig.json');
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
-const db = client.db('simon');
+const db = client.db('olaga');
 
-
+//Collections:
+const avatarsCollection = db.collection('avatars');
 const userCollection = db.collection('user');
 
 // This will asynchronously test the connection and exit the process if it fails
@@ -41,7 +42,7 @@ async function createUser(email, password) {
   return user;
 }
 
-//Avatar:
+//Avatar:--------------------------------------
 async function saveAvatar(avatar) {
   return await avatarsCollection.updateOne(
     { userId: avatar.userId },
@@ -51,8 +52,18 @@ async function saveAvatar(avatar) {
 }
 
 async function getAvatar(userId) {
-  return await avatarsCollection.findOne({ userId });
+  console.log(`Querying avatar for userId: ${userId}`);
+
+  try {
+    const avatar = await avatarsCollection.findOne({ userId });
+    console.log('Database result:', avatar);
+    return avatar;
+  } catch (err) {
+    console.error('Error in getAvatar:', err);
+    throw err; // Re-throw the error for the route handler to catch
+  }
 }
+
 
 module.exports = {
   getUser,

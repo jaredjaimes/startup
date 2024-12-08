@@ -81,11 +81,6 @@ secureApiRouter.use(async (req, res, next) => {
 });
 
 // Avatar routes --------------------
-secureApiRouter.get('/avatar', async (req, res) => {
-  const avatar = await DB.getAvatar(req.userId);
-  res.send(avatar || {});
-});
-
 secureApiRouter.post('/avatar', async (req, res) => {
   const avatar = { ...req.body, userId: req.userId };
   await DB.saveAvatar(avatar);
