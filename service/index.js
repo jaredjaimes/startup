@@ -87,28 +87,74 @@ secureApiRouter.use(async (req, res, next) => {
 //   res.status(201).send(avatar);
 // });
 
-// Skills routes------------------------------------------------
-secureApiRouter.get('/skills', async (req, res) => {
-  const skills = await DB.getSkills(req.userId);
-  res.send(skills);
+// // Skills routes------------------------------------------------
+// secureApiRouter.get('/skills', async (req, res) => {
+//   const skills = await DB.getSkills(req.userId);
+//   res.send(skills);
+// });
+
+// secureApiRouter.post('/skills', async (req, res) => {
+//   const skill = { ...req.body, userId: req.userId };
+//   await DB.saveSkill(skill);
+//   res.status(201).send(skill);
+// });
+
+// // Rankings routes----------------------------------------------
+// secureApiRouter.get('/rankings', async (_req, res) => {
+//   const rankings = await DB.getRankings();
+//   res.send(rankings);
+// });
+
+// secureApiRouter.post('/rankings', async (req, res) => {
+//   const ranking = { ...req.body, userId: req.userId };
+//   await DB.saveRanking(ranking);
+//   res.status(201).send(ranking);
+// });
+
+// Endpoint to fetch tasks and scores
+secureApiRouter.get('/api/skills', async (req, res) => {
+  try {
+    const { tasks, score } = await DB.getSkills();
+    res.json({ tasks, score });
+  } catch (error) {
+    console.error('Error fetching skills:', error);
+    res.status(500).send('Server error');
+  }
 });
 
-secureApiRouter.post('/skills', async (req, res) => {
-  const skill = { ...req.body, userId: req.userId };
-  await DB.saveSkill(skill);
-  res.status(201).send(skill);
+// Endpoint to add a new task
+secureApiRouter.post('/api/skills', async (req, res) => {
+  try {
+    const { name } = req.body;
+    const updatedSkills = await DB.addSkill(name);
+    res.json(updatedSkills);
+  } catch (error) {
+    console.error('Error adding task:', error);
+    res.status(500).send('Server error');
+  }
 });
 
-// Rankings routes----------------------------------------------
-secureApiRouter.get('/rankings', async (_req, res) => {
-  const rankings = await DB.getRankings();
-  res.send(rankings);
+// Endpoint to complete a task
+secureApiRouter.post('/api/skills/:index/complete', async (req, res) => {
+  try {
+    const index = parseInt(req.params.index, 10);
+    const updatedSkills = await DB.completeSkill(index);
+    res.json(updatedSkills);
+  } catch (error) {
+    console.error('Error completing task:', error);
+    res.status(500).send('Server error');
+  }
 });
 
-secureApiRouter.post('/rankings', async (req, res) => {
-  const ranking = { ...req.body, userId: req.userId };
-  await DB.saveRanking(ranking);
-  res.status(201).send(ranking);
+// Endpoint to fetch rankings
+secureApiRouter.get('/api/rankings', async (req, res) => {
+  try {
+    const rankings = await DB.getRankings();
+    res.json(rankings);
+  } catch (error) {
+    console.error('Error fetching rankings:', error);
+    res.status(500).send('Server error');
+  }
 });
 
 //OTher codes for handling---------------------------------------
