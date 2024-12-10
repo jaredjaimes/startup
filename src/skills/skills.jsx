@@ -7,20 +7,17 @@ export function Skills() {
   const [newTask, setNewTask] = useState('');
   const [taskXP, setTaskXP] = useState(10);
   const [skill, setSkill] = useState('');
-  const [skills, setSkills] = useState(() => {
-    // Load skills from localStorage on initial render
-    const savedSkills = localStorage.getItem('skills');
-    return savedSkills ? JSON.parse(savedSkills) : [];
-  });
+  const [skills, setSkills] = useState([]);
   const [newSkill, setNewSkill] = useState('');
 
-  // Fetch the username from localStorage
-  const username = localStorage.getItem('userName') || 'Unknown Player';
-
-  // Save the skills state to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('skills', JSON.stringify(skills));
-  }, [skills]);
+    // Fetch skills from the server
+    fetch('/api/skills')
+      .then((res) => res.json())
+      .then((data) => setSkills(data))
+      .catch((err) => console.error('Error fetching skills:', err));
+  }, []);
+
 
   // Function to handle adding a new task
   const addTask = () => {
@@ -150,8 +147,6 @@ export function Skills() {
 }
 
 //-------------------------------------------------------------
-//endpoints:
-
 // import React, { useState, useEffect } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import './skills.css';
@@ -175,6 +170,7 @@ export function Skills() {
 //   useEffect(() => {
 //     localStorage.setItem('skills', JSON.stringify(skills));
 //   }, [skills]);
+
 
 //   // Function to handle adding a new task
 //   const addTask = () => {
@@ -232,17 +228,15 @@ export function Skills() {
 //   const totalPoints = skills.reduce((sum, sk) => sum + sk.points, 0);
 //   const playerLevel = Math.floor(totalPoints / 100) + 1;
 
-//   // Save the current player's ranking data with fetch
-//   async function saveRanking(totalPoints){
-//     const playerData = { name: username, points: totalPoints, level:playerLevel };
-  
-//     await fetch('/api/ranking', {
-//       method: 'POST',
-//       headers: { 'content-type': 'application/json' },
-//       body: JSON.stringify(newRank)
-//     });
-  
-//   }
+//   // Save the current player's ranking data to localStorage
+//   useEffect(() => {
+//     const playerData = {
+//       name: username,
+//       score: totalPoints,
+//       level: playerLevel,
+//     };
+//     localStorage.setItem('playerData', JSON.stringify(playerData));
+//   }, [totalPoints, playerLevel]);
 
 //   return (
 //     <main className="container">
