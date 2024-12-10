@@ -5,27 +5,11 @@ export function Rankings() {
   const [rankings, setRankings] = useState([]);
 
   useEffect(() => {
-    const updateRankings = () => {
-      const storedData = localStorage.getItem('playerData');
-      if (storedData) {
-        const playerData = JSON.parse(storedData);
-
-        setRankings((prevRankings) => {
-          const updated = [...prevRankings];
-          const index = updated.findIndex((p) => p.name === playerData.name);
-          if (index !== -1) {
-            updated[index] = playerData;
-          } else {
-            updated.push(playerData);
-          }
-          return updated.sort((a, b) => b.score - a.score);
-        });
-      }
-    };
-
-    const interval = setInterval(updateRankings, 1000); // Mock real-time updates
-
-    return () => clearInterval(interval);
+    // Fetch rankings from the server
+    fetch('/api/rankings')
+      .then((res) => res.json())
+      .then((data) => setRankings(data))
+      .catch((err) => console.error('Error fetching rankings:', err));
   }, []);
 
   return (
@@ -45,7 +29,7 @@ export function Rankings() {
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{player.name}</td>
-              <td>{player.score}</td>
+              <td>{player.points}</td>
               <td>{player.level}</td>
             </tr>
           ))}
@@ -55,9 +39,8 @@ export function Rankings() {
   );
 }
 
-//---------------------------------------------------------
-//Rankings with endpoints. 
 
+//---------------------------------------------------------
 // import React, { useState, useEffect } from 'react';
 // import './rankings.css';
 
@@ -65,13 +48,28 @@ export function Rankings() {
 //   const [rankings, setRankings] = useState([]);
 
 //   useEffect(() => {
-//     fetch('/api/rankings')
-//       .then((response) => response.json())
-//       .then((rankings) => {
-//         setRankings(rankings);
-//       });
+//     const updateRankings = () => {
+//       const storedData = localStorage.getItem('playerData');
+//       if (storedData) {
+//         const playerData = JSON.parse(storedData);
 
-//     }, []);
+//         setRankings((prevRankings) => {
+//           const updated = [...prevRankings];
+//           const index = updated.findIndex((p) => p.name === playerData.name);
+//           if (index !== -1) {
+//             updated[index] = playerData;
+//           } else {
+//             updated.push(playerData);
+//           }
+//           return updated.sort((a, b) => b.score - a.score);
+//         });
+//       }
+//     };
+
+//     const interval = setInterval(updateRankings, 1000); // Mock real-time updates
+
+//     return () => clearInterval(interval);
+//   }, []);
 
 //   return (
 //     <main className="container">
