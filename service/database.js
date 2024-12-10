@@ -10,6 +10,7 @@ const db = client.db('olaga');
 //Collections:
 const avatarsCollection = db.collection('avatars');
 const userCollection = db.collection('user');
+const skillsCollection = db.collection('skills');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -64,6 +65,18 @@ async function getAvatar(userId) {
   }
 }
 
+//Skills:--------------------------------------------
+async function saveSkill(skill) {
+  return await skillsCollection.updateOne(
+    { userId: skill.userId, name: skill.name },
+    { $set: skill },
+    { upsert: true }
+  );
+}
+
+async function getSkills(userId) {
+  return await skillsCollection.find({ userId }).toArray();
+}
 
 module.exports = {
   getUser,
@@ -71,4 +84,6 @@ module.exports = {
   createUser,
   saveAvatar,
   getAvatar,
+  saveSkills,
+  getSkills,
 };
