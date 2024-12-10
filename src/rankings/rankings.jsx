@@ -23,7 +23,6 @@ export function Rankings() {
           <td>{i + 1}</td>
           <td>{ranking.name}</td>
           <td>{ranking.score}</td>
-          <td>{ranking.date ? new Date(ranking.date).toLocaleDateString() : "N/A"}</td>
         </tr>
       );
     }
@@ -43,7 +42,6 @@ export function Rankings() {
             <th>Rank</th>
             <th>Name</th>
             <th>Score</th>
-            <th>Date</th>
           </tr>
         </thead>
         <tbody id="rankings">{rankingRows}</tbody>
