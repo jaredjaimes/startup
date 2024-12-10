@@ -25,14 +25,14 @@ export function Rankings() {
           </tr>
         </thead>
         <tbody>
-          {rankings.map((player, index) => (
+          {/* {rankings.map((player, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{player.name}</td>
               <td>{player.points}</td>
               <td>{player.level}</td>
             </tr>
-          ))}
+          ))} */}
         </tbody>
       </table>
     </main>

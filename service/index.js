@@ -80,12 +80,12 @@ secureApiRouter.use(async (req, res, next) => {
   }
 });
 
-// Avatar routes -----------------------------------------------
-secureApiRouter.post('/avatar', async (req, res) => {
-  const avatar = { ...req.body, userId: req.userId };
-  await DB.saveAvatar(avatar);
-  res.status(201).send(avatar);
-});
+// // Avatar routes -----------------------------------------------
+// secureApiRouter.post('/avatar', async (req, res) => {
+//   const avatar = { ...req.body, userId: req.userId };
+//   await DB.saveAvatar(avatar);
+//   res.status(201).send(avatar);
+// });
 
 // Skills routes------------------------------------------------
 secureApiRouter.get('/skills', async (req, res) => {
