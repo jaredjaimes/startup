@@ -1,57 +1,114 @@
 import React from 'react';
+import './rankings.css';
 
-import './scores.css';
+export function Rankings() {
+  const [rankings, setRankings] = React.useState([]);
 
-export function Scores() {
-  const [scores, setScores] = React.useState([]);
-
-  // Demonstrates calling a service asynchronously so that
-  // React can properly update state objects with the results.
   React.useEffect(() => {
-    fetch('/api/scores')
+    fetch('/api/rankings')
       .then((response) => response.json())
-      .then((scores) => {
-        setScores(scores);
+      .then((rankings) => {
+        setRankings(rankings);
+      })
+      .catch((error) => {
+        console.error('Error fetching rankings:', error);
       });
   }, []);
 
-  // Demonstrates rendering an array with React
-  const scoreRows = [];
-  if (scores.length) {
-    for (const [i, score] of scores.entries()) {
-      scoreRows.push(
+  const rankingRows = [];
+  if (rankings.length) {
+    for (const [i, ranking] of rankings.entries()) {
+      rankingRows.push(
         <tr key={i}>
-          <td>{i}</td>
-          <td>{score.name.split('@')[0]}</td>
-          <td>{score.score}</td>
-          <td>{score.date}</td>
+          <td>{i + 1}</td>
+          <td>{ranking.name}</td>
+          <td>{ranking.score}</td>
+          <td>{ranking.date ? new Date(ranking.date).toLocaleDateString() : "N/A"}</td>
         </tr>
       );
     }
   } else {
-    scoreRows.push(
-      <tr key='0'>
-        <td colSpan='4'>Be the first to score</td>
+    rankingRows.push(
+      <tr key="0">
+        <td colSpan="4">No rankings available</td>
       </tr>
     );
   }
 
   return (
-    <main className='container-fluid bg-secondary text-center'>
-      <table className='table table-warning table-striped-columns'>
-        <thead className='table-dark'>
+    <main className="container-fluid bg-secondary text-center">
+      <table className="table table-warning table-striped-columns">
+        <thead className="table-dark">
           <tr>
-            <th>#</th>
+            <th>Rank</th>
             <th>Name</th>
             <th>Score</th>
             <th>Date</th>
           </tr>
         </thead>
-        <tbody id='scores'>{scoreRows}</tbody>
+        <tbody id="rankings">{rankingRows}</tbody>
       </table>
     </main>
   );
 }
+
+//Before the big changes
+// import React from 'react';
+// import './rankings.css';
+
+// export function Rankings() {
+//   const [rankings, setRankings] = React.useState([]);
+
+//   // Fetch rankings from the backend when the component mounts
+//   React.useEffect(() => {
+//     fetch('/api/rankings')
+//       .then((response) => response.json())
+//       .then((rankings) => {
+//         setRankings(rankings);
+//       })
+//       .catch((error) => {
+//         console.error('Error fetching rankings:', error);
+//       });
+//   }, []);
+
+//   // Prepare ranking rows
+//   const rankingRows = [];
+//   if (rankings.length) {
+//     for (const [i, ranking] of rankings.entries()) {
+//       rankingRows.push(
+//         <tr key={i}>
+//           <td>{i + 1}</td>
+//           <td>{ranking.name}</td>
+//           <td>{ranking.score}</td>
+//           <td>{new Date(ranking.date).toLocaleDateString()}</td>
+//         </tr>
+//       );
+//     }
+//   } else {
+//     rankingRows.push(
+//       <tr key="0">
+//         <td colSpan="4">No rankings available</td>
+//       </tr>
+//     );
+//   }
+
+//   return (
+//     <main className="container-fluid bg-secondary text-center">
+//       <table className="table table-warning table-striped-columns">
+//         <thead className="table-dark">
+//           <tr>
+//             <th>Rank</th>
+//             <th>Name</th>
+//             <th>Score</th>
+//             <th>Date</th>
+//           </tr>
+//         </thead>
+//         <tbody id="rankings">{rankingRows}</tbody>
+//       </table>
+//     </main>
+//   );
+// }
+
 
 
 // import React, { useState, useEffect } from 'react';
