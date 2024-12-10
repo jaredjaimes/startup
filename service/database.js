@@ -68,40 +68,42 @@ async function createUser(email, password) {
 // }
 
 //Skills:--------------------------------------------
-async function saveSkill(skill) {
-  return await skillsCollection.updateOne(
-    { userId: skill.userId, name: skill.name },
-    { $set: skill },
-    { upsert: true }
-  );
+
+async function getSkills() {
+  const skills = await skillsCollection.find().toArray();
+  const score = skills.reduce((total, skill) => total + (skill.completed ? 10 : 0), 0);
+  return { tasks: skills, score };
 }
 
-async function getSkills(userId) {
-  return await skillsCollection.find({ userId }).toArray();
+async function addSkill(name) {
+  await skillsCollection.insertOne({ name, completed: false });
+  return getSkills();
 }
 
-//Rankings:-------------------------------------------
-async function saveRanking(ranking) {
-  return await rankingsCollection.updateOne(
-    { userId: ranking.userId },
-    { $set: ranking },
-    { upsert: true }
-  );
+// Complete a task
+async function completeSkill(index) {
+  const tasks = await skillsCollection.find().toArray();
+  if (tasks[index]) {
+    await skillsCollection.updateOne(
+      { _id: tasks[index]._id },
+      { $set: { completed: true } }
+    );
+  }
+  return getSkills();
 }
 
+// Fetch rankings
 async function getRankings() {
-  return await rankingsCollection.find().sort({ score: -1 }).toArray();
+  return rankingsCollection.find().sort({ score: -1 }).toArray();
 }
 
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
-  saveAvatar,
-  getAvatar,
-  saveSkill,
   getSkills,
-  saveRanking,
+  addSkill,
+  completeSkill,
   getRankings,
 };
 //---------------------------------------------------
