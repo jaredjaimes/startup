@@ -11,6 +11,8 @@ const db = client.db('olaga');
 const avatarsCollection = db.collection('avatars');
 const userCollection = db.collection('user');
 const skillsCollection = db.collection('skills');
+const rankingsCollection = db.collection('rankings');
+
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -78,12 +80,27 @@ async function getSkills(userId) {
   return await skillsCollection.find({ userId }).toArray();
 }
 
+//Rankings:-------------------------------------------
+async function saveRanking(ranking) {
+  return await rankingsCollection.updateOne(
+    { userId: ranking.userId },
+    { $set: ranking },
+    { upsert: true }
+  );
+}
+
+async function getRankings() {
+  return await rankingsCollection.find().sort({ score: -1 }).toArray();
+}
+
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
   saveAvatar,
   getAvatar,
-  saveSkills,
+  saveSkill,
   getSkills,
+  saveRanking,
+  getRankings,
 };
