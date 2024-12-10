@@ -18,8 +18,6 @@ export function Skills() {
       .catch((err) => console.error('Error fetching skills:', err));
   }, []);
 
-
-  // Function to handle adding a new task
   const addTask = () => {
     if (newTask.trim() !== '' && taskXP > 0 && skill !== '') {
       setTasks([...tasks, { name: newTask, xp: taskXP, completed: false, skill }]);
@@ -29,27 +27,25 @@ export function Skills() {
     }
   };
 
-  // Function to toggle task completion
   const completeTask = (index) => {
     const task = tasks[index];
     if (!task.completed) {
-      setSkills(
-        skills.map((sk) =>
-          sk.name === task.skill
-            ? {
-                ...sk,
-                points: sk.points + task.xp,
-                level: Math.floor((sk.points + task.xp) / 50) + 1,
-              }
-            : sk
-        )
+      const updatedSkills = skills.map((sk) =>
+        sk.name === task.skill
+          ? { ...sk, points: sk.points + task.xp, level: Math.floor((sk.points + task.xp) / 50) + 1 }
+          : sk
       );
+
+      setSkills(updatedSkills);
+
+      fetch('/api/skills', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedSkills.find((sk) => sk.name === task.skill)),
+      }).catch((err) => console.error('Error saving skill:', err));
     }
-    setTasks(
-      tasks.map((t, i) =>
-        i === index ? { ...t, completed: true } : t
-      )
-    );
+
+    setTasks(tasks.map((t, i) => (i === index ? { ...t, completed: true } : t)));
   };
 
   const deleteTask = (index) => {
@@ -57,11 +53,16 @@ export function Skills() {
   };
 
   const addSkill = () => {
-    if (
-      newSkill.trim() !== '' &&
-      !skills.some((sk) => sk.name.toLowerCase() === newSkill.toLowerCase())
-    ) {
-      setSkills([...skills, { name: newSkill, points: 0, level: 1 }]);
+    if (newSkill.trim() !== '' && !skills.some((sk) => sk.name.toLowerCase() === newSkill.toLowerCase())) {
+      const newSkillObj = { name: newSkill, points: 0, level: 1 };
+
+      setSkills([...skills, newSkillObj]);
+      fetch('/api/skills', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newSkillObj),
+      }).catch((err) => console.error('Error adding skill:', err));
+
       setNewSkill('');
     }
   };
@@ -71,19 +72,8 @@ export function Skills() {
     setTasks(tasks.filter((task) => task.skill !== skillName));
   };
 
-  // Calculate total skill points and level
   const totalPoints = skills.reduce((sum, sk) => sum + sk.points, 0);
   const playerLevel = Math.floor(totalPoints / 100) + 1;
-
-  // Save the current player's ranking data to localStorage
-  useEffect(() => {
-    const playerData = {
-      name: username,
-      score: totalPoints,
-      level: playerLevel,
-    };
-    localStorage.setItem('playerData', JSON.stringify(playerData));
-  }, [totalPoints, playerLevel]);
 
   return (
     <main className="container">
@@ -96,9 +86,13 @@ export function Skills() {
           value={skill}
           onChange={(e) => setSkill(e.target.value)}
         >
-          <option value="" disabled>Select a skill</option>
+          <option value="" disabled>
+            Select a skill
+          </option>
           {skills.map((sk, index) => (
-            <option key={index} value={sk.name}>{sk.name}</option>
+            <option key={index} value={sk.name}>
+              {sk.name}
+            </option>
           ))}
         </select>
         <input
@@ -115,7 +109,9 @@ export function Skills() {
           value={taskXP}
           onChange={(e) => setTaskXP(Number(e.target.value))}
         />
-        <button className="btn btn-primary" onClick={addTask}>Add Task</button>
+        <button className="btn btn-primary" onClick={addTask}>
+          Add Task
+        </button>
       </div>
       <div className="d-flex mb-4">
         <input
@@ -125,26 +121,52 @@ export function Skills() {
           value={newSkill}
           onChange={(e) => setNewSkill(e.target.value)}
         />
-        <button className="btn btn-secondary" onClick={addSkill}>Create New Skill</button>
+        <button className="btn btn-secondary" onClick={addSkill}>
+          Create New Skill
+        </button>
       </div>
       {skills.map((sk) => (
         <div key={sk.name} className="mb-4">
-          <h4>{sk.name} - Level: {sk.level} (Points: {sk.points})</h4>
-          <button className="btn btn-danger btn-sm ms-3" onClick={() => deleteSkill(sk.name)}>Delete Skill</button>
+          <h4>
+            {sk.name} - Level: {sk.level} (Points: {sk.points})
+          </h4>
+          <button className="btn btn-danger btn-sm ms-3" onClick={() => deleteSkill(sk.name)}>
+            Delete Skill
+          </button>
           <ul className="list-group">
-            {tasks.filter((task) => task.skill === sk.name).map((task, index) => (
-              <li key={index} className={`list-group-item ${task.completed ? 'list-group-item-success' : ''}`}>
-                <span>{task.name} (XP: {task.xp})</span>
-                {!task.completed && <button className="btn btn-success btn-sm" onClick={() => completeTask(index)}>Complete</button>}
-                <button className="btn btn-danger btn-sm" onClick={() => deleteTask(index)}>Delete</button>
-              </li>
-            ))}
+            {tasks
+              .filter((task) => task.skill === sk.name)
+              .map((task, index) => (
+                <li
+                  key={index}
+                  className={`list-group-item ${task.completed ? 'list-group-item-success' : ''}`}
+                >
+                  <span>
+                    {task.name} (XP: {task.xp})
+                  </span>
+                  {!task.completed && (
+                    <button
+                      className="btn btn-success btn-sm"
+                      onClick={() => completeTask(index)}
+                    >
+                      Complete
+                    </button>
+                  )}
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => deleteTask(index)}
+                  >
+                    Delete
+                  </button>
+                </li>
+              ))}
           </ul>
         </div>
       ))}
     </main>
   );
 }
+
 
 //-------------------------------------------------------------
 // import React, { useState, useEffect } from 'react';
