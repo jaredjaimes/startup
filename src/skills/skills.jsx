@@ -1,77 +1,278 @@
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './skills.css';
 
 export function Skills() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
   const [score, setScore] = useState(0);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch tasks and score from the server
     fetch('/api/skills')
-      .then((res) => res.json())
-      .then((data) => {
-        setTasks(data.tasks);
-        setScore(data.score);
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else if (res.status === 401) {
+          throw new Error('Unauthorized. Please log in.');
+        } else {
+          throw new Error('Failed to fetch tasks.');
+        }
       })
-      .catch((err) => console.error('Error fetching tasks:', err));
+      .then((data) => {
+        setTasks(data.tasks || []);
+        setScore(data.score || 0);
+      })
+      .catch((err) => setError(err.message));
   }, []);
 
   const addTask = () => {
-    if (newTask.trim() !== '') {
-      const task = { name: newTask, completed: false };
-      fetch('/api/skills', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(task),
+    if (newTask.trim() === '') return;
+    const task = { name: newTask, completed: false };
+
+    fetch('/api/skills', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(task),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error('Failed to add task.');
+        }
       })
-        .then((res) => res.json())
-        .then((data) => {
-          setTasks(data.tasks);
-          setScore(data.score);
-          setNewTask('');
-        })
-        .catch((err) => console.error('Error adding task:', err));
-    }
+      .then((data) => {
+        setTasks(data.tasks || []);
+        setScore(data.score || 0);
+        setNewTask('');
+      })
+      .catch((err) => setError(err.message));
   };
 
-  const completeTask = (index) => {
-    fetch(`/api/skills/${index}/complete`, { method: 'POST' })
-      .then((res) => res.json())
-      .then((data) => {
-        setTasks(data.tasks);
-        setScore(data.score);
+
+  const completeTask = (taskName) => {
+    fetch(`/api/skills/${taskName}/complete`, {
+      method: 'POST',
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error('Failed to complete task.');
+        }
       })
-      .catch((err) => console.error('Error completing task:', err));
+      .then((data) => {
+        setTasks(data.tasks || []);
+        setScore(data.score || 0);
+      })
+      .catch((err) => setError(err.message));
   };
 
   return (
     <div className="skills-container">
-      <h2>Skills</h2>
-      <div>
-        <input
-          type="text"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-          placeholder="Enter new task"
-        />
-        <button onClick={addTask}>Add Task</button>
-      </div>
+      <h2>Your Skills</h2>
+      {error && <p className="error">{error}</p>}
+      <p>Score: {score}</p>
       <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>
-            {task.name}
-            {!task.completed && (
-              <button onClick={() => completeTask(index)}>Complete</button>
-            )}
-          </li>
-        ))}
+        {Array.isArray(tasks) && tasks.length > 0 ? (
+          tasks.map((task) => (
+            <li key={task.name}>
+              {task.name}
+              {!task.completed && (
+                <button onClick={() => completeTask(task.name)}>Complete</button>
+              )}
+            </li>
+          ))
+        ) : (
+          <li>No tasks available.</li>
+        )}
       </ul>
-      <div>Score: {score}</div>
+      <input
+        type="text"
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+        placeholder="Add a new skill"
+      />
+      <button onClick={addTask}>Add Skill</button>
     </div>
   );
 }
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import './skills.css';
+
+// export function Skills() {
+//   const [tasks, setTasks] = useState([]);
+//   const [newTask, setNewTask] = useState('');
+//   const [score, setScore] = useState(0);
+//   const [error, setError] = useState(null);
+
+//   useEffect(() => {
+//     fetch('/api/skills')
+//       .then((res) => {
+//         if (res.ok) {
+//           return res.json();
+//         } else if (res.status === 401) {
+//           throw new Error('Unauthorized. Please log in.');
+//         } else {
+//           throw new Error('Failed to fetch tasks.');
+//         }
+//       })
+//       .then((data) => {
+//         setTasks(data.tasks || []);
+//         setScore(data.score || 0);
+//       })
+//       .catch((err) => setError(err.message));
+//   }, []);
+
+//   const addTask = () => {
+//     if (newTask.trim() === '') return;
+//     const task = { name: newTask, completed: false };
+
+//     fetch('/api/skills', {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify(task),
+//     })
+//       .then((res) => {
+//         if (res.ok) {
+//           return res.json();
+//         } else {
+//           throw new Error('Failed to add task.');
+//         }
+//       })
+//       .then((data) => {
+//         setTasks(data.tasks || []);
+//         setScore(data.score || 0);
+//         setNewTask('');
+//       })
+//       .catch((err) => setError(err.message));
+//   };
+
+//   const completeTask = (taskName) => {
+//     fetch(`/api/skills/${taskName}`, {
+//       method: 'PUT',
+//     })
+//       .then((res) => {
+//         if (res.ok) {
+//           return res.json();
+//         } else {
+//           throw new Error('Failed to complete task.');
+//         }
+//       })
+//       .then((data) => {
+//         setTasks(data.tasks || []);
+//         setScore(data.score || 0);
+//       })
+//       .catch((err) => setError(err.message));
+//   };
+
+//   return (
+//     <div className="skills-container">
+//       <h2>Your Skills</h2>
+//       {error && <p className="error">{error}</p>}
+//       <p>Score: {score}</p>
+//       <ul>
+//         {Array.isArray(tasks) && tasks.length > 0 ? (
+//           tasks.map((task) => (
+//             <li key={task.name}>
+//               {task.name}
+//               {!task.completed && (
+//                 <button onClick={() => completeTask(task.name)}>Complete</button>
+//               )}
+//             </li>
+//           ))
+//         ) : (
+//           <li>No tasks available.</li>
+//         )}
+//       </ul>
+//       <input
+//         type="text"
+//         value={newTask}
+//         onChange={(e) => setNewTask(e.target.value)}
+//         placeholder="Add a new skill"
+//       />
+//       <button onClick={addTask}>Add Skill</button>
+//     </div>
+//   );
+// }
+
+// import React, { useState, useEffect } from 'react';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import './skills.css';
+
+// export function Skills() {
+//   const [tasks, setTasks] = useState([]);
+//   const [newTask, setNewTask] = useState('');
+//   const [score, setScore] = useState(0);
+
+//   useEffect(() => {
+//     // Fetch tasks and score from the server
+//     fetch('/api/skills')
+//       .then((res) => res.json())
+//       .then((data) => {
+//         setTasks(data.tasks);
+//         setScore(data.score);
+//       })
+//       .catch((err) => console.error('Error fetching tasks:', err));
+//   }, []);
+
+//   const addTask = () => {
+//     if (newTask.trim() !== '') {
+//       const task = { name: newTask, completed: false };
+//       fetch('/api/skills', {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(task),
+//       })
+//         .then((res) => res.json())
+//         .then((data) => {
+//           setTasks(data.tasks);
+//           setScore(data.score);
+//           setNewTask('');
+//         })
+//         .catch((err) => console.error('Error adding task:', err));
+//     }
+//   };
+
+//   const completeTask = (index) => {
+//     fetch(`/api/skills/${index}/complete`, { method: 'POST' })
+//       .then((res) => res.json())
+//       .then((data) => {
+//         setTasks(data.tasks);
+//         setScore(data.score);
+//       })
+//       .catch((err) => console.error('Error completing task:', err));
+//   };
+
+//   return (
+//     <div className="skills-container">
+//       <h2>Skills</h2>
+//       <div>
+//         <input
+//           type="text"
+//           value={newTask}
+//           onChange={(e) => setNewTask(e.target.value)}
+//           placeholder="Enter new task"
+//         />
+//         <button onClick={addTask}>Add Task</button>
+//       </div>
+//       <ul>
+//         {tasks.map((task, index) => (
+//           <li key={index}>
+//             {task.name}
+//             {!task.completed && (
+//               <button onClick={() => completeTask(index)}>Complete</button>
+//             )}
+//           </li>
+//         ))}
+//       </ul>
+//       <div>Score: {score}</div>
+//     </div>
+//   );
+// }
 
 //Part one simplified react
 // import React, { useState } from 'react';
