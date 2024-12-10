@@ -45,28 +45,6 @@ async function createUser(email, password) {
   return user;
 }
 
-// //Avatar:--------------------------------------
-// async function saveAvatar(avatar) {
-//   return await avatarsCollection.updateOne(
-//     { userId: avatar.userId },
-//     { $set: avatar },
-//     { upsert: true }
-//   );
-// }
-
-// async function getAvatar(userId) {
-//   console.log(`Querying avatar for userId: ${userId}`);
-
-//   try {
-//     const avatar = await avatarsCollection.findOne({ userId });
-//     console.log('Database result:', avatar);
-//     return avatar;
-//   } catch (err) {
-//     console.error('Error in getAvatar:', err);
-//     throw err; // Re-throw the error for the route handler to catch
-//   }
-// }
-
 //Skills:--------------------------------------------
 
 async function getSkills() {

@@ -80,36 +80,6 @@ secureApiRouter.use(async (req, res, next) => {
   }
 });
 
-// // Avatar routes -----------------------------------------------
-// secureApiRouter.post('/avatar', async (req, res) => {
-//   const avatar = { ...req.body, userId: req.userId };
-//   await DB.saveAvatar(avatar);
-//   res.status(201).send(avatar);
-// });
-
-// // Skills routes------------------------------------------------
-// secureApiRouter.get('/skills', async (req, res) => {
-//   const skills = await DB.getSkills(req.userId);
-//   res.send(skills);
-// });
-
-// secureApiRouter.post('/skills', async (req, res) => {
-//   const skill = { ...req.body, userId: req.userId };
-//   await DB.saveSkill(skill);
-//   res.status(201).send(skill);
-// });
-
-// // Rankings routes----------------------------------------------
-// secureApiRouter.get('/rankings', async (_req, res) => {
-//   const rankings = await DB.getRankings();
-//   res.send(rankings);
-// });
-
-// secureApiRouter.post('/rankings', async (req, res) => {
-//   const ranking = { ...req.body, userId: req.userId };
-//   await DB.saveRanking(ranking);
-//   res.status(201).send(ranking);
-// });
 
 // Endpoint to fetch tasks and scores
 secureApiRouter.get('/api/skills', async (req, res) => {

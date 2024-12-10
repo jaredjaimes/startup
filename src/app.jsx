@@ -72,8 +72,8 @@ export default function App() {
           {/* Authenticated Routes */}
           {authState === AuthState.Authenticated && (
             <>
-              <Route path="/avatar" element={<Avatar />} />
-              {/* <Route path="/rankings" element={<Rankings />} /> */}
+              {/* <Route path="/avatar" element={<Avatar />} /> */}
+              <Route path="/rankings" element={<Rankings />} />
               <Route path="/skills" element={<Skills />} />
             </>
           )}
