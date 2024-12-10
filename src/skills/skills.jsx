@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './skills.css';
 
@@ -7,68 +7,144 @@ export function Skills() {
   const [newTask, setNewTask] = useState('');
   const [score, setScore] = useState(0);
 
+  useEffect(() => {
+    // Fetch tasks and score from the server
+    fetch('/api/skills')
+      .then((res) => res.json())
+      .then((data) => {
+        setTasks(data.tasks);
+        setScore(data.score);
+      })
+      .catch((err) => console.error('Error fetching tasks:', err));
+  }, []);
+
   const addTask = () => {
     if (newTask.trim() !== '') {
-      setTasks([...tasks, { name: newTask, completed: false }]);
-      setNewTask('');
+      const task = { name: newTask, completed: false };
+      fetch('/api/skills', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(task),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setTasks(data.tasks);
+          setScore(data.score);
+          setNewTask('');
+        })
+        .catch((err) => console.error('Error adding task:', err));
     }
   };
 
   const completeTask = (index) => {
-    const updatedTasks = tasks.map((task, i) =>
-      i === index ? { ...task, completed: true } : task
-    );
-    setTasks(updatedTasks);
-    setScore(score + 10); // Add 10 points for completing a task
-  };
-
-  const deleteTask = (index) => {
-    setTasks(tasks.filter((_, i) => i !== index));
+    fetch(`/api/skills/${index}/complete`, { method: 'POST' })
+      .then((res) => res.json())
+      .then((data) => {
+        setTasks(data.tasks);
+        setScore(data.score);
+      })
+      .catch((err) => console.error('Error completing task:', err));
   };
 
   return (
-    <main className="container">
-      <h2>Task Manager</h2>
-      <p>Total Score: {score}</p>
-      <div className="d-flex mb-3">
+    <div className="skills-container">
+      <h2>Skills</h2>
+      <div>
         <input
           type="text"
-          className="form-control me-2"
-          placeholder="Enter a new task"
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
+          placeholder="Enter new task"
         />
-        <button className="btn btn-primary" onClick={addTask}>
-          Add Task
-        </button>
+        <button onClick={addTask}>Add Task</button>
       </div>
-      <ul className="list-group">
+      <ul>
         {tasks.map((task, index) => (
-          <li
-            key={index}
-            className={`list-group-item ${task.completed ? 'list-group-item-success' : ''}`}
-          >
-            <span>{task.name}</span>
+          <li key={index}>
+            {task.name}
             {!task.completed && (
-              <button
-                className="btn btn-success btn-sm ms-2"
-                onClick={() => completeTask(index)}
-              >
-                Complete
-              </button>
+              <button onClick={() => completeTask(index)}>Complete</button>
             )}
-            <button
-              className="btn btn-danger btn-sm ms-2"
-              onClick={() => deleteTask(index)}
-            >
-              Delete
-            </button>
           </li>
         ))}
       </ul>
-    </main>
+      <div>Score: {score}</div>
+    </div>
   );
 }
+
+//Part one simplified react
+// import React, { useState } from 'react';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import './skills.css';
+
+// export function Skills() {
+//   const [tasks, setTasks] = useState([]);
+//   const [newTask, setNewTask] = useState('');
+//   const [score, setScore] = useState(0);
+
+//   const addTask = () => {
+//     if (newTask.trim() !== '') {
+//       setTasks([...tasks, { name: newTask, completed: false }]);
+//       setNewTask('');
+//     }
+//   };
+
+//   const completeTask = (index) => {
+//     const updatedTasks = tasks.map((task, i) =>
+//       i === index ? { ...task, completed: true } : task
+//     );
+//     setTasks(updatedTasks);
+//     setScore(score + 10); // Add 10 points for completing a task
+//   };
+
+//   const deleteTask = (index) => {
+//     setTasks(tasks.filter((_, i) => i !== index));
+//   };
+
+//   return (
+//     <main className="container">
+//       <h2>Task Manager</h2>
+//       <p>Total Score: {score}</p>
+//       <div className="d-flex mb-3">
+//         <input
+//           type="text"
+//           className="form-control me-2"
+//           placeholder="Enter a new task"
+//           value={newTask}
+//           onChange={(e) => setNewTask(e.target.value)}
+//         />
+//         <button className="btn btn-primary" onClick={addTask}>
+//           Add Task
+//         </button>
+//       </div>
+//       <ul className="list-group">
+//         {tasks.map((task, index) => (
+//           <li
+//             key={index}
+//             className={`list-group-item ${task.completed ? 'list-group-item-success' : ''}`}
+//           >
+//             <span>{task.name}</span>
+//             {!task.completed && (
+//               <button
+//                 className="btn btn-success btn-sm ms-2"
+//                 onClick={() => completeTask(index)}
+//               >
+//                 Complete
+//               </button>
+//             )}
+//             <button
+//               className="btn btn-danger btn-sm ms-2"
+//               onClick={() => deleteTask(index)}
+//             >
+//               Delete
+//             </button>
+//           </li>
+//         ))}
+//       </ul>
+//     </main>
+//   );
+// }
 
 
 // Below is the skills code before I simplified it.------------------

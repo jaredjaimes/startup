@@ -15,29 +15,67 @@ export function Rankings() {
   return (
     <main className="container">
       <h2 id="rank-title">Player Rankings</h2>
-      <table className="table table-striped">
+      <table className="rankings-table">
         <thead>
           <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Total Points</th>
-            <th>Player Level</th>
+            <th>Player</th>
+            <th>Score</th>
           </tr>
         </thead>
         <tbody>
-          {/* {rankings.map((player, index) => (
+          {rankings.map((player, index) => (
             <tr key={index}>
-              <td>{index + 1}</td>
               <td>{player.name}</td>
-              <td>{player.points}</td>
-              <td>{player.level}</td>
+              <td>{player.score}</td>
             </tr>
-          ))} */}
+          ))}
         </tbody>
       </table>
     </main>
   );
 }
+
+//Before simplification
+// import React, { useState, useEffect } from 'react';
+// import './rankings.css';
+
+// export function Rankings() {
+//   const [rankings, setRankings] = useState([]);
+
+//   useEffect(() => {
+//     // Fetch rankings from the server
+//     fetch('/api/rankings')
+//       .then((res) => res.json())
+//       .then((data) => setRankings(data))
+//       .catch((err) => console.error('Error fetching rankings:', err));
+//   }, []);
+
+//   return (
+//     <main className="container">
+//       <h2 id="rank-title">Player Rankings</h2>
+//       <table className="table table-striped">
+//         <thead>
+//           <tr>
+//             <th>Rank</th>
+//             <th>Name</th>
+//             <th>Total Points</th>
+//             <th>Player Level</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {/* {rankings.map((player, index) => (
+//             <tr key={index}>
+//               <td>{index + 1}</td>
+//               <td>{player.name}</td>
+//               <td>{player.points}</td>
+//               <td>{player.level}</td>
+//             </tr>
+//           ))} */}
+//         </tbody>
+//       </table>
+//     </main>
+//   );
+// }
 
 
 //---------------------------------------------------------
