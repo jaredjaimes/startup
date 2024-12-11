@@ -21,6 +21,33 @@ export function Users(props) {
     }
 
     function createMessageArray() {
-        //mock code
+        const messageArray = [];
+        for (const [i, event] of events.entries()) {
+            let message = 'unknown';
+            if (event.type === TaskEvent.End) {
+                message = `completed a task`;
+            } else if (event.type === TaskEvent.Start) {
+                message = `started a new task`;
+            } else if (event.type === TaskEvent.System) {
+                message = event.value.msg;
+            }
+
+      messageArray.push(
+        <div key={i} className='event'>
+          <span className={'player-event'}>{event.from.split('@')[0]}</span>
+          {message}
+        </div>
+      );
     }
+    return messageArray;
+  }
+
+  return(
+    <div className= 'users'>
+        User
+        <span className='user-name'>{userName}</span>
+        <div id='user-messages'>{createMessageArray()}</div>
+    </div>
+  );
+
 }
