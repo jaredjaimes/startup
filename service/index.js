@@ -64,11 +64,11 @@ secureApiRouter.use(async (req, res, next) => {
   }
 });
 
-// Skills Routes
+// Skills Routes-------------------------------------------------------------------------------------
 secureApiRouter.get('/skills', async (req, res) => {
   try {
     const { tasks, score } = await DB.getSkills(req.user.email);
-    res.json({ tasks, score });
+    res.send({ tasks, score });
   } catch (error) {
     res.status(500).send('Server error');
   }
@@ -78,7 +78,7 @@ secureApiRouter.post('/skills', async (req, res) => {
   try {
     const { name } = req.body;
     const updatedSkills = await DB.addSkill(req.user.email, name);
-    res.json(updatedSkills);
+    res.send(updatedSkills);
   } catch (error) {
     res.status(500).send('Server error');
   }
@@ -88,7 +88,7 @@ secureApiRouter.post('/skills/:taskName/complete', async (req, res) => {
   try {
     const taskName = req.params.taskName;
     const updatedSkills = await DB.completeTask(req.user.email, taskName);
-    res.json(updatedSkills);
+    res.send(updatedSkills);
   } catch (error) {
     res.status(500).send('Server error');
   }
@@ -98,7 +98,7 @@ secureApiRouter.delete('/skills/:taskName', async (req, res) => {
   try {
     const taskName = req.params.taskName;
     const updatedSkills = await DB.deleteTask(req.user.email, taskName);
-    res.json(updatedSkills);
+    res.send(updatedSkills);
   } catch (error) {
     res.status(500).send('Server error');
   }
@@ -108,7 +108,7 @@ secureApiRouter.delete('/skills/:taskName', async (req, res) => {
 secureApiRouter.get('/rankings', async (req, res) => {
   try {
     const rankings = await DB.getRankings();
-    res.json(rankings);
+    res.send(rankings);
   } catch (error) {
     res.status(500).send('Server error');
   }

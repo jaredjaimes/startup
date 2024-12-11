@@ -34,7 +34,7 @@ async function createUser(email, password) {
   await userCollection.insertOne(user);
   return user;
 }
-
+//--------------------------------------------------------------------------------------------------------------------------
 async function getSkills(email) {
   const tasks = await tasksCollection.find({ email }).toArray();
   const userScore = await rankingsCollection.findOne({ email });
