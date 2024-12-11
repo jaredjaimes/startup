@@ -84,7 +84,6 @@ export function Skills(props) {
       })
       .then((data) => {
         setTasks(data.tasks || []);
-        setScore(data.score || 0);
       })
       .catch((err) => setError(err.message));
   };

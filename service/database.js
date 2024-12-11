@@ -62,10 +62,6 @@ async function completeTask(email, name) {
 
 async function deleteTask(email, name) {
   const task = await tasksCollection.findOneAndDelete({ email, name });
-  await rankingsCollection.updateOne(
-    { email },
-    { $inc: { score: -10 } }
-  );
   return getSkills(email);
 }
 
