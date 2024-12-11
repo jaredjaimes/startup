@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './skills.css';
+import {TaskEvent, TaskNotifier} from './taskNotifier';
 
 export function Skills(props) {
   const userName = props.userName;

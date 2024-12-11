@@ -65,3 +65,6 @@ class TaskEventNotifier {
         });
       }
     }
+
+    const TaskNotifier = new TaskEventNotifier();
+    export { TaskEvent, TaskNotifier};
