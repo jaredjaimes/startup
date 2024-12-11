@@ -50,6 +50,9 @@ export function Skills(props) {
         setNewTask('');
       })
       .catch((err) => setError(err.message));
+
+    //Lets other users know someone has started a task
+    TaskNotifier.broadcastEvent(userName, TaskEvent.Start, taskName);
   };
 
   // Complete a task and update the score
@@ -69,6 +72,9 @@ export function Skills(props) {
         setScore(data.score); // Increment score by 10 for each completed task
       })
       .catch((err) => setError(err.message));
+
+    //Lets other users know someone has completed a task
+    TaskNotifier.broadcastEvent(userName, TaskEvent.End, taskName);
   };
 
   // Delete a task
