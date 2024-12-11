@@ -21,7 +21,7 @@ export function Rankings() {
       rankingRows.push(
         <tr key={i}>
           <td>{i + 1}</td>
-          <td>{ranking.name}</td>
+          <td>{ranking.email.split('@')[0]}</td>
           <td>{ranking.score}</td>
         </tr>
       );

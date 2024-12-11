@@ -34,7 +34,7 @@ async function createUser(email, password) {
   await userCollection.insertOne(user);
   return user;
 }
-//--------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------
 async function getSkills(email) {
   const tasks = await tasksCollection.find({ email }).toArray();
   const userScore = await rankingsCollection.findOne({ email });
@@ -52,35 +52,30 @@ async function completeTask(email, name) {
     { email, name, completed: false },
     { $set: { completed: true } }
   );
-
-  if (task.value) {
-    await rankingsCollection.updateOne(
-      { email },
-      { $inc: { score: 10 } },
-      { upsert: true }
-    );
-  }
+  await rankingsCollection.updateOne(
+    { email },
+    { $inc: { score: 10 } },
+    { upsert: true }
+  );
   return getSkills(email);
 }
 
 async function deleteTask(email, name) {
   const task = await tasksCollection.findOneAndDelete({ email, name });
-
-  if (task.value && task.value.completed) {
-    await rankingsCollection.updateOne(
-      { email },
-      { $inc: { score: -10 } }
-    );
-  }
+  await rankingsCollection.updateOne(
+    { email },
+    { $inc: { score: -10 } }
+  );
   return getSkills(email);
 }
 
 async function getRankings() {
-  return rankingsCollection
+  const rankings = await rankingsCollection
     .find({}, { projection: { _id: 0, email: 1, score: 1 } })
     .sort({ score: -1 })
     .limit(10)
     .toArray();
+  return rankings;
 }
 
 module.exports = {
