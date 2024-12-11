@@ -110,15 +110,14 @@ For this deliverable I added backend endpoints that receives votes and returns t
 ## DB/Login deliverable
 ➡️ The following is an example of the required information for the Startup DB/Login deliverable
 
-For this deliverable I associate the votes with the logged in user. I stored the votes in the database.
+- [x] MongoDB Atlas database created - done!
+- [x] Stores data in MongoDB - Done, used it to store tasks and scores from commpleted tasks. 
+- [x] User registration - Creates a new account in the database.
+- [x] existing user - Stores the tasks under the same user if the user already exists.
+- [x] Use MongoDB to store credentials - Stores both user and their their tasks and scores
+- [x] Restricts functionality - You cannot create tasks and earn points until you have logged in.
 
- MongoDB Atlas database created - done!
- Stores data in MongoDB - done!
- User registration - Creates a new account in the database.
- existing user - Stores the votes under the same user if the user already exists.
- Use MongoDB to store credentials - Stores both user and their votes.
- Restricts functionality - You cannot vote until you have logged in. This is restricted on the frontend only. 😔
-WebSocket deliverable
+## WebSocket deliverable
 ➡️ The following is an example of the required information for the Startup WebSocket deliverable
 
 For this deliverable I used webSocket to update the votes on the frontend in realtime.
