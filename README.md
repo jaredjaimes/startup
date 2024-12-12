@@ -120,10 +120,9 @@ For this deliverable I added backend endpoints that receives votes and returns t
 ## WebSocket deliverable
 ➡️ The following is an example of the required information for the Startup WebSocket deliverable
 
-For this deliverable I used webSocket to update the votes on the frontend in realtime.
+ - [x] Backend listens for WebSocket connection - yes it does this. 
+ - [x] Frontend makes WebSocket connection - yes it does this. 
+ - [x] Data sent over WebSocket connection - yes it does this. 
+ - [x] WebSocket data displayed - Now it doesn't display anymore. It did in the local code and still does locally, but all of a sudden in production environment it says it loses connection. Awkward, idk why.
 
- Backend listens for WebSocket connection - done!
- Frontend makes WebSocket connection - done!
- Data sent over WebSocket connection - done!
- WebSocket data displayed - All user votes display in realtime. I'm really proud that this is working. Way cool!
 
