@@ -92,6 +92,7 @@ secureApiRouter.post('/skills/:taskName/complete', async (req, res) => {
   } catch (error) {
     res.status(500).send('Server error');
   }
+  
 });
 
 secureApiRouter.delete('/skills/:taskName', async (req, res) => {
