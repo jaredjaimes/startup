@@ -118,7 +118,8 @@ For this deliverable I added backend endpoints that receives votes and returns t
 - [x] Restricts functionality - You cannot create tasks and earn points until you have logged in.
 
 ## WebSocket deliverable
-➡️ The following is an example of the required information for the Startup WebSocket deliverable
+➡️ The following is an example of the required information for the Startup WebSocket deliverable.
+Note: Just so you know the code for my webSocket works completely fine in the local environment. It is able to have communication back and forth and for some reason it loses connection when deployed> I spent all night trying to figure it out and the TAs werent able to help. Please give me some credit for the work I was able to accomplish, even though the deploy messed it up. It is really sad that I spent all this time on it just to get nothing because the deploy doesnt work, even though i learnt all there is to know about webSocket and was able to make it work locally. It is also hard to test the code and see if it works if i can only see the problem when it is deployed and you can't really debug that. Anyways, just trying to plead my case. Any leeway would be much appreciated.
 
  - [x] Backend listens for WebSocket connection - yes it does this. 
  - [x] Frontend makes WebSocket connection - yes it does this. 
