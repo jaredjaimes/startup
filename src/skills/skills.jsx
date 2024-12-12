@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './skills.css';
 import {TaskEvent, TaskNotifier} from './taskNotifier';
+import { Users } from './users.jsx';
 
 export function Skills(props) {
   const userName = props.userName;
@@ -52,7 +53,7 @@ export function Skills(props) {
       .catch((err) => setError(err.message));
 
     //Lets other users know someone has started a task
-    TaskNotifier.broadcastEvent(userName, TaskEvent.Start, taskName);
+    TaskNotifier.broadcastEvent(userName, TaskEvent.Start, {});
   };
 
   // Complete a task and update the score
@@ -97,6 +98,7 @@ export function Skills(props) {
 
   return (
     <div className="skills-container">
+      <Users username = {props.userName}/>
       <h3>{userName}</h3>
       <h2>Your Tasks</h2>
       {error && <p className="error">{error}</p>}

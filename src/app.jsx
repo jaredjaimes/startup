@@ -74,7 +74,7 @@ export default function App() {
             <>
               {/* <Route path="/avatar" element={<Avatar />} /> */}
               <Route path="/rankings" element={<Rankings />} />
-              <Route path="/skills" element={<Skills username={userName} />} />
+              <Route path="/skills" element={<Skills userName={userName} />} />
             </>
           )}
           {/* Fallback Route */}

@@ -24,11 +24,11 @@ class TaskEventNotifier {
         this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
         //onopen: Triggered when the WebSocket connection is established.
         this.socket.onopen = (event) => {
-          this.receiveEvent(new EventMessage('Olaga', GameEvent.System, { msg: 'connected' }));
+          this.receiveEvent(new EventMessage('Simon', GameEvent.System, { msg: 'connected' }));
         };
         //onclose: Triggered when the connection is closed.
         this.socket.onclose = (event) => {
-          this.receiveEvent(new EventMessage('Olaga', GameEvent.System, { msg: 'disconnected' }));
+          this.receiveEvent(new EventMessage('Simon', GameEvent.System, { msg: 'disconnected' }));
         };
         //onmessage: Processes incoming messages from the server.
         this.socket.onmessage = async (msg) => {
@@ -43,6 +43,10 @@ class TaskEventNotifier {
       broadcastEvent(from, type, value) {
         const event = new EventMessage(from, type, value);
         this.socket.send(JSON.stringify(event));
+        this.socket.addEventListener('open', function (event){
+          socket.send(message);
+          
+        });
       }
     
       //Adding handlers allows components to register functions to handle events.
