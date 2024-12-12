@@ -1,9 +1,10 @@
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 
 import { Login } from './login/login';
-// import { Avatar } from './avatar/avatar';
+// import { Avatar } from './avatar/avatar';//Avatar with customization. Points equal money. money equal upgrades.
 import { Rankings } from './rankings/rankings';
-import { Skills } from './skills/skills';
+import { Skills } from './skills/skills';//Create sheets where you can put categories + player levels.
+//Create a chat section in order to chat with others online.
 import { AuthState } from './login/authState';
 
 import React from 'react';
